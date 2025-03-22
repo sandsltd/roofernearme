@@ -1,30 +1,11 @@
 'use client';
 
 import { useState, useEffect, useRef } from 'react';
-import { FaSearch, FaHardHat, FaCheckCircle, FaPoundSign, FaTools, FaHome, FaMapMarkerAlt, FaBuilding, FaClock } from 'react-icons/fa';
+import { FaSearch, FaCheckCircle, FaPoundSign, FaTools, FaHome, FaMapMarkerAlt, FaBuilding, FaClock } from 'react-icons/fa';
 import RooferCard from '@/components/RooferCard';
 import rooferData from '@/data/roofers.json';
 import Link from 'next/link';
 import Image from 'next/image';
-
-// Define regions and their nearby areas
-const regionMappings: { [key: string]: string[] } = {
-  'london': [
-    'Barnet',
-    'Camden',
-    'Ealing',
-    'Enfield',
-    'Fulham',
-    'Hammersmith',
-    'Harrow',
-    'Islington',
-    'Kensington',
-    'Westminster'
-  ],
-  'basingstoke': ['Basingstoke', 'Fleet', 'Farnborough'],
-  'fleet': ['Fleet', 'Basingstoke', 'Farnborough'],
-  'farnborough': ['Farnborough', 'Fleet', 'Basingstoke']
-};
 
 // Calculate distance between two points using Haversine formula
 function calculateDistance(lat1: number, lon1: number, lat2: number, lon2: number): number {
@@ -122,69 +103,6 @@ const geocodeWithRetry = async (
   return null;
 };
 
-// UK postcodes to latitude/longitude fallback mapper
-// This helps ensure functionality works even if Google API has quota/auth issues
-const postcodeToCoords: {[key: string]: {lat: number, lng: number}} = {
-  'SO41': {lat: 50.7595, lng: -1.5664}, // Lymington
-  'SO51': {lat: 50.9882, lng: -1.5022}, // Romsey
-  'SO15': {lat: 50.9108, lng: -1.4226}, // Southampton
-  'SO14': {lat: 50.9052, lng: -1.4049}, // Southampton City Center
-  'SO16': {lat: 50.9404, lng: -1.4420}, // Southampton North
-  'SO17': {lat: 50.9268, lng: -1.3975}, // Southampton East
-  'SO18': {lat: 50.9257, lng: -1.3522}, // Southampton Bitterne
-  'SO19': {lat: 50.8851, lng: -1.3645}, // Southampton Sholing
-  'SO20': {lat: 51.1157, lng: -1.5410}, // Stockbridge
-  'SO21': {lat: 51.0898, lng: -1.3213}, // Winchester
-  'SO22': {lat: 51.0622, lng: -1.3366}, // Winchester West
-  'SO23': {lat: 51.0636, lng: -1.3084}, // Winchester Central
-  'SO30': {lat: 50.9187, lng: -1.3116}, // Eastleigh
-  'SO40': {lat: 50.9205, lng: -1.5346}, // Totton
-  'SO45': {lat: 50.8432, lng: -1.4060}, // Hythe
-  'BH25': {lat: 50.7521, lng: -1.6644}, // New Milton
-};
-
-// Add this component before the main Home component
-// This is a separate component to prevent focus issues
-const SearchInput = ({ onSearch }: { onSearch: (value: string) => void }) => {
-  const [inputValue, setInputValue] = useState('');
-  const inputRef = useRef<HTMLInputElement>(null);
-
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setInputValue(e.target.value);
-  };
-
-  const triggerSearch = () => {
-    onSearch(inputValue);
-  };
-
-  return (
-    <div className="w-full flex items-center bg-white rounded-2xl shadow-2xl overflow-hidden transform hover:scale-105 transition-transform duration-300">
-      <input
-        ref={inputRef}
-        type="text"
-        value={inputValue}
-        onChange={handleInputChange}
-        onKeyDown={(e) => {
-          if (e.key === 'Enter') {
-            triggerSearch();
-          }
-        }}
-        className="flex-1 px-6 py-4 text-lg focus:outline-none text-gray-900 placeholder-gray-500"
-        placeholder="Enter postcode"
-        autoComplete="off"
-      />
-      <button 
-        onClick={triggerSearch}
-        className="bg-yellow-400 text-black px-8 py-5 hover:bg-yellow-500 transition-colors duration-300 flex items-center gap-2"
-        aria-label="Search for roofers"
-      >
-        <FaSearch className="h-5 w-5" />
-        <span>Search</span>
-      </button>
-    </div>
-  );
-};
-
 // Add type definitions for Google Maps geocoding response
 interface AddressComponent {
   long_name: string;
@@ -236,100 +154,6 @@ interface TownPostcodes {
   [key: string]: string[];
 }
 
-// Add function to check if postcode belongs to a town
-async function isPostcodeInTown(postcode: string, towns: string[]): Promise<boolean> {
-  try {
-    // Get the outcode (e.g., "SO1" from "SO1 1AA")
-    const outcode = getOutcode(postcode);
-    
-    // First try with the full postcode
-    const response = await fetch(`https://api.postcodes.io/postcodes/${encodeURIComponent(postcode)}`);
-    let data: PostcodesIOResponse | OutcodesIOResponse;
-    
-    if (!response.ok) {
-      // If full postcode fails, try with just the outcode
-      const outcodeResponse = await fetch(`https://api.postcodes.io/outcodes/${encodeURIComponent(outcode)}`);
-      if (!outcodeResponse.ok) return false;
-      data = await outcodeResponse.json() as OutcodesIOResponse;
-      
-      // For outcodes, check the admin district and parish
-      if (!data.result) return false;
-      
-      // Check if any of the towns are in the admin district
-      const townPostcodes: TownPostcodes = {
-        'Southampton': ['SO1', 'SO2', 'SO3', 'SO4', 'SO5', 'SO6', 'SO7', 'SO8', 'SO9', 'SO14', 'SO15', 'SO16', 'SO17', 'SO18', 'SO19'],
-        'Portsmouth': ['PO1', 'PO2', 'PO3', 'PO4', 'PO5', 'PO6'],
-        'Chichester': ['PO18', 'PO19', 'PO20'],
-        'Eastleigh': ['SO50', 'SO53'],
-        'Fareham': ['PO14', 'PO15', 'PO16', 'PO17'],
-        'Gosport': ['PO12', 'PO13'],
-        'Havant': ['PO7', 'PO8', 'PO9', 'PO10', 'PO11'],
-        'Waterlooville': ['PO7', 'PO8']
-      };
-
-      return towns.some(town => 
-        (data as OutcodesIOResponse).result?.admin_district?.some(district => 
-          district.toLowerCase().includes(town.toLowerCase())
-        ) ||
-        // Also check if the outcode is associated with any of the coverage towns
-        towns.some(coverageTown => 
-          townPostcodes[coverageTown]?.includes(outcode)
-        )
-      );
-    }
-    
-    data = await response.json() as PostcodesIOResponse;
-    if (!data.result) return false;
-
-    // Check various location fields for matches
-    const locationFields = [
-      data.result.parish?.toLowerCase(),
-      data.result.admin_district?.toLowerCase(),
-      data.result.admin_ward?.toLowerCase(),
-      data.result.nuts?.toLowerCase(),
-      data.result.primary_care_trust?.toLowerCase()
-    ].filter((field): field is string => Boolean(field));
-
-    return towns.some(town => 
-      locationFields.some(field => field.includes(town.toLowerCase()))
-    );
-  } catch (error) {
-    console.error('Error checking postcode location:', error);
-    return false;
-  }
-}
-
-// Define postcode districts for each town
-const townPostcodeDistricts: { [key: string]: string[] } = {
-  'Southampton': ['SO14', 'SO15', 'SO16', 'SO17', 'SO18', 'SO19'],
-  'Eastleigh': ['SO50', 'SO53'],
-  'Fareham': ['PO14', 'PO15', 'PO16', 'PO17'],
-  'Portsmouth': ['PO1', 'PO2', 'PO3', 'PO4', 'PO5', 'PO6'],
-  'Gosport': ['PO12', 'PO13'],
-  'Havant': ['PO7', 'PO8', 'PO9', 'PO10', 'PO11'],
-  'Waterlooville': ['PO7', 'PO8'],
-  'Chichester': ['PO18', 'PO19', 'PO20']
-};
-
-// Function to get postcode district (e.g., "PO18" from "PO18 8JQ")
-function getPostcodeDistrict(postcode: string): string {
-  const clean = postcode.replace(/\s+/g, '').toUpperCase();
-  const match = clean.match(/^[A-Z]{1,2}\d{1,2}/);
-  return match ? match[0] : clean;
-}
-
-// Function to check if a postcode is in coverage area
-function isInCoverageArea(postcode: string, coverageTowns: string[]): boolean {
-  const district = getPostcodeDistrict(postcode);
-  
-  // Check if the postcode district is in any of the coverage towns' districts
-  return coverageTowns.some(town => 
-    townPostcodeDistricts[town]?.some(coverageDistrict => 
-      district.startsWith(coverageDistrict)
-    )
-  );
-}
-
 interface Roofer {
   businessName: string;
   description?: string;
@@ -347,7 +171,6 @@ export default function Home() {
   const [searchMessage, setSearchMessage] = useState('');
   const [isLoading, setIsLoading] = useState(false);
   const [geocoder, setGeocoder] = useState<GoogleMapsGeocoder | null>(null);
-  const [error, setError] = useState<string | null>(null);
 
   // Add useEffect for scrolling
   useEffect(() => {
@@ -431,10 +254,8 @@ export default function Home() {
     
     return () => {
       // Clean up global objects when component unmounts
-      if ('initGoogleMaps' in window) {
-        // @ts-ignore - handle the case if it exists
-        window.initGoogleMaps = function() {};
-      }
+      // @ts-expect-error - handle the case if it exists
+      window.initGoogleMaps = function() {};
       window.gm_authFailure = function() {}; // Replace with no-op function
       
       const script = document.querySelector('script[src*="maps.googleapis.com"]');
@@ -749,7 +570,7 @@ export default function Home() {
                 <h3 className="text-2xl font-bold text-gray-900">Roofing Repairs</h3>
               </div>
               <p className="text-gray-800 mb-4">
-                Don't let a damaged roof compromise your home's integrity. Our network of skilled roofers specializes in prompt, efficient repairs for:
+                Don&apos;t let a damaged roof compromise your home&apos;s integrity. Our network of skilled roofers specializes in prompt, efficient repairs for:
               </p>
               <ul className="space-y-2 mb-4">
                 <li className="flex items-start">
@@ -780,7 +601,7 @@ export default function Home() {
                 <h3 className="text-2xl font-bold text-gray-900">Roof Replacements</h3>
               </div>
               <p className="text-gray-800 mb-4">
-                When repairs aren't enough, a complete roof replacement ensures long-term protection. Our expert roofers offer:
+                When repairs aren&apos;t enough, a complete roof replacement ensures long-term protection. Our expert roofers offer:
               </p>
               <ul className="space-y-2 mb-4">
                 <li className="flex items-start">
@@ -842,7 +663,7 @@ export default function Home() {
                 <h3 className="text-2xl font-bold text-gray-900">Gutter Replacements</h3>
               </div>
               <p className="text-gray-800 mb-4">
-                When repairs aren't sufficient, our roofers offer complete gutter replacement solutions:
+                When repairs aren&apos;t sufficient, our roofers offer complete gutter replacement solutions:
               </p>
               <ul className="space-y-2 mb-4">
                 <li className="flex items-start">
