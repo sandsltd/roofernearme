@@ -2,7 +2,7 @@
 
 import Link from 'next/link';
 import Image from 'next/image';
-import { FaSearch, FaMapMarkerAlt, FaTools, FaCheckCircle, FaPhone, FaHome } from 'react-icons/fa';
+import { FaSearch, FaMapMarkerAlt, FaTools, FaCheckCircle, FaHome } from 'react-icons/fa';
 
 export default function RoofersInGlasgow() {
   return (

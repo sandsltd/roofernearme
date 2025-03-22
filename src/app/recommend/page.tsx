@@ -43,7 +43,7 @@ export default function RecommendPage() {
       });
 
       if (!response.ok) {
-        throw new Error('Failed to submit recommendation');
+        throw new Error('Failed to submit form');
       }
 
       setIsSubmitted(true);
@@ -55,8 +55,8 @@ export default function RecommendPage() {
         email: '',
         location: '',
       });
-    } catch (err) {
-      setError('There was an error submitting your recommendation. Please try again.');
+    } catch (error) {
+      setError('Failed to submit form. Please try again.');
     } finally {
       setIsSubmitting(false);
     }
@@ -282,8 +282,8 @@ export default function RecommendPage() {
                 <FaCheck className="h-10 w-10 text-green-600" />
               </div>
               <h2 className="text-2xl font-bold text-gray-900 mb-4">Recommendation Submitted</h2>
-              <p className="text-gray-600 mb-8">
-                Thank you for recommending a roofer. We'll review the information and add them to our network soon.
+              <p className="text-gray-600 mb-6">
+                We&apos;re always looking to expand our network with reliable roofing professionals.
               </p>
               <Link 
                 href="/"
