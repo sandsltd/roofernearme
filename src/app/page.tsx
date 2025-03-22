@@ -540,7 +540,9 @@ export default function Home() {
                 </div>
                 <h3 className="text-2xl font-bold text-gray-900">Roofing Repairs</h3>
               </div>
-              <p className="text-gray-800 leading-relaxed">Don&apos;t let a damaged roof compromise your home&apos;s integrity. Our network of skilled roofers specializes in prompt, efficient repairs for:</p>
+              <p className="text-gray-800 leading-relaxed">
+                Don&apos;t let a damaged roof compromise your home&apos;s integrity. Our network of skilled roofers specializes in prompt, efficient repairs for:
+              </p>
               <ul className="space-y-2 mb-4">
                 <li className="flex items-start">
                   <span className="text-yellow-500 mr-2">•</span>
