@@ -160,7 +160,7 @@ export default function RoofersInGlasgow() {
                 </li>
                 <li className="flex items-start">
                   <span className="text-yellow-500 mr-2">•</span>
-                  <span>Understanding of Glasgow's weather challenges</span>
+                  <span>Understanding of Glasgow&apos;s weather challenges</span>
                 </li>
                 <li className="flex items-start">
                   <span className="text-yellow-500 mr-2">•</span>

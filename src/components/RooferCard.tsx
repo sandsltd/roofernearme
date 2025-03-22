@@ -1,6 +1,5 @@
-import Image from 'next/image';
+import { FaMapMarkerAlt, FaHome } from 'react-icons/fa';
 import Link from 'next/link';
-import { FaTools, FaMapMarkerAlt, FaHome, FaRuler, FaPhoneAlt, FaStar, FaGlobe } from 'react-icons/fa';
 
 interface RooferCardProps {
   name: string;

@@ -5,12 +5,22 @@ import Link from 'next/link';
 import { FaBuilding, FaUser, FaPhone, FaEnvelope, FaMapMarkerAlt, FaCheck, FaHome } from 'react-icons/fa';
 import Image from 'next/image';
 
+interface FormData {
+  businessName: string;
+  contactName: string;
+  email: string;
+  phone: string;
+  website: string;
+  location: string;
+}
+
 export default function RecommendPage() {
-  const [formData, setFormData] = useState({
+  const [formData, setFormData] = useState<FormData>({
     businessName: '',
     contactName: '',
-    phone: '',
     email: '',
+    phone: '',
+    website: '',
     location: '',
   });
   
@@ -47,15 +57,15 @@ export default function RecommendPage() {
       }
 
       setIsSubmitted(true);
-      // Reset form
       setFormData({
         businessName: '',
         contactName: '',
-        phone: '',
         email: '',
+        phone: '',
+        website: '',
         location: '',
       });
-    } catch (error) {
+    } catch {
       setError('Failed to submit form. Please try again.');
     } finally {
       setIsSubmitting(false);
@@ -282,8 +292,8 @@ export default function RecommendPage() {
                 <FaCheck className="h-10 w-10 text-green-600" />
               </div>
               <h2 className="text-2xl font-bold text-gray-900 mb-4">Recommendation Submitted</h2>
-              <p className="text-gray-600 mb-6">
-                We&apos;re always looking to expand our network with reliable roofing professionals.
+              <p className="text-gray-600">
+                We&apos;re always looking to expand our network with reliable professionals.
               </p>
               <Link 
                 href="/"
