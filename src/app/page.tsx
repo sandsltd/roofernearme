@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect } from 'react';
 import { FaSearch, FaCheckCircle, FaPoundSign, FaTools, FaHome, FaMapMarkerAlt, FaBuilding, FaClock } from 'react-icons/fa';
 import RooferCard from '@/components/RooferCard';
 import rooferData from '@/data/roofers.json';
@@ -123,35 +123,6 @@ interface GeocodeResult {
 interface GeocodeResponse {
   results: GeocodeResult[];
   status: string;
-}
-
-// Add function to get outcode from postcode
-function getOutcode(postcode: string): string {
-  // Remove all spaces and get uppercase version
-  const cleanPostcode = postcode.replace(/\s+/g, '').toUpperCase();
-  // Match the outward code (everything before the last 3 characters)
-  const outcodeMatch = cleanPostcode.match(/^[A-Z]{1,2}[0-9][0-9A-Z]?/);
-  return outcodeMatch ? outcodeMatch[0] : cleanPostcode;
-}
-
-interface PostcodesIOResponse {
-  result?: {
-    parish?: string;
-    admin_district?: string;
-    admin_ward?: string;
-    nuts?: string;
-    primary_care_trust?: string;
-  };
-}
-
-interface OutcodesIOResponse {
-  result?: {
-    admin_district?: string[];
-  };
-}
-
-interface TownPostcodes {
-  [key: string]: string[];
 }
 
 interface Roofer {
@@ -569,9 +540,7 @@ export default function Home() {
                 </div>
                 <h3 className="text-2xl font-bold text-gray-900">Roofing Repairs</h3>
               </div>
-              <p className="text-gray-800 mb-4">
-                Don&apos;t let a damaged roof compromise your home&apos;s integrity. Our network of skilled roofers specializes in prompt, efficient repairs for:
-              </p>
+              <p className="text-gray-800 leading-relaxed">Don&apos;t let a damaged roof compromise your home&apos;s integrity. Our network of skilled roofers specializes in prompt, efficient repairs for:</p>
               <ul className="space-y-2 mb-4">
                 <li className="flex items-start">
                   <span className="text-yellow-500 mr-2">•</span>
