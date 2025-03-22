@@ -39,15 +39,51 @@ function calculateDistance(lat1: number, lon1: number, lat2: number, lon2: numbe
   return R * c;
 }
 
-// Update the Google Maps types
+// Define Google Maps types
+interface GoogleMapsGeocoder {
+  geocode(request: { 
+    address: string;
+    region?: string;
+  }): Promise<{
+    results: {
+      formatted_address: string;
+      geometry: {
+        location: {
+          toJSON(): { lat: number; lng: number }
+        }
+      }
+    }[]
+  }>;
+}
+
+interface GoogleMapsPlaces {
+  AutocompleteService: {
+    new(): {
+      getPlacePredictions(request: {
+        input: string;
+        componentRestrictions?: { country: string[] };
+        types?: string[];
+      }): Promise<{ predictions: AutocompletePrediction[] }>;
+    };
+  };
+}
+
+interface AutocompletePrediction {
+  description: string;
+  place_id: string;
+  structured_formatting: {
+    main_text: string;
+    secondary_text: string;
+  };
+}
+
+// Update the Window interface
 declare global {
   interface Window {
     google: {
       maps: {
-        Geocoder: new () => google.maps.Geocoder;
-        places: {
-          AutocompleteService: new () => google.maps.places.AutocompleteService;
-        };
+        Geocoder: new () => GoogleMapsGeocoder;
+        places: GoogleMapsPlaces;
       };
     };
     gm_authFailure: () => void;
@@ -55,45 +91,9 @@ declare global {
   }
 }
 
-declare namespace google.maps {
-  class Geocoder {
-    geocode(request: { 
-      address: string;
-      region?: string;
-    }): Promise<{
-      results: {
-        formatted_address: string;
-        geometry: {
-          location: {
-            toJSON(): { lat: number; lng: number }
-          }
-        }
-      }[]
-    }>;
-  }
-
-  namespace places {
-    class AutocompleteService {
-      getPlacePredictions(request: {
-        input: string;
-        componentRestrictions?: { country: string[] };
-        types?: string[];
-      }): Promise<{ predictions: AutocompletePrediction[] }>;
-    }
-    interface AutocompletePrediction {
-      description: string;
-      place_id: string;
-      structured_formatting: {
-        main_text: string;
-        secondary_text: string;
-      };
-    }
-  }
-}
-
 // Add a helper function for geocoding with retry
 const geocodeWithRetry = async (
-  geocoder: google.maps.Geocoder,
+  geocoder: GoogleMapsGeocoder,
   address: string,
   maxRetries = 3,
   delay = 1000
@@ -330,14 +330,24 @@ function isInCoverageArea(postcode: string, coverageTowns: string[]): boolean {
   );
 }
 
+interface Roofer {
+  businessName: string;
+  description?: string;
+  location: string;
+  city?: string;
+  website?: string;
+  services?: string[];
+  coverage?: string[];
+}
+
 export default function Home() {
   const [searchTerm, setSearchTerm] = useState('');
-  const [searchResults, setSearchResults] = useState<typeof rooferData.roofers>([]);
+  const [searchResults, setSearchResults] = useState<Roofer[]>([]);
   const [hasSearched, setHasSearched] = useState(false);
   const [searchMessage, setSearchMessage] = useState('');
-  const [currentSearchCoords, setCurrentSearchCoords] = useState<{ lat: number; lng: number } | null>(null);
   const [isLoading, setIsLoading] = useState(false);
-  const [geocoder, setGeocoder] = useState<google.maps.Geocoder | null>(null);
+  const [geocoder, setGeocoder] = useState<GoogleMapsGeocoder | null>(null);
+  const [error, setError] = useState<string | null>(null);
 
   // Add useEffect for scrolling
   useEffect(() => {
@@ -465,7 +475,6 @@ export default function Home() {
 
       const searchResult = searchResponse.results[0];
       const searchCoords = searchResult.geometry.location.toJSON();
-      setCurrentSearchCoords(searchCoords);
 
       // Get the postcode from the search result if available
       const searchPostcode = searchResult.address_components
@@ -541,17 +550,14 @@ export default function Home() {
             </div>
           </div>
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-            {searchResults.map((roofer: any, index) => (
+            {searchResults.map((roofer, index) => (
               <RooferCard
                 key={index}
-                businessName={roofer.businessName}
-                logo={roofer.logo}
-                services={roofer.services}
-                coverage={roofer.coverage}
+                name={roofer.businessName}
+                description={roofer.description || "Professional roofing services"}
+                address={roofer.location}
+                city={roofer.city || ""}
                 website={roofer.website}
-                postcode={roofer.postcode}
-                location={roofer.location}
-                distance={roofer.distance}
               />
             ))}
           </div>
