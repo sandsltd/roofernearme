@@ -1,0 +1,140 @@
+{
+  "roofers": [
+    {
+      "businessName": "AS Ridgeline Roofing",
+      "logo": "/logos/as_ridgeline_roofing_logo_trans-2.webp",
+      "location": "Dumbarton",
+      "services": [
+        "Slate Tile Roofing",
+        "Flat Roofs",
+        "Roof Repairs",
+        "Chimney Repairs",
+        "Gutter Repairs",
+        "Emergency Repairs"
+      ],
+      "coverage": [
+        "Glasgow",
+        "Paisley",
+        "Clydebank",
+        "Dumbarton",
+        "East Kilbride"
+      ],
+      "website": "https://www.glasgowroofer.co.uk",
+      "postcode": "G82"
+    },
+    {
+      "businessName": "Berkley Roofing Ltd",
+      "logo": "/logos/berkley-roofing.png",
+      "location": "North West London",
+      "services": [
+        "Roofing Repairs",
+        "Roof Replacement",
+        "Chimney Repair",
+        "Guttering Repairs"
+      ],
+      "coverage": [
+        "Barnet",
+        "Camden",
+        "Ealing",
+        "Enfield",
+        "Fulham",
+        "Hammersmith",
+        "Harrow",
+        "Islington",
+        "Kensington",
+        "Westminster"
+      ],
+      "website": "https://www.roofingcompanynorthlondon.co.uk",
+      "postcode": "AL10"
+    },
+    {
+      "businessName": "Supreme Roofing Ltd",
+      "logo": "https://www.rooferschichester.co.uk/_next/image?url=%2Fimages%2Flogo%2Flogo.png&w=256&q=75",
+      "location": "Chichester",
+      "services": [
+        "Roofing Repairs",
+        "Roof Replacement",
+        "Chimney Repair",
+        "Guttering Repairs"
+      ],
+      "coverage": [
+        "Southampton",
+        "Eastleigh",
+        "Fareham",
+        "Portsmouth",
+        "Gosport",
+        "Havant",
+        "Waterlooville",
+        "Chichester"
+      ],
+      "website": "https://www.rooferschichester.co.uk",
+      "postcode": "PO18"
+    },
+    {
+      "businessName": "Tradex Roofing",
+      "logo": "/logos/tradex-roofing.png",
+      "location": "Basingstoke",
+      "services": [
+        "Roofing Repairs",
+        "Roof Replacements",
+        "Guttering Repairs",
+        "Guttering Installation"
+      ],
+      "coverage": ["Basingstoke", "Fleet", "Farnborough"],
+      "website": "https://www.roofers-basingstoke.co.uk",
+      "postcode": "Gu34"
+    },
+    {
+      "businessName": "NLG Contractors",
+      "logo": "https://www.roofersworkington.co.uk/_next/image?url=%2Fimages%2Flogo%2Flogo.png&w=256&q=75",
+      "location": "Workington",
+      "services": [
+        "New Roofs",
+        "Flat Roofing",
+        "Pitched Roofing",
+        "Roof Repairs",
+        "Moss Removal",
+        "Guttering",
+        "UPVC Installation"
+      ],
+      "coverage": [
+        "Penrith",
+        "Brampton",
+        "Carlisle",
+        "Wigton",
+        "Maryport",
+        "Workington",
+        "Cockermouth",
+        "Caldbeck",
+        "Abbeytown",
+        "Thursby"
+      ],
+      "website": "https://www.roofersworkington.co.uk",
+      "postcode": "DN20"
+    },
+    {
+      "businessName": "J&D Home Improvements",
+      "logo": "/logos/J&D Home Improvements.png",
+      "location": "Weston-super-Mare",
+      "services": [
+        "Roof Repair",
+        "New Roofs",
+        "Emergency Roof Repair",
+        "Roof Inspection",
+        "Roof Maintenance",
+        "Guttering"
+      ],
+      "coverage": [
+        "Portishead",
+        "Clevedon",
+        "Burnham-on-Sea",
+        "Newport",
+        "Weston-super-Mare",
+        "Bridgwater",
+        "Cardiff"
+      ],
+      "website": "https://www.roofersbridgwater.co.uk",
+      "postcode": "BS24"
+    }
+  ]
+} 

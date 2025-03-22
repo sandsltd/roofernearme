@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="800" height="1200" viewBox="0 0 800 1200" xmlns="http://www.w3.org/2000/svg">
+  <!-- UK Outline - Simplified dotted representation -->
+  <g fill="none" stroke="#ffffff" stroke-width="2">
+    <!-- Scotland -->
+    <path d="M400,100 C450,80 500,90 520,60 C540,30 560,20 580,40 C600,60 620,50 640,70" stroke-dasharray="2,8"/>
+    <path d="M380,120 C400,100 420,90 440,70 C460,50 480,40 500,60" stroke-dasharray="2,8"/>
+    <path d="M360,140 C380,120 400,110 420,90 C440,70 460,60 480,80" stroke-dasharray="2,8"/>
+    
+    <!-- Northern England -->
+    <path d="M340,160 C360,140 380,130 400,110 C420,90 440,80 460,100" stroke-dasharray="2,8"/>
+    <path d="M320,180 C340,160 360,150 380,130 C400,110 420,100 440,120" stroke-dasharray="2,8"/>
+    
+    <!-- Wales -->
+    <path d="M300,220 C280,200 260,190 240,210 C220,230 200,220 180,240" stroke-dasharray="2,8"/>
+    <path d="M320,240 C300,220 280,210 260,230 C240,250 220,240 200,260" stroke-dasharray="2,8"/>
+    
+    <!-- England -->
+    <path d="M340,200 C360,180 380,170 400,150 C420,130 440,120 460,140" stroke-dasharray="2,8"/>
+    <path d="M360,220 C380,200 400,190 420,170 C440,150 460,140 480,160" stroke-dasharray="2,8"/>
+    <path d="M380,240 C400,220 420,210 440,190 C460,170 480,160 500,180" stroke-dasharray="2,8"/>
+    
+    <!-- South England -->
+    <path d="M400,260 C420,240 440,230 460,210 C480,190 500,180 520,200" stroke-dasharray="2,8"/>
+    <path d="M420,280 C440,260 460,250 480,230 C500,210 520,200 540,220" stroke-dasharray="2,8"/>
+  </g>
+  
+  <!-- Major Cities -->
+  <g fill="#ffffff">
+    <!-- London -->
+    <circle cx="460" cy="280" r="4"/>
+    <text x="470" y="285" fill="#ffffff" font-size="12">London</text>
+    
+    <!-- Manchester -->
+    <circle cx="380" cy="180" r="4"/>
+    <text x="390" y="185" fill="#ffffff" font-size="12">Manchester</text>
+    
+    <!-- Birmingham -->
+    <circle cx="400" cy="220" r="4"/>
+    <text x="410" y="225" fill="#ffffff" font-size="12">Birmingham</text>
+    
+    <!-- Edinburgh -->
+    <circle cx="380" cy="80" r="4"/>
+    <text x="390" y="85" fill="#ffffff" font-size="12">Edinburgh</text>
+    
+    <!-- Cardiff -->
+    <circle cx="320" cy="260" r="4"/>
+    <text x="330" y="265" fill="#ffffff" font-size="12">Cardiff</text>
+  </g>
+  
+  <!-- Connection Lines -->
+  <g stroke="#ffffff" stroke-width="1" opacity="0.3">
+    <line x1="460" y1="280" x2="380" y2="180"/>
+    <line x1="460" y1="280" x2="400" y2="220"/>
+    <line x1="380" y1="180" x2="400" y2="220"/>
+    <line x1="380" y1="80" x2="380" y2="180"/>
+    <line x1="320" y1="260" x2="400" y2="220"/>
+  </g>
+</svg> 
