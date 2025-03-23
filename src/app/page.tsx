@@ -127,12 +127,14 @@ interface GeocodeResponse {
 
 interface Roofer {
   businessName: string;
-  description?: string;
+  logo?: string;
   location: string;
   city?: string;
   website?: string;
   services?: string[];
   coverage?: string[];
+  distance?: number;
+  postcode: string;
 }
 
 export default function Home() {
@@ -346,10 +348,12 @@ export default function Home() {
               <RooferCard
                 key={index}
                 name={roofer.businessName}
-                description={`${roofer.services?.join(', ')}` || "Professional roofing services"}
+                logo={roofer.logo}
                 address={roofer.location}
-                city={roofer.coverage?.[0] || roofer.location.split(',')[0] || ""}
                 website={roofer.website}
+                services={roofer.services}
+                coverage={roofer.coverage}
+                distance={roofer.distance}
               />
             ))}
           </div>
