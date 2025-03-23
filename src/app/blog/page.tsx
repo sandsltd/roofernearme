@@ -51,7 +51,7 @@ export default function BlogPage() {
                 <div>
                   <Link
                     href="/"
-                    className="bg-yellow-400 hover:bg-yellow-500 text-black px-6 py-3 rounded-lg text-sm font-medium transition-all duration-300"
+                    className="inline-flex items-center justify-center gap-2 bg-yellow-400 text-black px-4 sm:px-8 py-3 sm:py-4 rounded-xl font-semibold hover:bg-yellow-500 transition-all duration-300 shadow-lg text-sm sm:text-base whitespace-nowrap"
                   >
                     Find a Roofer
                   </Link>
