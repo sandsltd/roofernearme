@@ -1,15 +1,28 @@
 import { FaMapMarkerAlt, FaHome, FaTools } from 'react-icons/fa';
 import Link from 'next/link';
+import Image from 'next/image';
 
 interface RooferCardProps {
   name: string;
-  description: string;
+  logo?: string;
   address: string;
   city: string;
   website?: string;
+  services?: string[];
+  coverage?: string[];
+  distance?: number;
 }
 
-export default function RooferCard({ name, description, address, city, website }: RooferCardProps) {
+export default function RooferCard({ 
+  name, 
+  logo, 
+  address, 
+  city, 
+  website, 
+  services = [], 
+  coverage = [],
+  distance
+}: RooferCardProps) {
   return (
     <div className="bg-white rounded-2xl shadow-xl overflow-hidden hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1 w-full">
       {/* Card Header */}
@@ -17,8 +30,18 @@ export default function RooferCard({ name, description, address, city, website }
         {/* Logo & Title */}
         <div className="flex items-center">
           <div className="flex-shrink-0 mr-4">
-            <div className="bg-white p-2 rounded-full shadow-md w-16 h-16 flex items-center justify-center">
-              <FaHome className="w-8 h-8 text-blue-600" />
+            <div className="bg-white p-2 rounded-full shadow-md w-16 h-16 flex items-center justify-center overflow-hidden">
+              {logo ? (
+                <Image
+                  src={logo}
+                  alt={`${name} logo`}
+                  width={48}
+                  height={48}
+                  className="w-12 h-12 object-contain rounded-full"
+                />
+              ) : (
+                <FaHome className="w-8 h-8 text-blue-600" />
+              )}
             </div>
           </div>
           <div>
@@ -46,29 +69,54 @@ export default function RooferCard({ name, description, address, city, website }
         <div className="mb-6">
           <div className="flex items-center gap-2 text-gray-700">
             <FaMapMarkerAlt className="h-5 w-5" />
-            <span className="font-medium">{address}, {city}</span>
+            <span className="font-medium">{address}</span>
+            {distance && (
+              <span className="text-sm text-gray-500 ml-1">
+                ({distance} miles away)
+              </span>
+            )}
           </div>
         </div>
 
-        {/* Coverage Areas */}
-        <div className="mb-6">
-          <h4 className="text-lg font-semibold text-gray-900 mb-2">About</h4>
-          <p className="text-gray-600">{description}</p>
-        </div>
-
         {/* Services */}
-        <div className="mb-5">
+        <div className="mb-6">
           <div className="flex items-center gap-2 text-blue-700 mb-3">
             <FaTools className="h-5 w-5" />
             <span className="font-semibold">Services</span>
           </div>
           <div className="flex flex-wrap gap-2">
-            {/* Services would be populated here */}
+            {services.map((service, index) => (
+              <span
+                key={index}
+                className="bg-blue-50 text-blue-700 px-3 py-1 rounded-full text-sm"
+              >
+                {service}
+              </span>
+            ))}
+          </div>
+        </div>
+
+        {/* Coverage Areas */}
+        <div className="mb-6">
+          <h4 className="text-lg font-semibold text-gray-900 mb-2">Coverage Areas</h4>
+          <div className="flex flex-wrap gap-2">
+            {coverage.map((area, index) => (
+              <span
+                key={index}
+                className="bg-green-50 text-green-700 px-3 py-1 rounded-full text-sm"
+              >
+                {area}
+              </span>
+            ))}
           </div>
         </div>
 
         {/* Distance Warning if over 50 miles */}
-        {/* Distance warning would be populated here */}
+        {distance && distance > 50 && (
+          <div className="mb-4 p-3 bg-yellow-50 text-yellow-800 rounded-lg text-sm">
+            Note: This roofer is {distance} miles away from your location.
+          </div>
+        )}
 
         {/* Visit Website Button */}
         {website && (
