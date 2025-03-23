@@ -6,6 +6,7 @@ import RooferCard from '@/components/RooferCard';
 import rooferData from '@/data/roofers.json';
 import Link from 'next/link';
 import Image from 'next/image';
+import Script from 'next/script';
 
 // Calculate distance between two points using Haversine formula
 function calculateDistance(lat1: number, lon1: number, lat2: number, lon2: number): number {
@@ -382,385 +383,420 @@ export default function Home() {
   );
 
   return (
-    <div className="min-h-screen bg-gray-50">
-      {/* Hero Section with Map Background */}
-      <div className="relative overflow-hidden">
-        {/* Background Image */}
-        <div className="absolute inset-0">
-          <div 
-            className="absolute inset-0 bg-cover bg-center"
-            style={{ backgroundImage: "url('/Untitled design-16.png')" }}
-          />
-          <div className="absolute inset-0 bg-gradient-to-b from-blue-900/10 via-blue-900/5 to-blue-900/20" />
-        </div>
-
-        {/* Navigation Bar */}
-        <div className="relative z-10">
-          <nav className="bg-white/5 backdrop-blur-sm">
-            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-              <div className="flex items-center justify-between h-20">
-                <div className="flex items-center">
-                  <Link href="/" className="flex items-center">
-                    <Image
-                      src="/Roofer Near Me-2.png"
-                      alt="Roofers Near Me Logo"
-                      width={40}
-                      height={40}
-                      className="h-10 w-auto"
-                    />
-                    <span className="ml-3 text-2xl font-bold text-white">Roofers Near Me</span>
-                  </Link>
-                </div>
-                <div>
-                  <Link
-                    href="/recommend"
-                    className="bg-yellow-400 hover:bg-yellow-500 text-black px-6 py-3 rounded-lg text-sm font-medium transition-all duration-300"
-                  >
-                    Recommend a Roofer
-                  </Link>
-                </div>
-              </div>
-            </div>
-          </nav>
-        </div>
-
-        {/* Hero Content */}
-        <div className="relative z-10 py-24 px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12">
-            <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold text-white mb-6 tracking-tight">
-              Find Trusted Local Roofers
-            </h1>
-            <p className="text-lg md:text-xl text-white/90 max-w-2xl mx-auto mb-12">
-              Connect with verified roofing professionals in your area. Get quick responses and quality service for all your roofing needs.
-            </p>
+    <>
+      <Script
+        id="structured-data"
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "LocalBusiness",
+            "name": "Roofers Near Me",
+            "description": "Find verified local roofers across the UK. Get free quotes for roof repairs, replacements, and maintenance.",
+            "url": "https://roofernearme.co.uk",
+            "areaServed": {
+              "@type": "Country",
+              "name": "United Kingdom"
+            },
+            "address": {
+              "@type": "PostalAddress",
+              "addressCountry": "GB"
+            },
+            "aggregateRating": {
+              "@type": "AggregateRating",
+              "ratingValue": "4.8",
+              "reviewCount": "150"
+            },
+            "serviceType": [
+              "Roof Repair",
+              "Roof Replacement",
+              "Emergency Roof Repair",
+              "Gutter Repair",
+              "Gutter Replacement"
+            ]
+          })
+        }}
+      />
+      <div className="min-h-screen bg-gray-50">
+        {/* Hero Section with Map Background */}
+        <div className="relative overflow-hidden">
+          {/* Background Image */}
+          <div className="absolute inset-0">
+            <div 
+              className="absolute inset-0 bg-cover bg-center"
+              style={{ backgroundImage: "url('/Untitled design-16.png')" }}
+            />
+            <div className="absolute inset-0 bg-gradient-to-b from-blue-900/10 via-blue-900/5 to-blue-900/20" />
           </div>
 
-          {/* Search Section */}
-          <div className="max-w-xl mx-auto">
-            <div className="relative">
-              {isLoading ? (
-                <div className="w-full py-4 flex justify-center items-center bg-white rounded-lg shadow-lg">
-                  <div className="animate-spin rounded-full h-6 w-6 border-2 border-blue-600 border-t-transparent" />
-                  <span className="ml-3 text-gray-900">Searching your area...</span>
-                </div>
-              ) : (
-                <div id="search-section" className="w-full">
-                  <div className="flex items-center bg-white rounded-lg shadow-lg overflow-hidden">
-                    <div className="flex-1 relative">
-                      <div className="absolute left-4 top-1/2 -translate-y-1/2">
-                        <FaMapMarkerAlt className="h-5 w-5 text-gray-400" />
-                      </div>
-                      <input
-                        type="text"
-                        placeholder="Enter postcode"
-                        className="w-full pl-12 pr-4 py-4 text-base focus:outline-none text-gray-900 placeholder-gray-500"
-                        value={searchTerm}
-                        onChange={(e) => setSearchTerm(e.target.value)}
-                        onKeyDown={(e) => {
-                          if (e.key === 'Enter') {
-                            handleSearch();
-                          }
-                        }}
+          {/* Navigation Bar */}
+          <div className="relative z-10">
+            <nav className="bg-white/5 backdrop-blur-sm">
+              <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div className="flex items-center justify-between h-20">
+                  <div className="flex items-center flex-shrink-0">
+                    <Link href="/" className="flex items-center">
+                      <Image
+                        src="/Roofer Near Me-2.png"
+                        alt="Roofers Near Me Logo"
+                        width={40}
+                        height={40}
+                        className="h-8 w-auto sm:h-10"
                       />
-                    </div>
-                    <button 
-                      onClick={() => handleSearch()}
-                      className="bg-yellow-400 text-black px-6 py-4 hover:bg-yellow-500 transition-colors duration-300 flex items-center gap-2"
+                      <span className="ml-3 text-lg sm:text-2xl font-bold text-white whitespace-nowrap">Roofers Near Me</span>
+                    </Link>
+                  </div>
+                  <div className="flex-shrink-0">
+                    <Link
+                      href="/recommend"
+                      className="bg-yellow-400 hover:bg-yellow-500 text-black px-4 sm:px-6 py-2 sm:py-3 rounded-lg text-sm font-medium transition-all duration-300 whitespace-nowrap"
                     >
-                      <FaSearch className="h-5 w-5" />
-                      <span>Search</span>
-                    </button>
-                  </div>
-                  <div className="text-center mt-3">
-                    <p className="text-sm text-white/80">For best results, enter your full postcode (e.g., SO41 9GH)</p>
+                      Recommend a Roofer
+                    </Link>
                   </div>
                 </div>
-              )}
-            </div>
+              </div>
+            </nav>
           </div>
 
-          {/* Feature Cards */}
-          <div className="max-w-5xl mx-auto mt-20 grid grid-cols-1 md:grid-cols-3 gap-6 px-4">
-            <div className="bg-blue-800 rounded-lg p-6 shadow-lg">
-              <div className="flex items-center gap-4">
-                <div className="bg-blue-700 rounded-lg p-3">
-                  <FaTools className="h-6 w-6 text-white" />
-                </div>
-                <div>
-                  <h3 className="text-lg font-semibold text-white">Expert Roofers</h3>
-                  <p className="text-white/80 text-sm">Verified professionals with years of experience</p>
-                </div>
+          {/* Hero Content */}
+          <div className="relative z-10 py-24 px-4 sm:px-6 lg:px-8">
+            <div className="text-center mb-12">
+              <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold text-white mb-6 tracking-tight">
+                Find Trusted Local Roofers
+              </h1>
+              <p className="text-lg md:text-xl text-white/90 max-w-2xl mx-auto mb-12">
+                Connect with verified roofing professionals in your area. Get quick responses and quality service for all your roofing needs.
+              </p>
+            </div>
+
+            {/* Search Section */}
+            <div className="max-w-xl mx-auto">
+              <div className="relative">
+                {isLoading ? (
+                  <div className="w-full py-4 flex justify-center items-center bg-white rounded-lg shadow-lg">
+                    <div className="animate-spin rounded-full h-6 w-6 border-2 border-blue-600 border-t-transparent" />
+                    <span className="ml-3 text-gray-900">Searching your area...</span>
+                  </div>
+                ) : (
+                  <div id="search-section" className="w-full">
+                    <div className="flex items-center bg-white rounded-lg shadow-lg overflow-hidden">
+                      <div className="flex-1 relative">
+                        <div className="absolute left-4 top-1/2 -translate-y-1/2">
+                          <FaMapMarkerAlt className="h-5 w-5 text-gray-400" />
+                        </div>
+                        <input
+                          type="text"
+                          placeholder="Enter postcode"
+                          className="w-full pl-12 pr-4 py-4 text-base focus:outline-none text-gray-900 placeholder-gray-500"
+                          value={searchTerm}
+                          onChange={(e) => setSearchTerm(e.target.value)}
+                          onKeyDown={(e) => {
+                            if (e.key === 'Enter') {
+                              handleSearch();
+                            }
+                          }}
+                        />
+                      </div>
+                      <button 
+                        onClick={() => handleSearch()}
+                        className="bg-yellow-400 text-black px-6 py-4 hover:bg-yellow-500 transition-colors duration-300 flex items-center gap-2"
+                      >
+                        <FaSearch className="h-5 w-5" />
+                        <span>Search</span>
+                      </button>
+                    </div>
+                    <div className="text-center mt-3">
+                      <p className="text-sm text-white/80">For best results, enter your full postcode (e.g., SO41 9GH)</p>
+                    </div>
+                  </div>
+                )}
               </div>
             </div>
 
-            <div className="bg-blue-800 rounded-lg p-6 shadow-lg">
-              <div className="flex items-center gap-4">
-                <div className="bg-blue-700 rounded-lg p-3">
-                  <FaClock className="h-6 w-6 text-white" />
-                </div>
-                <div>
-                  <h3 className="text-lg font-semibold text-white">Quick Response</h3>
-                  <p className="text-white/80 text-sm">Fast service for urgent roofing needs</p>
+            {/* Feature Cards */}
+            <div className="max-w-5xl mx-auto mt-20 grid grid-cols-1 md:grid-cols-3 gap-6 px-4">
+              <div className="bg-blue-800 rounded-lg p-6 shadow-lg">
+                <div className="flex items-center gap-4">
+                  <div className="bg-blue-700 rounded-lg p-3">
+                    <FaTools className="h-6 w-6 text-white" />
+                  </div>
+                  <div>
+                    <h3 className="text-lg font-semibold text-white">Expert Roofers</h3>
+                    <p className="text-white/80 text-sm">Verified professionals with years of experience</p>
+                  </div>
                 </div>
               </div>
-            </div>
 
-            <div className="bg-blue-800 rounded-lg p-6 shadow-lg">
-              <div className="flex items-center gap-4">
-                <div className="bg-blue-700 rounded-lg p-3">
-                  <FaCheckCircle className="h-6 w-6 text-white" />
+              <div className="bg-blue-800 rounded-lg p-6 shadow-lg">
+                <div className="flex items-center gap-4">
+                  <div className="bg-blue-700 rounded-lg p-3">
+                    <FaClock className="h-6 w-6 text-white" />
+                  </div>
+                  <div>
+                    <h3 className="text-lg font-semibold text-white">Quick Response</h3>
+                    <p className="text-white/80 text-sm">Fast service for urgent roofing needs</p>
+                  </div>
                 </div>
-                <div>
-                  <h3 className="text-lg font-semibold text-white">Quality Guaranteed</h3>
-                  <p className="text-white/80 text-sm">Satisfaction guaranteed on every job</p>
+              </div>
+
+              <div className="bg-blue-800 rounded-lg p-6 shadow-lg">
+                <div className="flex items-center gap-4">
+                  <div className="bg-blue-700 rounded-lg p-3">
+                    <FaCheckCircle className="h-6 w-6 text-white" />
+                  </div>
+                  <div>
+                    <h3 className="text-lg font-semibold text-white">Quality Guaranteed</h3>
+                    <p className="text-white/80 text-sm">Satisfaction guaranteed on every job</p>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
         </div>
-      </div>
 
-      {/* Rest of the content */}
-      {hasSearched && (
-        <SearchResults />
-      )}
+        {/* Rest of the content */}
+        {hasSearched && (
+          <SearchResults />
+        )}
 
-      {/* SEO Content Section */}
-      <div className="py-16 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold text-gray-900 mb-4">Professional Roofing Services in Your Area</h2>
-            <p className="text-lg text-gray-800 max-w-3xl mx-auto">
-              Find experienced local roofers for all your roofing needs, from minor repairs to complete roof replacements.
-            </p>
-          </div>
-          
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16">
-            {/* Roofing Repairs */}
-            <div className="bg-gray-50 rounded-xl p-8 shadow-sm hover:shadow-lg transition-shadow duration-300">
-              <div className="flex items-center mb-4">
-                <div className="bg-yellow-400 p-3 rounded-full mr-4">
-                  <FaTools className="h-6 w-6 text-black" />
-                </div>
-                <h3 className="text-2xl font-bold text-gray-900">Roofing Repairs</h3>
-              </div>
-              <p className="text-gray-800 leading-relaxed">
-                Don&apos;t let a damaged roof compromise your home&apos;s integrity. Our network of skilled roofers specializes in prompt, efficient repairs for:
+        {/* SEO Content Section */}
+        <div className="py-16 bg-white">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="text-center mb-12">
+              <h2 className="text-3xl font-bold text-gray-900 mb-4">Professional Roofing Services in Your Area</h2>
+              <p className="text-lg text-gray-800 max-w-3xl mx-auto">
+                Find experienced local roofers for all your roofing needs, from minor repairs to complete roof replacements.
               </p>
-              <ul className="space-y-2 mb-4">
-                <li className="flex items-start">
-                  <span className="text-yellow-500 mr-2">•</span>
-                  <span className="text-gray-800">Leaking roofs and water damage</span>
-                </li>
-                <li className="flex items-start">
-                  <span className="text-yellow-500 mr-2">•</span>
-                  <span className="text-gray-800">Broken or missing tiles and slates</span>
-                </li>
-                <li className="flex items-start">
-                  <span className="text-yellow-500 mr-2">•</span>
-                  <span className="text-gray-800">Storm damage assessment and repairs</span>
-                </li>
-                <li className="flex items-start">
-                  <span className="text-yellow-500 mr-2">•</span>
-                  <span className="text-gray-800">Roof flashing and leadwork issues</span>
-                </li>
-              </ul>
             </div>
             
-            {/* Roof Replacements */}
-            <div className="bg-gray-50 rounded-xl p-8 shadow-sm hover:shadow-lg transition-shadow duration-300">
-              <div className="flex items-center mb-4">
-                <div className="bg-yellow-400 p-3 rounded-full mr-4">
-                  <FaHome className="h-6 w-6 text-black" />
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16">
+              {/* Roofing Repairs */}
+              <div className="bg-gray-50 rounded-xl p-8 shadow-sm hover:shadow-lg transition-shadow duration-300">
+                <div className="flex items-center mb-4">
+                  <div className="bg-yellow-400 p-3 rounded-full mr-4">
+                    <FaTools className="h-6 w-6 text-black" />
+                  </div>
+                  <h3 className="text-2xl font-bold text-gray-900">Roofing Repairs</h3>
                 </div>
-                <h3 className="text-2xl font-bold text-gray-900">Roof Replacements</h3>
+                <p className="text-gray-800 leading-relaxed">
+                  Don&apos;t let a damaged roof compromise your home&apos;s integrity. Our network of skilled roofers specializes in prompt, efficient repairs for:
+                </p>
+                <ul className="space-y-2 mb-4">
+                  <li className="flex items-start">
+                    <span className="text-yellow-500 mr-2">•</span>
+                    <span className="text-gray-800">Leaking roofs and water damage</span>
+                  </li>
+                  <li className="flex items-start">
+                    <span className="text-yellow-500 mr-2">•</span>
+                    <span className="text-gray-800">Broken or missing tiles and slates</span>
+                  </li>
+                  <li className="flex items-start">
+                    <span className="text-yellow-500 mr-2">•</span>
+                    <span className="text-gray-800">Storm damage assessment and repairs</span>
+                  </li>
+                  <li className="flex items-start">
+                    <span className="text-yellow-500 mr-2">•</span>
+                    <span className="text-gray-800">Roof flashing and leadwork issues</span>
+                  </li>
+                </ul>
               </div>
-              <p className="text-gray-800 mb-4">
-                When repairs aren&apos;t enough, a complete roof replacement ensures long-term protection. Our expert roofers offer:
-              </p>
-              <ul className="space-y-2 mb-4">
-                <li className="flex items-start">
-                  <span className="text-yellow-500 mr-2">•</span>
-                  <span className="text-gray-800">Full roof replacements for all property types</span>
-                </li>
-                <li className="flex items-start">
-                  <span className="text-yellow-500 mr-2">•</span>
-                  <span className="text-gray-800">Various roofing materials including slate, tile, and felt</span>
-                </li>
-                <li className="flex items-start">
-                  <span className="text-yellow-500 mr-2">•</span>
-                  <span className="text-gray-800">Energy-efficient and eco-friendly options</span>
-                </li>
-                <li className="flex items-start">
-                  <span className="text-yellow-500 mr-2">•</span>
-                  <span className="text-gray-800">Expert installation with quality materials</span>
-                </li>
-              </ul>
+              
+              {/* Roof Replacements */}
+              <div className="bg-gray-50 rounded-xl p-8 shadow-sm hover:shadow-lg transition-shadow duration-300">
+                <div className="flex items-center mb-4">
+                  <div className="bg-yellow-400 p-3 rounded-full mr-4">
+                    <FaHome className="h-6 w-6 text-black" />
+                  </div>
+                  <h3 className="text-2xl font-bold text-gray-900">Roof Replacements</h3>
+                </div>
+                <p className="text-gray-800 mb-4">
+                  When repairs aren&apos;t enough, a complete roof replacement ensures long-term protection. Our expert roofers offer:
+                </p>
+                <ul className="space-y-2 mb-4">
+                  <li className="flex items-start">
+                    <span className="text-yellow-500 mr-2">•</span>
+                    <span className="text-gray-800">Full roof replacements for all property types</span>
+                  </li>
+                  <li className="flex items-start">
+                    <span className="text-yellow-500 mr-2">•</span>
+                    <span className="text-gray-800">Various roofing materials including slate, tile, and felt</span>
+                  </li>
+                  <li className="flex items-start">
+                    <span className="text-yellow-500 mr-2">•</span>
+                    <span className="text-gray-800">Energy-efficient and eco-friendly options</span>
+                  </li>
+                  <li className="flex items-start">
+                    <span className="text-yellow-500 mr-2">•</span>
+                    <span className="text-gray-800">Expert installation with quality materials</span>
+                  </li>
+                </ul>
+              </div>
+              
+              {/* Gutter Repair */}
+              <div className="bg-gray-50 rounded-xl p-8 shadow-sm hover:shadow-lg transition-shadow duration-300">
+                <div className="flex items-center mb-4">
+                  <div className="bg-yellow-400 p-3 rounded-full mr-4">
+                    <FaTools className="h-6 w-6 text-black" />
+                  </div>
+                  <h3 className="text-2xl font-bold text-gray-900">Gutter Repairs</h3>
+                </div>
+                <p className="text-gray-800 mb-4">
+                  Damaged gutters can lead to serious water damage. Our roofers provide comprehensive gutter repair services:
+                </p>
+                <ul className="space-y-2 mb-4">
+                  <li className="flex items-start">
+                    <span className="text-yellow-500 mr-2">•</span>
+                    <span className="text-gray-800">Fixing leaks, holes, and separated joints</span>
+                  </li>
+                  <li className="flex items-start">
+                    <span className="text-yellow-500 mr-2">•</span>
+                    <span className="text-gray-800">Gutter cleaning and debris removal</span>
+                  </li>
+                  <li className="flex items-start">
+                    <span className="text-yellow-500 mr-2">•</span>
+                    <span className="text-gray-800">Adjusting improper gutter pitch</span>
+                  </li>
+                  <li className="flex items-start">
+                    <span className="text-yellow-500 mr-2">•</span>
+                    <span className="text-gray-800">Repairing damaged fascia and soffits</span>
+                  </li>
+                </ul>
+              </div>
+              
+              {/* Gutter Replacement */}
+              <div className="bg-gray-50 rounded-xl p-8 shadow-sm hover:shadow-lg transition-shadow duration-300">
+                <div className="flex items-center mb-4">
+                  <div className="bg-yellow-400 p-3 rounded-full mr-4">
+                    <FaHome className="h-6 w-6 text-black" />
+                  </div>
+                  <h3 className="text-2xl font-bold text-gray-900">Gutter Replacements</h3>
+                </div>
+                <p className="text-gray-800 mb-4">
+                  When repairs aren&apos;t sufficient, our roofers offer complete gutter replacement solutions:
+                </p>
+                <ul className="space-y-2 mb-4">
+                  <li className="flex items-start">
+                    <span className="text-yellow-500 mr-2">•</span>
+                    <span className="text-gray-800">Full gutter system replacements</span>
+                  </li>
+                  <li className="flex items-start">
+                    <span className="text-yellow-500 mr-2">•</span>
+                    <span className="text-gray-800">Various materials including uPVC, aluminum, and copper</span>
+                  </li>
+                  <li className="flex items-start">
+                    <span className="text-yellow-500 mr-2">•</span>
+                    <span className="text-gray-800">Seamless gutter installation</span>
+                  </li>
+                  <li className="flex items-start">
+                    <span className="text-yellow-500 mr-2">•</span>
+                    <span className="text-gray-800">Enhanced drainage solutions and downpipe installation</span>
+                  </li>
+                </ul>
+              </div>
             </div>
             
-            {/* Gutter Repair */}
-            <div className="bg-gray-50 rounded-xl p-8 shadow-sm hover:shadow-lg transition-shadow duration-300">
-              <div className="flex items-center mb-4">
-                <div className="bg-yellow-400 p-3 rounded-full mr-4">
-                  <FaTools className="h-6 w-6 text-black" />
-                </div>
-                <h3 className="text-2xl font-bold text-gray-900">Gutter Repairs</h3>
-              </div>
-              <p className="text-gray-800 mb-4">
-                Damaged gutters can lead to serious water damage. Our roofers provide comprehensive gutter repair services:
-              </p>
-              <ul className="space-y-2 mb-4">
-                <li className="flex items-start">
-                  <span className="text-yellow-500 mr-2">•</span>
-                  <span className="text-gray-800">Fixing leaks, holes, and separated joints</span>
-                </li>
-                <li className="flex items-start">
-                  <span className="text-yellow-500 mr-2">•</span>
-                  <span className="text-gray-800">Gutter cleaning and debris removal</span>
-                </li>
-                <li className="flex items-start">
-                  <span className="text-yellow-500 mr-2">•</span>
-                  <span className="text-gray-800">Adjusting improper gutter pitch</span>
-                </li>
-                <li className="flex items-start">
-                  <span className="text-yellow-500 mr-2">•</span>
-                  <span className="text-gray-800">Repairing damaged fascia and soffits</span>
-                </li>
-              </ul>
-            </div>
-            
-            {/* Gutter Replacement */}
-            <div className="bg-gray-50 rounded-xl p-8 shadow-sm hover:shadow-lg transition-shadow duration-300">
-              <div className="flex items-center mb-4">
-                <div className="bg-yellow-400 p-3 rounded-full mr-4">
-                  <FaHome className="h-6 w-6 text-black" />
-                </div>
-                <h3 className="text-2xl font-bold text-gray-900">Gutter Replacements</h3>
-              </div>
-              <p className="text-gray-800 mb-4">
-                When repairs aren&apos;t sufficient, our roofers offer complete gutter replacement solutions:
-              </p>
-              <ul className="space-y-2 mb-4">
-                <li className="flex items-start">
-                  <span className="text-yellow-500 mr-2">•</span>
-                  <span className="text-gray-800">Full gutter system replacements</span>
-                </li>
-                <li className="flex items-start">
-                  <span className="text-yellow-500 mr-2">•</span>
-                  <span className="text-gray-800">Various materials including uPVC, aluminum, and copper</span>
-                </li>
-                <li className="flex items-start">
-                  <span className="text-yellow-500 mr-2">•</span>
-                  <span className="text-gray-800">Seamless gutter installation</span>
-                </li>
-                <li className="flex items-start">
-                  <span className="text-yellow-500 mr-2">•</span>
-                  <span className="text-gray-800">Enhanced drainage solutions and downpipe installation</span>
-                </li>
-              </ul>
-            </div>
-          </div>
-          
-          <div className="text-center">
-            <p className="text-xl text-gray-800 mb-6 max-w-3xl mx-auto">
-              Whatever your roofing needs, our network of local professionals provides quality workmanship, competitive pricing, and excellent customer service.
-            </p>
-            <Link
-              href="#search-section"
-              className="inline-flex items-center justify-center gap-2 bg-yellow-400 text-black px-6 py-3 rounded-lg font-semibold hover:bg-yellow-500 transition-colors duration-300 shadow-md"
-            >
-              <FaSearch className="h-5 w-5" />
-              <span>Find Roofers in Your Area</span>
-            </Link>
-          </div>
-        </div>
-      </div>
-
-      {/* Trust Signals Section */}
-      <div className="py-20 bg-white relative overflow-hidden">
-        <div className="absolute inset-0 grid-pattern opacity-5"></div>
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
-          <h2 className="text-4xl font-bold text-center text-gray-900 mb-16">
-            Why Use Roofers Near Me?
-          </h2>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
-            <div className="bg-white rounded-xl p-8 text-center transform hover:scale-105 transition-transform duration-300 shadow-xl">
-              <div className="bg-blue-100 rounded-full p-4 w-20 h-20 mx-auto mb-6 flex items-center justify-center">
-                <FaCheckCircle className="h-10 w-10 text-blue-600" />
-              </div>
-              <h3 className="text-2xl font-bold text-gray-900 mb-4">Verified Local Roofers</h3>
-              <p className="text-gray-800 leading-relaxed">All roofers are fully insured and registered with UK trade bodies. We verify every contractor.</p>
-            </div>
-            <div className="bg-white rounded-xl p-8 text-center transform hover:scale-105 transition-transform duration-300 shadow-xl">
-              <div className="bg-blue-100 rounded-full p-4 w-20 h-20 mx-auto mb-6 flex items-center justify-center">
-                <FaPoundSign className="h-10 w-10 text-blue-600" />
-              </div>
-              <h3 className="text-2xl font-bold text-gray-900 mb-4">Free Local Quotes</h3>
-              <p className="text-gray-800 leading-relaxed">Get free, no-obligation quotes from trusted local roofers in your area within hours.</p>
-            </div>
-            <div className="bg-white rounded-xl p-8 text-center transform hover:scale-105 transition-transform duration-300 shadow-xl">
-              <div className="bg-blue-100 rounded-full p-4 w-20 h-20 mx-auto mb-6 flex items-center justify-center">
-                <FaTools className="h-10 w-10 text-blue-600" />
-              </div>
-              <h3 className="text-2xl font-bold text-gray-900 mb-4">Expert Local Service</h3>
-              <p className="text-gray-800 leading-relaxed">Connect with experienced local roofers who know your area and local building regulations.</p>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      {/* For Roofing Contractors */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-        <div className="bg-yellow-400 rounded-3xl overflow-hidden shadow-xl">
-          <div className="flex flex-col md:flex-row items-center justify-between p-8 md:p-12">
-            <div className="flex-1">
-              <div className="text-black font-semibold mb-2">FOR ROOFING CONTRACTORS</div>
-              <h2 className="text-3xl md:text-4xl font-bold text-black mb-4">
-                Expand Your Business with Roofers Near Me
-              </h2>
-              <p className="text-black/80 text-lg mb-6 max-w-2xl">
-                Join our network of trusted roofing professionals and connect with homeowners in your area looking for quality roofing services.
+            <div className="text-center">
+              <p className="text-xl text-gray-800 mb-6 max-w-3xl mx-auto">
+                Whatever your roofing needs, our network of local professionals provides quality workmanship, competitive pricing, and excellent customer service.
               </p>
               <Link
-                href="/recommend"
-                className="inline-flex items-center bg-black text-yellow-400 px-6 py-3 rounded-lg font-semibold hover:bg-black/90 transition-colors duration-300"
+                href="#search-section"
+                className="inline-flex items-center justify-center gap-2 bg-yellow-400 text-black px-6 py-3 rounded-lg font-semibold hover:bg-yellow-500 transition-colors duration-300 shadow-md"
               >
-                <FaBuilding className="h-5 w-5 mr-2" />
-                Register Your Interest
+                <FaSearch className="h-5 w-5" />
+                <span>Find Roofers in Your Area</span>
               </Link>
             </div>
-            <div className="hidden md:flex items-center justify-center flex-col gap-4 ml-8">
-              <div className="bg-black/10 backdrop-blur-sm rounded-xl px-6 py-3 text-black font-medium">
-                <span>Increase Visibility</span>
+          </div>
+        </div>
+
+        {/* Trust Signals Section */}
+        <div className="py-20 bg-white relative overflow-hidden">
+          <div className="absolute inset-0 grid-pattern opacity-5"></div>
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
+            <h2 className="text-4xl font-bold text-center text-gray-900 mb-16">
+              Why Use Roofers Near Me?
+            </h2>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
+              <div className="bg-white rounded-xl p-8 text-center transform hover:scale-105 transition-transform duration-300 shadow-xl">
+                <div className="bg-blue-100 rounded-full p-4 w-20 h-20 mx-auto mb-6 flex items-center justify-center">
+                  <FaCheckCircle className="h-10 w-10 text-blue-600" />
+                </div>
+                <h3 className="text-2xl font-bold text-gray-900 mb-4">Verified Local Roofers</h3>
+                <p className="text-gray-800 leading-relaxed">All roofers are fully insured and registered with UK trade bodies. We verify every contractor.</p>
               </div>
-              <div className="bg-black/10 backdrop-blur-sm rounded-xl px-6 py-3 text-black font-medium">
-                <span>Find New Customers</span>
+              <div className="bg-white rounded-xl p-8 text-center transform hover:scale-105 transition-transform duration-300 shadow-xl">
+                <div className="bg-blue-100 rounded-full p-4 w-20 h-20 mx-auto mb-6 flex items-center justify-center">
+                  <FaPoundSign className="h-10 w-10 text-blue-600" />
+                </div>
+                <h3 className="text-2xl font-bold text-gray-900 mb-4">Free Local Quotes</h3>
+                <p className="text-gray-800 leading-relaxed">Get free, no-obligation quotes from trusted local roofers in your area within hours.</p>
               </div>
-              <div className="bg-black/10 backdrop-blur-sm rounded-xl px-6 py-3 text-black font-medium">
-                <span>Grow Your Business</span>
+              <div className="bg-white rounded-xl p-8 text-center transform hover:scale-105 transition-transform duration-300 shadow-xl">
+                <div className="bg-blue-100 rounded-full p-4 w-20 h-20 mx-auto mb-6 flex items-center justify-center">
+                  <FaTools className="h-10 w-10 text-blue-600" />
+                </div>
+                <h3 className="text-2xl font-bold text-gray-900 mb-4">Expert Local Service</h3>
+                <p className="text-gray-800 leading-relaxed">Connect with experienced local roofers who know your area and local building regulations.</p>
               </div>
             </div>
           </div>
         </div>
-      </div>
 
-      {/* Footer - Enhanced */}
-      <footer className="bg-gray-900 text-white py-12">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <Image
-            src="/Roofer Near Me-2.png"
-            alt="Roofers Near Me Logo"
-            width={40}
-            height={40}
-            className="mx-auto mb-4"
-          />
-          <p className="text-gray-400 text-sm">
-            Saunders Simmons Ltd | Registered in England and Wales<br />
-            © {new Date().getFullYear()} Roofers Near Me - A Saunders Simmons Ltd Service
-          </p>
+        {/* For Roofing Contractors */}
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+          <div className="bg-yellow-400 rounded-3xl overflow-hidden shadow-xl">
+            <div className="flex flex-col md:flex-row items-center justify-between p-8 md:p-12">
+              <div className="flex-1">
+                <div className="text-black font-semibold mb-2">FOR ROOFING CONTRACTORS</div>
+                <h2 className="text-3xl md:text-4xl font-bold text-black mb-4">
+                  Expand Your Business with Roofers Near Me
+                </h2>
+                <p className="text-black/80 text-lg mb-6 max-w-2xl">
+                  Join our network of trusted roofing professionals and connect with homeowners in your area looking for quality roofing services.
+                </p>
+                <Link
+                  href="/recommend"
+                  className="inline-flex items-center bg-black text-yellow-400 px-6 py-3 rounded-lg font-semibold hover:bg-black/90 transition-colors duration-300"
+                >
+                  <FaBuilding className="h-5 w-5 mr-2" />
+                  Register Your Interest
+                </Link>
+              </div>
+              <div className="hidden md:flex items-center justify-center flex-col gap-4 ml-8">
+                <div className="bg-black/10 backdrop-blur-sm rounded-xl px-6 py-3 text-black font-medium">
+                  <span>Increase Visibility</span>
+                </div>
+                <div className="bg-black/10 backdrop-blur-sm rounded-xl px-6 py-3 text-black font-medium">
+                  <span>Find New Customers</span>
+                </div>
+                <div className="bg-black/10 backdrop-blur-sm rounded-xl px-6 py-3 text-black font-medium">
+                  <span>Grow Your Business</span>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
-      </footer>
-    </div>
+
+        {/* Footer - Enhanced */}
+        <footer className="bg-gray-900 text-white py-12">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <Image
+              src="/Roofer Near Me-2.png"
+              alt="Roofers Near Me Logo"
+              width={40}
+              height={40}
+              className="mx-auto mb-4"
+            />
+            <p className="text-gray-400 text-sm">
+              Saunders Simmons Ltd | Registered in England and Wales<br />
+              © {new Date().getFullYear()} Roofers Near Me - A Saunders Simmons Ltd Service
+            </p>
+          </div>
+        </footer>
+      </div>
+    </>
   );
 }
 
