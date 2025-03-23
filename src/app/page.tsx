@@ -346,9 +346,9 @@ export default function Home() {
               <RooferCard
                 key={index}
                 name={roofer.businessName}
-                description={roofer.description || "Professional roofing services"}
+                description={`${roofer.services?.join(', ')}` || "Professional roofing services"}
                 address={roofer.location}
-                city={roofer.city || ""}
+                city={roofer.coverage?.[0] || roofer.location.split(',')[0] || ""}
                 website={roofer.website}
               />
             ))}
