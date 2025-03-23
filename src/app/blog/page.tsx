@@ -3,14 +3,17 @@
 import { useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
-import { FaSearch } from 'react-icons/fa';
+import { FaSearch, FaBook } from 'react-icons/fa';
 import { blogPosts } from '@/data/blog-posts';
 import type { BlogPost } from '@/data/blog-posts';
 
 export default function BlogPage() {
   const [selectedCategory, setSelectedCategory] = useState<string>('all');
+  
+  // Get unique categories from blog posts
   const categories = ['all', ...new Set(blogPosts.map(post => post.category))];
-
+  
+  // Filter posts based on selected category
   const filteredPosts = selectedCategory === 'all'
     ? blogPosts
     : blogPosts.filter(post => post.category === selectedCategory);
@@ -78,31 +81,35 @@ export default function BlogPage() {
         </div>
       </div>
 
-      {/* Category Filter */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-        <div className="flex flex-wrap gap-4 justify-center mb-8">
-          {categories.map(category => (
-            <button
-              key={category}
-              onClick={() => setSelectedCategory(category)}
-              className={`px-4 py-2 rounded-full text-sm font-medium transition-colors duration-300 ${
-                selectedCategory === category
-                  ? 'bg-yellow-400 text-black'
-                  : 'bg-gray-200 text-gray-700 hover:bg-gray-300'
-              }`}
-            >
-              {category.charAt(0).toUpperCase() + category.slice(1)}
-            </button>
-          ))}
+      {/* Categories Filter */}
+      <div className="bg-white border-b">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+          <div className="flex flex-wrap gap-3 justify-center">
+            {categories.map((category) => (
+              <button
+                key={category}
+                onClick={() => setSelectedCategory(category)}
+                className={`px-4 py-2 rounded-full text-sm font-medium transition-all duration-300 ${
+                  selectedCategory === category
+                    ? 'bg-yellow-400 text-black'
+                    : 'bg-gray-100 text-gray-600 hover:bg-gray-200'
+                }`}
+              >
+                {category === 'all' ? 'All Categories' : category}
+              </button>
+            ))}
+          </div>
         </div>
+      </div>
 
-        {/* Blog Posts Grid */}
+      {/* Blog Posts Grid */}
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {filteredPosts.map((post: BlogPost) => (
             <Link 
               key={post.slug}
               href={`/blog/${post.slug}`}
-              className="bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300"
+              className="bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1"
             >
               <div className="relative h-48">
                 <Image
@@ -113,15 +120,14 @@ export default function BlogPage() {
                 />
               </div>
               <div className="p-6">
-                <div className="text-sm text-yellow-600 font-medium mb-2">{post.category}</div>
+                <div className="text-sm text-blue-600 font-medium mb-2">{post.category}</div>
                 <h2 className="text-xl font-bold text-gray-900 mb-2">{post.title}</h2>
                 <p className="text-gray-600 mb-4">{post.excerpt}</p>
                 <div className="flex items-center justify-between">
-                  <span className="text-sm text-gray-500">{new Date(post.date).toLocaleDateString('en-GB', { 
-                    day: 'numeric',
-                    month: 'long',
-                    year: 'numeric'
-                  })}</span>
+                  <div className="flex items-center text-sm text-gray-500">
+                    <FaBook className="w-4 h-4 mr-2" />
+                    {post.readTime}
+                  </div>
                   <span className="text-yellow-600 hover:text-yellow-700 transition-colors duration-300">
                     Read More →
                   </span>
