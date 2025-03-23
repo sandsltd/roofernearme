@@ -6,6 +6,7 @@ export interface BlogPost {
   category: string;
   image: string;
   content: string;
+  readTime: string;
 }
 
 export const blogPosts: BlogPost[] = [
@@ -16,6 +17,7 @@ export const blogPosts: BlogPost[] = [
     date: '2024-03-20',
     category: 'Roof Maintenance',
     image: '/blog/Untitled design-17.png',
+    readTime: '5 min read',
     content: `
       <div class="prose prose-lg max-w-none">
         <h2 class="text-3xl font-bold mb-6">When Is It Time for a New Roof?</h2>
@@ -91,6 +93,7 @@ export const blogPosts: BlogPost[] = [
     date: '2024-03-18',
     category: 'Cost Guides',
     image: '/blog/Untitled design-20.png',
+    readTime: '8 min read',
     content: `
       <div class="prose prose-lg max-w-none">
         <h2 class="text-3xl font-bold mb-6">Understanding Roof Replacement Costs</h2>
@@ -182,6 +185,7 @@ export const blogPosts: BlogPost[] = [
     date: '2024-03-15',
     category: 'Emergency Repairs',
     image: '/blog/Untitled design-19.png',
+    readTime: '6 min read',
     content: `
       <div class="prose prose-lg max-w-none">
         <h2 class="text-3xl font-bold mb-6">Emergency Roof Repair Guide</h2>
@@ -285,6 +289,7 @@ export const blogPosts: BlogPost[] = [
     date: '2024-03-12',
     category: 'Roofing Materials',
     image: '/blog/Untitled design-18.png',
+    readTime: '7 min read',
     content: `
       <div class="prose prose-lg max-w-none">
         <h2 class="text-3xl font-bold mb-6">Choosing the Perfect Roofing Material</h2>
@@ -401,6 +406,7 @@ export const blogPosts: BlogPost[] = [
     date: '2024-03-10',
     category: 'Seasonal Tips',
     image: '/blog/Untitled design-25.png',
+    readTime: '7 min read',
     content: `
       <div class="prose prose-lg max-w-none">
         <h2 class="text-3xl font-bold mb-6">Preparing Your Roof for Winter</h2>
@@ -504,6 +510,7 @@ export const blogPosts: BlogPost[] = [
     date: '2024-03-18',
     category: 'Local Guides',
     image: '/blog/Untitled design-24.png',
+    readTime: '7 min read',
     content: `
       <div class="prose prose-lg max-w-none">
         <h2 class="text-3xl font-bold mb-6">Expert Roofing Services in Glasgow</h2>
@@ -559,6 +566,7 @@ export const blogPosts: BlogPost[] = [
     date: '2024-03-15',
     category: 'Local Guides',
     image: '/blog/Untitled design-21.png',
+    readTime: '9 min read',
     content: `
       <div class="prose prose-lg max-w-none">
         <h2 class="text-3xl font-bold mb-6">Roofing Services in London: A Complete Guide</h2>
@@ -614,6 +622,7 @@ export const blogPosts: BlogPost[] = [
     date: '2024-03-14',
     category: 'Local Guides',
     image: '/blog/Untitled design-22.png',
+    readTime: '7 min read',
     content: `
       <div class="prose prose-lg max-w-none">
         <h2 class="text-3xl font-bold mb-6">Roofing Services in Chichester</h2>
@@ -657,6 +666,377 @@ export const blogPosts: BlogPost[] = [
         <div class="cta-box bg-blue-50 p-8 rounded-lg my-8 text-center">
           <h3 class="text-2xl font-semibold mb-4">Ready to Protect Your Property?</h3>
           <p class="mb-6">Connect with experienced Chichester roofers who understand local requirements and deliver quality results.</p>
+          <a href="/" class="inline-block bg-yellow-400 text-black px-8 py-3 rounded-lg font-semibold hover:bg-yellow-500 transition-all duration-300">Find a Local Roofer</a>
+        </div>
+      </div>
+    `
+  },
+  {
+    slug: 'flat-roof-maintenance',
+    title: 'Flat Roof Maintenance: Essential Tips for Longevity',
+    excerpt: 'Learn how to maintain your flat roof and prevent common issues that can lead to costly repairs.',
+    date: '2024-03-12',
+    category: 'Maintenance',
+    image: '/blog/Untitled design-18.png',
+    readTime: '7 min read',
+    content: `
+      <div class="prose prose-lg max-w-none">
+        <h2 class="text-3xl font-bold mb-6">Flat Roof Maintenance: Essential Tips for Longevity</h2>
+        <p class="lead-paragraph">Maintaining a flat roof is crucial for ensuring its longevity and protecting your property. Here are some essential tips to help you maintain your flat roof effectively.</p>
+
+        <div class="maintenance-tips bg-gray-50 p-6 rounded-lg my-8">
+          <h3 class="text-2xl font-semibold mb-4">Regular Inspections</h3>
+          <p>Regularly inspect your flat roof for any signs of damage, wear, or deterioration. Look for cracks, leaks, or any other issues that could compromise its integrity.</p>
+        </div>
+
+        <div class="maintenance-tips bg-gray-50 p-6 rounded-lg my-8">
+          <h3 class="text-2xl font-semibold mb-4">Cleaning</h3>
+          <p>Clean your flat roof regularly to remove debris, dirt, and leaves that can accumulate and cause damage over time. Use a soft brush or pressure washer to clean the surface.</p>
+        </div>
+
+        <div class="maintenance-tips bg-gray-50 p-6 rounded-lg my-8">
+          <h3 class="text-2xl font-semibold mb-4">Repair and Replace</h3>
+          <p>If you notice any damage or wear, address it promptly. Repair small issues before they become larger problems. If necessary, replace damaged sections of the roof.</p>
+        </div>
+
+        <div class="maintenance-tips bg-gray-50 p-6 rounded-lg my-8">
+          <h3 class="text-2xl font-semibold mb-4">Insulation</h3>
+          <p>Ensure your flat roof has proper insulation to maintain a comfortable indoor environment. Inspect the insulation regularly and replace any worn or damaged sections.</p>
+        </div>
+
+        <div class="maintenance-tips bg-gray-50 p-6 rounded-lg my-8">
+          <h3 class="text-2xl font-semibold mb-4">Gutter Maintenance</h3>
+          <p>Clean your gutters regularly to prevent water from accumulating and causing damage to your roof. Check for any blockages or damage and address them promptly.</p>
+        </div>
+
+        <div class="cta-box bg-gray-50 p-8 rounded-lg my-8 text-center">
+          <h3 class="text-2xl font-semibold mb-4">Need Help with Flat Roof Maintenance?</h3>
+          <p class="mb-6">Connect with experienced roofers who can provide professional advice and assistance.</p>
+          <a href="/" class="inline-block bg-yellow-400 text-black px-8 py-3 rounded-lg font-semibold hover:bg-yellow-500 transition-all duration-300">Find a Local Roofer</a>
+        </div>
+      </div>
+    `
+  },
+  {
+    slug: 'roof-insulation-guide',
+    title: 'Complete Guide to Roof Insulation: Types, Benefits, and Installation',
+    excerpt: 'Everything you need to know about roof insulation, from materials to installation methods.',
+    date: '2024-03-10',
+    category: 'Insulation',
+    image: '/blog/Untitled design-21.png',
+    readTime: '9 min read',
+    content: `
+      <div class="prose prose-lg max-w-none">
+        <h2 class="text-3xl font-bold mb-6">Complete Guide to Roof Insulation: Types, Benefits, and Installation</h2>
+        <p class="lead-paragraph">Proper roof insulation is crucial for maintaining a comfortable indoor environment and reducing energy consumption. This comprehensive guide covers different types of roof insulation, their benefits, and installation methods.</p>
+
+        <div class="insulation-types bg-blue-50 p-6 rounded-lg my-8">
+          <h3 class="text-2xl font-semibold mb-4">Types of Roof Insulation</h3>
+          <div class="grid md:grid-cols-2 gap-6">
+            <div>
+              <h4 class="font-semibold mb-2">Fiberglass Insulation</h4>
+              <p>Fiberglass insulation is a popular choice for its affordability and ease of installation. It's made from glass fibers and is effective in reducing heat transfer.</p>
+            </div>
+            <div>
+              <h4 class="font-semibold mb-2">Cellulose Insulation</h4>
+              <p>Cellulose insulation is made from recycled paper and is a great choice for sound absorption. It's also effective in reducing heat transfer.</p>
+            </div>
+            <div>
+              <h4 class="font-semibold mb-2">Spray Foam Insulation</h4>
+              <p>Spray foam insulation is a versatile option that can be applied directly to the roof surface. It's effective in sealing air leaks and reducing heat transfer.</p>
+            </div>
+            <div>
+              <h4 class="font-semibold mb-2">Mineral Wool Insulation</h4>
+              <p>Mineral wool insulation is made from basalt rock and is effective in reducing heat transfer. It's also fire-resistant and environmentally friendly.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="insulation-benefits bg-gray-50 p-6 rounded-lg my-8">
+          <h3 class="text-2xl font-semibold mb-4">Benefits of Roof Insulation</h3>
+          <div class="grid md:grid-cols-2 gap-6">
+            <div>
+              <h4 class="font-semibold mb-2">Energy Efficiency</h4>
+              <p>Properly insulated roofs can reduce heat transfer, leading to lower energy consumption and lower utility bills.</p>
+            </div>
+            <div>
+              <h4 class="font-semibold mb-2">Moisture Management</h4>
+              <p>Insulation helps manage moisture levels in the roof, reducing the risk of mold and mildew buildup.</p>
+            </div>
+            <div>
+              <h4 class="font-semibold mb-2">Sound Reduction</h4>
+              <p>Insulation can help reduce noise from outside, creating a quieter indoor environment.</p>
+            </div>
+            <div>
+              <h4 class="font-semibold mb-2">Roof Longevity</h4>
+              <p>Proper insulation can extend the lifespan of your roof and reduce the need for costly repairs.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="installation-methods bg-yellow-50 p-6 rounded-lg my-8">
+          <h3 class="text-2xl font-semibold mb-4">Installation Methods</h3>
+          <div class="grid md:grid-cols-2 gap-6">
+            <div>
+              <h4 class="font-semibold mb-2">Batting Insulation</h4>
+              <p>Batting insulation is a traditional method that involves installing insulation between the roof rafters.</p>
+            </div>
+            <div>
+              <h4 class="font-semibold mb-2">Foil Insulation</h4>
+              <p>Foil insulation involves attaching a reflective foil layer to the underside of the roof to reflect heat back into the attic.</p>
+            </div>
+            <div>
+              <h4 class="font-semibold mb-2">Spray Foam Application</h4>
+              <p>Spray foam is applied directly to the roof surface, providing a seamless and effective insulation layer.</p>
+            </div>
+            <div>
+              <h4 class="font-semibold mb-2">Attic Installation</h4>
+              <p>Attic insulation involves installing insulation in the attic space, providing a barrier between the roof and the living space.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="cta-box bg-gray-50 p-8 rounded-lg my-8 text-center">
+          <h3 class="text-2xl font-semibold mb-4">Need Roof Insulation Services?</h3>
+          <p class="mb-6">Connect with experienced roofers who can help you choose the right insulation for your home.</p>
+          <a href="/" class="inline-block bg-yellow-400 text-black px-8 py-3 rounded-lg font-semibold hover:bg-yellow-500 transition-all duration-300">Find a Local Roofer</a>
+        </div>
+      </div>
+    `
+  },
+  {
+    slug: 'roofing-materials-comparison',
+    title: 'Comparing Roofing Materials: Which is Best for Your Home?',
+    excerpt: 'A comprehensive comparison of different roofing materials to help you make an informed decision.',
+    date: '2024-03-08',
+    category: 'Materials',
+    image: '/blog/Untitled design-22.png',
+    readTime: '8 min read',
+    content: `
+      <div class="prose prose-lg max-w-none">
+        <h2 class="text-3xl font-bold mb-6">Comparing Roofing Materials: Which is Best for Your Home?</h2>
+        <p class="lead-paragraph">Choosing the right roofing material is one of the most important decisions you'll make for your home. Each material brings its own unique benefits and characteristics, suited to different architectural styles and weather conditions.</p>
+
+        <div class="material-section bg-slate-50 p-6 rounded-lg my-8">
+          <h3 class="text-2xl font-semibold mb-4">Natural Slate</h3>
+          <div class="grid md:grid-cols-2 gap-6">
+            <div>
+              <h4 class="font-semibold mb-2">Key Benefits</h4>
+              <ul class="list-disc pl-4">
+                <li>Exceptional durability (100+ years)</li>
+                <li>Timeless aesthetic appeal</li>
+                <li>Superior weather resistance</li>
+                <li>Adds value to your property</li>
+              </ul>
+            </div>
+            <div>
+              <h4 class="font-semibold mb-2">Best Suited For</h4>
+              <ul class="list-disc pl-4">
+                <li>Period properties</li>
+                <li>High-end developments</li>
+                <li>Conservation areas</li>
+                <li>Exposed locations</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div class="material-section bg-orange-50 p-6 rounded-lg my-8">
+          <h3 class="text-2xl font-semibold mb-4">Clay Tiles</h3>
+          <div class="grid md:grid-cols-2 gap-6">
+            <div>
+              <h4 class="font-semibold mb-2">Key Benefits</h4>
+              <ul class="list-disc pl-4">
+                <li>60+ years lifespan</li>
+                <li>Wide range of styles</li>
+                <li>Excellent insulation</li>
+                <li>Low maintenance</li>
+              </ul>
+            </div>
+            <div>
+              <h4 class="font-semibold mb-2">Best Suited For</h4>
+              <ul class="list-disc pl-4">
+                <li>Traditional homes</li>
+                <li>Mediterranean styles</li>
+                <li>New builds</li>
+                <li>Varied climates</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div class="material-section bg-gray-50 p-6 rounded-lg my-8">
+          <h3 class="text-2xl font-semibold mb-4">Modern Materials</h3>
+          <div class="grid md:grid-cols-2 gap-6">
+            <div>
+              <h4 class="font-semibold mb-2">Metal Roofing</h4>
+              <ul class="list-disc pl-4">
+                <li>Lightweight construction</li>
+                <li>Energy efficiency</li>
+                <li>Modern aesthetics</li>
+                <li>Fire resistance</li>
+              </ul>
+            </div>
+            <div>
+              <h4 class="font-semibold mb-2">Green Roofing</h4>
+              <ul class="list-disc pl-4">
+                <li>Environmental benefits</li>
+                <li>Natural insulation</li>
+                <li>Biodiversity support</li>
+                <li>Urban cooling</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div class="considerations bg-blue-50 p-6 rounded-lg my-8">
+          <h3 class="text-2xl font-semibold mb-4">Key Factors to Consider</h3>
+          <div class="grid md:grid-cols-2 gap-6">
+            <div>
+              <h4 class="font-semibold mb-2">Environmental Factors</h4>
+              <ul class="space-y-2">
+                <li>🌧️ Local weather patterns</li>
+                <li>🌡️ Temperature variations</li>
+                <li>🌳 Surrounding vegetation</li>
+                <li>☀️ Sun exposure</li>
+              </ul>
+            </div>
+            <div>
+              <h4 class="font-semibold mb-2">Property Considerations</h4>
+              <ul class="space-y-2">
+                <li>🏠 Architectural style</li>
+                <li>📐 Roof pitch and structure</li>
+                <li>📋 Local regulations</li>
+                <li>🎨 Aesthetic preferences</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div class="cta-box bg-gray-50 p-8 rounded-lg my-8 text-center">
+          <h3 class="text-2xl font-semibold mb-4">Need Expert Advice?</h3>
+          <p class="mb-6">Connect with experienced roofers who can help you choose the perfect material for your home.</p>
+          <a href="/" class="inline-block bg-yellow-400 text-black px-8 py-3 rounded-lg font-semibold hover:bg-yellow-500 transition-all duration-300">Find a Local Roofer</a>
+        </div>
+      </div>
+    `
+  },
+  {
+    slug: 'roof-warranty-guide',
+    title: 'Understanding Roof Warranties: What You Need to Know',
+    excerpt: 'Learn about different types of roof warranties and what they cover for your peace of mind.',
+    date: '2024-03-05',
+    category: 'Warranties',
+    image: '/blog/Untitled design-23.png',
+    readTime: '6 min read',
+    content: `
+      <div class="prose prose-lg max-w-none">
+        <h2 class="text-3xl font-bold mb-6">Understanding Roof Warranties: What You Need to Know</h2>
+        <p class="lead-paragraph">A roof warranty is a contract between you and the roofing contractor that provides protection against defects in materials or workmanship. Understanding the terms and conditions of your warranty is crucial for ensuring that you receive the benefits it offers.</p>
+
+        <div class="warranty-types bg-blue-50 p-6 rounded-lg my-8">
+          <h3 class="text-2xl font-semibold mb-4">Types of Roof Warranties</h3>
+          <div class="grid md:grid-cols-2 gap-6">
+            <div>
+              <h4 class="font-semibold mb-2">Manufacturer's Warranty</h4>
+              <p>A manufacturer's warranty is provided by the roofing material manufacturer and covers defects in the materials.</p>
+            </div>
+            <div>
+              <h4 class="font-semibold mb-2">Roofer's Warranty</h4>
+              <p>A roofer's warranty is provided by the roofing contractor and covers labor and workmanship.</p>
+            </div>
+            <div>
+              <h4 class="font-semibold mb-2">Combined Warranty</h4>
+              <p>A combined warranty is a combination of a manufacturer's warranty and a roofer's warranty.</p>
+            </div>
+            <div>
+              <h4 class="font-semibold mb-2">Extended Warranty</h4>
+              <p>An extended warranty is a warranty that extends beyond the original warranty period.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="warranty-coverage bg-gray-50 p-6 rounded-lg my-8">
+          <h3 class="text-2xl font-semibold mb-4">What is Covered by a Roof Warranty?</h3>
+          <div class="grid md:grid-cols-2 gap-6">
+            <div>
+              <h4 class="font-semibold mb-2">Material Defects</h4>
+              <p>Material defects include defects in the roofing materials themselves, such as cracks, leaks, or deterioration.</p>
+            </div>
+            <div>
+              <h4 class="font-semibold mb-2">Labor Defects</h4>
+              <p>Labor defects include defects in the roofing installation or workmanship, such as improper installation or damage during the installation process.</p>
+            </div>
+            <div>
+              <h4 class="font-semibold mb-2">Installation Defects</h4>
+              <p>Installation defects include defects in the roofing installation itself, such as improper flashing or improper attachment to the roof structure.</p>
+            </div>
+            <div>
+              <h4 class="font-semibold mb-2">Roof Age</h4>
+              <p>Roof warranties typically cover roofs for a certain period of time, such as 10-25 years.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="warranty-claims bg-yellow-50 p-6 rounded-lg my-8">
+          <h3 class="text-2xl font-semibold mb-4">Claiming a Roof Warranty</h3>
+          <p>To claim a roof warranty, you must follow the terms and conditions of the warranty. This typically involves contacting the roofing contractor and providing proof of the defect.</p>
+        </div>
+
+        <div class="cta-box bg-gray-50 p-8 rounded-lg my-8 text-center">
+          <h3 class="text-2xl font-semibold mb-4">Need Roof Warranty Assistance?</h3>
+          <p class="mb-6">Connect with experienced roofers who can help you understand and claim your roof warranty.</p>
+          <a href="/" class="inline-block bg-yellow-400 text-black px-8 py-3 rounded-lg font-semibold hover:bg-yellow-500 transition-all duration-300">Find a Local Roofer</a>
+        </div>
+      </div>
+    `
+  },
+  {
+    slug: 'roof-safety-tips',
+    title: 'Essential Roof Safety Tips for Homeowners',
+    excerpt: 'Important safety guidelines for inspecting and maintaining your roof without risking injury.',
+    date: '2024-03-03',
+    category: 'Safety',
+    image: '/blog/Untitled design-24.png',
+    readTime: '5 min read',
+    content: `
+      <div class="prose prose-lg max-w-none">
+        <h2 class="text-3xl font-bold mb-6">Essential Roof Safety Tips for Homeowners</h2>
+        <p class="lead-paragraph">Inspecting and maintaining your roof is important for ensuring its longevity and protecting your property. However, it's crucial to do so safely to avoid injury.</p>
+
+        <div class="safety-tips bg-blue-50 p-6 rounded-lg my-8">
+          <h3 class="text-2xl font-semibold mb-4">General Safety Tips</h3>
+          <ul class="space-y-3">
+            <li>✓ Always use proper safety equipment</li>
+            <li>✓ Avoid working in poor weather conditions</li>
+            <li>✓ Keep ladders and scaffolding in good condition</li>
+            <li>✓ Use appropriate tools and equipment</li>
+          </ul>
+        </div>
+
+        <div class="safety-tips bg-gray-50 p-6 rounded-lg my-8">
+          <h3 class="text-2xl font-semibold mb-4">Inspecting the Roof</h3>
+          <ul class="space-y-3">
+            <li>✓ Check for signs of damage or wear</li>
+            <li>✓ Look for loose or missing shingles</li>
+            <li>✓ Inspect the roof structure for any signs of deterioration</li>
+            <li>✓ Check the flashing around chimneys and vents</li>
+          </ul>
+        </div>
+
+        <div class="safety-tips bg-yellow-50 p-6 rounded-lg my-8">
+          <h3 class="text-2xl font-semibold mb-4">Maintenance Tips</h3>
+          <ul class="space-y-3">
+            <li>✓ Clean your gutters regularly to prevent water from accumulating</li>
+            <li>✓ Inspect the roof for any signs of damage or wear</li>
+            <li>✓ Address any issues promptly</li>
+            <li>✓ Use appropriate safety equipment</li>
+          </ul>
+        </div>
+
+        <div class="cta-box bg-gray-50 p-8 rounded-lg my-8 text-center">
+          <h3 class="text-2xl font-semibold mb-4">Need Roof Safety Advice?</h3>
+          <p class="mb-6">Connect with experienced roofers who can provide professional safety advice.</p>
           <a href="/" class="inline-block bg-yellow-400 text-black px-8 py-3 rounded-lg font-semibold hover:bg-yellow-500 transition-all duration-300">Find a Local Roofer</a>
         </div>
       </div>

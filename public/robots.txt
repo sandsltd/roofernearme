@@ -1,0 +1,10 @@
+# Allow all crawlers
+User-agent: *
+Allow: /
+
+# Sitemap location
+Sitemap: https://roofernearme.co.uk/sitemap.xml
+
+# Prevent crawling of search results
+Disallow: /search/
+Disallow: /*?q=* 
