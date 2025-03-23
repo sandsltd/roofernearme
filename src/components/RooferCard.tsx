@@ -22,7 +22,7 @@ export default function RooferCard({
   distance
 }: RooferCardProps) {
   return (
-    <div className="bg-white rounded-2xl shadow-xl overflow-hidden hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1 w-full h-[600px] flex flex-col">
+    <div className="bg-white rounded-2xl shadow-xl overflow-hidden hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1 w-full min-h-[400px] flex flex-col">
       {/* Card Header */}
       <div className="bg-gradient-to-r from-blue-600 to-blue-800 p-6 flex-shrink-0">
         <div className="flex items-start gap-4">
@@ -76,7 +76,7 @@ export default function RooferCard({
       </div>
 
       {/* Card Content */}
-      <div className="p-6 flex-grow flex flex-col">
+      <div className="p-6 flex-grow flex flex-col gap-6">
         {/* Services */}
         <div className="mb-6">
           <div className="flex items-center gap-2 text-blue-700 mb-3">
@@ -121,7 +121,7 @@ export default function RooferCard({
 
         {/* Distance Warning if over 50 miles */}
         {distance !== undefined && distance > 0 && distance > 50 && (
-          <div className="mb-4 p-3 bg-yellow-50 border border-yellow-100 text-yellow-800 rounded-lg text-sm">
+          <div className="p-3 bg-yellow-50 border border-yellow-100 text-yellow-800 rounded-lg text-sm">
             Note: This roofer is {Math.round(distance)} miles away from your location.
           </div>
         )}
@@ -132,7 +132,7 @@ export default function RooferCard({
             href={website}
             target="_blank"
             rel="noopener noreferrer"
-            className="block w-full bg-yellow-400 hover:bg-yellow-500 text-black font-medium text-center py-3 rounded-lg transition-colors duration-300"
+            className="block w-full bg-yellow-400 hover:bg-yellow-500 text-black font-medium text-center py-3 rounded-lg transition-colors duration-300 mt-auto"
           >
             Visit Website
           </Link>
