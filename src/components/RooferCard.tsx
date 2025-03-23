@@ -22,30 +22,26 @@ export default function RooferCard({
   distance
 }: RooferCardProps) {
   return (
-    <div className="bg-white rounded-2xl shadow-xl overflow-hidden hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1 w-full">
+    <div className="bg-white rounded-2xl shadow-xl overflow-hidden hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1 w-full h-[600px] flex flex-col">
       {/* Card Header */}
-      <div className="relative bg-gradient-to-r from-blue-600 to-blue-800 p-6">
-        {/* Logo & Title */}
-        <div className="flex items-center">
-          <div className="flex-shrink-0 mr-4">
-            <div className="bg-white p-2 rounded-full shadow-md w-16 h-16 flex items-center justify-center overflow-hidden">
-              {logo ? (
-                <Image
-                  src={logo}
-                  alt={`${name} logo`}
-                  width={48}
-                  height={48}
-                  className="w-12 h-12 object-contain rounded-full"
-                />
-              ) : (
-                <FaHome className="w-8 h-8 text-blue-600" />
-              )}
-            </div>
+      <div className="bg-gradient-to-r from-blue-600 to-blue-800 p-6 flex-shrink-0">
+        <div className="flex items-start gap-4">
+          <div className="bg-white p-2 rounded-full shadow-md w-16 h-16 flex items-center justify-center overflow-hidden flex-shrink-0">
+            {logo ? (
+              <Image
+                src={logo}
+                alt={`${name} logo`}
+                width={48}
+                height={48}
+                className="w-12 h-12 object-contain rounded-full"
+              />
+            ) : (
+              <FaHome className="w-8 h-8 text-blue-600" />
+            )}
           </div>
-          <div>
-            <h3 className="text-xl font-bold text-white mb-1">{name}</h3>
-            {/* Rating stars for visual appeal */}
-            <div className="flex items-center">
+          <div className="flex-grow">
+            <h3 className="text-xl font-bold text-white leading-tight mb-1">{name}</h3>
+            <div className="flex items-center gap-1">
               {[1, 2, 3, 4, 5].map((star) => (
                 <svg
                   key={star}
@@ -59,23 +55,28 @@ export default function RooferCard({
             </div>
           </div>
         </div>
+        
+        {/* Location with Local Badge */}
+        <div className="mt-4 flex items-center flex-wrap gap-2 text-white/90">
+          <div className="flex items-center gap-2">
+            <FaMapMarkerAlt className="h-5 w-5 flex-shrink-0" />
+            <span className="font-medium">{address}</span>
+          </div>
+          {(distance !== undefined && (distance <= 5 || distance === 0)) && (
+            <span className="bg-yellow-400 text-black px-3 py-0.5 rounded-full text-sm font-medium">
+              Local Roofer
+            </span>
+          )}
+          {distance !== undefined && distance > 0 && distance > 5 && (
+            <span className="text-sm text-white/75 whitespace-nowrap">
+              ({Math.round(distance)} miles away)
+            </span>
+          )}
+        </div>
       </div>
 
       {/* Card Content */}
-      <div className="p-6">
-        {/* Location and Distance */}
-        <div className="mb-6">
-          <div className="flex items-center gap-2 text-gray-700">
-            <FaMapMarkerAlt className="h-5 w-5" />
-            <span className="font-medium">{address}</span>
-            {distance && (
-              <span className="text-sm text-gray-500 ml-1">
-                ({distance} miles away)
-              </span>
-            )}
-          </div>
-        </div>
-
+      <div className="p-6 flex-grow flex flex-col">
         {/* Services */}
         <div className="mb-6">
           <div className="flex items-center gap-2 text-blue-700 mb-3">
@@ -86,7 +87,7 @@ export default function RooferCard({
             {services.map((service, index) => (
               <span
                 key={index}
-                className="bg-blue-50 text-blue-700 px-3 py-1 rounded-full text-sm"
+                className="bg-blue-50 text-blue-700 px-3 py-1 rounded-full text-sm font-medium"
               >
                 {service}
               </span>
@@ -96,12 +97,18 @@ export default function RooferCard({
 
         {/* Coverage Areas */}
         <div className="mb-6">
-          <h4 className="text-lg font-semibold text-gray-900 mb-2">Coverage Areas</h4>
+          <h4 className="flex items-center gap-2 text-gray-900 font-semibold mb-3">
+            <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+            </svg>
+            Coverage Areas
+          </h4>
           <div className="flex flex-wrap gap-2">
             {coverage.map((area, index) => (
               <span
                 key={index}
-                className="bg-green-50 text-green-700 px-3 py-1 rounded-full text-sm"
+                className="bg-green-50 text-green-700 px-3 py-1 rounded-full text-sm font-medium"
               >
                 {area}
               </span>
@@ -109,25 +116,26 @@ export default function RooferCard({
           </div>
         </div>
 
+        {/* Spacer */}
+        <div className="flex-grow" />
+
         {/* Distance Warning if over 50 miles */}
-        {distance && distance > 50 && (
-          <div className="mb-4 p-3 bg-yellow-50 text-yellow-800 rounded-lg text-sm">
-            Note: This roofer is {distance} miles away from your location.
+        {distance !== undefined && distance > 0 && distance > 50 && (
+          <div className="mb-4 p-3 bg-yellow-50 border border-yellow-100 text-yellow-800 rounded-lg text-sm">
+            Note: This roofer is {Math.round(distance)} miles away from your location.
           </div>
         )}
 
         {/* Visit Website Button */}
         {website && (
-          <div className="pt-3">
-            <Link
-              href={website}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="block w-full bg-yellow-400 text-gray-900 text-center py-3 rounded-lg hover:bg-yellow-500 transition-colors duration-300"
-            >
-              Visit Website
-            </Link>
-          </div>
+          <Link
+            href={website}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="block w-full bg-yellow-400 hover:bg-yellow-500 text-black font-medium text-center py-3 rounded-lg transition-colors duration-300"
+          >
+            Visit Website
+          </Link>
         )}
       </div>
     </div>
