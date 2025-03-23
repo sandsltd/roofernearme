@@ -6,7 +6,6 @@ interface RooferCardProps {
   name: string;
   logo?: string;
   address: string;
-  city: string;
   website?: string;
   services?: string[];
   coverage?: string[];
@@ -17,7 +16,6 @@ export default function RooferCard({
   name, 
   logo, 
   address, 
-  city, 
   website, 
   services = [], 
   coverage = [],
