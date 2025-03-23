@@ -927,7 +927,7 @@ export const blogPosts: BlogPost[] = [
     excerpt: 'Learn about different types of roof warranties and what they cover for your peace of mind.',
     date: '2024-03-05',
     category: 'Warranties',
-    image: '/blog/Untitled design-23.png',
+    image: '/blog/Untitled design-26.png',
     readTime: '6 min read',
     content: `
       <div class="prose prose-lg max-w-none">
