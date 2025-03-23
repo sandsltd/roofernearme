@@ -363,7 +363,7 @@ export default function Home() {
             No Roofers Found
           </h2>
           <p className="text-xl text-gray-600 mb-8">
-            We don't have any roofers within 35 miles of {searchMessage.split("We don't have any roofers within 35 miles of ")[1]?.split(".")[0] || "this location"}.
+            We don&apos;t have any roofers within 35 miles of {searchMessage.split("We don&apos;t have any roofers within 35 miles of ")[1]?.split(".")[0] || "this location"}.
           </p>
           <Link 
             href="/recommend" 
