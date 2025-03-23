@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { FaHome } from 'react-icons/fa';
+import { FaHome, FaSearch } from 'react-icons/fa';
 
 export default function NotFound() {
   return (
@@ -9,19 +9,21 @@ export default function NotFound() {
           <FaHome className="text-white w-10 h-10" />
         </div>
         
-        <h1 className="text-4xl font-bold text-gray-900 mb-4">Page Not Found</h1>
+        <h1 className="text-4xl font-bold text-gray-900 mb-4">Looking for a Reliable Roofer?</h1>
         
         <p className="text-lg text-gray-600 mb-8">
-          Sorry, we couldn&apos;t find the page you&apos;re looking for. It might have been moved or doesn&apos;t exist.
+          We can help you find trusted local roofers in your area. Get free quotes from verified professionals.
         </p>
 
-        <Link 
-          href="/"
-          className="inline-flex items-center justify-center gap-2 bg-yellow-400 hover:bg-yellow-500 text-black font-medium px-6 py-3 rounded-lg transition-colors duration-300"
-        >
-          <FaHome className="w-5 h-5" />
-          Back to Home
-        </Link>
+        <div className="flex flex-col gap-3">
+          <Link 
+            href="/"
+            className="inline-flex items-center justify-center gap-2 bg-yellow-400 hover:bg-yellow-500 text-black font-medium px-6 py-3 rounded-lg transition-colors duration-300"
+          >
+            <FaSearch className="w-5 h-5" />
+            Find a Roofer Near You
+          </Link>
+        </div>
       </div>
     </div>
   );
