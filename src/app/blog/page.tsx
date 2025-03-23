@@ -43,9 +43,9 @@ export default function BlogPage() {
                       alt="Roofers Near Me Logo"
                       width={40}
                       height={40}
-                      className="h-10 w-auto"
+                      className="h-8 w-auto sm:h-10"
                     />
-                    <span className="ml-3 text-2xl font-bold text-white">Roofers Near Me</span>
+                    <span className="ml-3 text-lg sm:text-2xl font-bold text-white whitespace-nowrap">Roofers Near Me</span>
                   </Link>
                 </div>
                 <div>
