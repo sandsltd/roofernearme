@@ -123,7 +123,7 @@ export default function RooferCard({
               href={website}
               target="_blank"
               rel="noopener noreferrer"
-              className="block w-full bg-blue-600 text-white text-center py-3 rounded-lg hover:bg-blue-700 transition-colors duration-300"
+              className="block w-full bg-yellow-400 text-gray-900 text-center py-3 rounded-lg hover:bg-yellow-500 transition-colors duration-300"
             >
               Visit Website
             </Link>
