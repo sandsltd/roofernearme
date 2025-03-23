@@ -449,7 +449,7 @@ export default function Home() {
                   <div className="flex-shrink-0">
                     <Link
                       href="/recommend"
-                      className="bg-yellow-400 hover:bg-yellow-500 text-black px-4 sm:px-6 py-2 sm:py-3 rounded-lg text-sm font-medium transition-all duration-300 whitespace-nowrap"
+                      className="hidden md:inline-flex items-center justify-center bg-yellow-400 hover:bg-yellow-500 text-black px-4 sm:px-6 py-2 sm:py-3 rounded-lg text-sm font-medium transition-all duration-300 whitespace-nowrap"
                     >
                       Recommend a Roofer
                     </Link>
