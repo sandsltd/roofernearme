@@ -20,14 +20,6 @@ export default function RoofersMap({ className = '', onRooferSelect }: MapProps)
   const [isLoading, setIsLoading] = useState(true);
   const markersRef = useRef<mapboxgl.Marker[]>([]);
 
-  // Function to scroll to search
-  const scrollToSearch = () => {
-    const searchSection = document.getElementById('search-section');
-    if (searchSection) {
-      searchSection.scrollIntoView({ behavior: 'smooth', block: 'center' });
-    }
-  };
-
   useEffect(() => {
     // Check if mapboxgl is supported
     if (!mapboxgl.supported()) {
