@@ -62,12 +62,12 @@ export default function RooferCard({
             <FaMapMarkerAlt className="h-5 w-5 flex-shrink-0" />
             <span className="font-medium">{address}</span>
           </div>
-          {(distance !== undefined && (distance <= 5 || distance === 0)) && (
+          {(distance !== undefined && (distance <= 15 || distance === 0)) && (
             <span className="bg-yellow-400 text-black px-3 py-0.5 rounded-full text-sm font-medium">
               Local Roofer
             </span>
           )}
-          {distance !== undefined && distance > 0 && distance > 5 && (
+          {distance !== undefined && distance > 0 && distance > 15 && (
             <span className="text-sm text-white/75 whitespace-nowrap">
               ({Math.round(distance)} miles away)
             </span>
