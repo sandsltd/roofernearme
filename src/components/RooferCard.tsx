@@ -3,7 +3,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 
 interface RooferCardProps {
-  name: string;
+  businessName: string;
   logo?: string;
   address: string;
   website?: string;
@@ -13,7 +13,7 @@ interface RooferCardProps {
 }
 
 export default function RooferCard({ 
-  name, 
+  businessName, 
   logo, 
   address, 
   website, 
@@ -30,7 +30,7 @@ export default function RooferCard({
             {logo ? (
               <Image
                 src={logo}
-                alt={`${name} logo`}
+                alt={`${businessName} logo`}
                 width={48}
                 height={48}
                 className="w-12 h-12 object-contain rounded-full"
@@ -40,7 +40,7 @@ export default function RooferCard({
             )}
           </div>
           <div className="flex-grow">
-            <h3 className="text-xl font-bold text-white leading-tight mb-1">{name}</h3>
+            <h3 className="text-xl font-bold text-white leading-tight mb-1">{businessName}</h3>
             <div className="flex items-center gap-1">
               {[1, 2, 3, 4, 5].map((star) => (
                 <svg

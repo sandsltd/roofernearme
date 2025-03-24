@@ -343,7 +343,7 @@ export default function Home() {
           {searchResults.map((roofer, index) => (
             <RooferCard
               key={index}
-              name={roofer.businessName}
+              businessName={roofer.businessName}
               logo={roofer.logo}
               address={roofer.location}
               website={roofer.website}
