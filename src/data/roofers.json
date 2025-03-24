@@ -171,6 +171,28 @@
       ],
       "website": "https://www.creweroofers.co.uk",
       "postcode": "CW3"
+    },
+    {
+      "businessName": "Alexander Construction",
+      "logo": "/logos/alexander-construction-logo.png",
+      "location": "Waltham Cross",
+      "services": [
+        "Roofing Repairs",
+        "Roof Replacement",
+        "Chimney Repair",
+        "Guttering Repairs",
+        "Emergency Repairs"
+      ],
+      "coverage": [
+        "Waltham Cross",
+        "Enfield",
+        "St Albans",
+        "Cheshunt",
+        "Hertford",
+        "Ware"
+      ],
+      "website": "https://www.stalbansroofer.co.uk",
+      "postcode": "EN1"
     }
   ]
 } 
