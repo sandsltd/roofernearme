@@ -8,8 +8,11 @@ interface MapProps {
   onRooferSelect?: (roofer: typeof rooferData.roofers[0]) => void;
 }
 
-// Set your Mapbox token
-mapboxgl.accessToken = 'pk.eyJ1Ijoic2F1bmRlcnNzaW1tb25zbHRkIiwiYSI6ImNtNDdoM20yajA0a3Mya3F0N3ozeWh2cXkifQ.-fSCMi6JG4rx4yzM6fHy4A';
+// Set your Mapbox token from environment variable
+if (!process.env.NEXT_PUBLIC_MAPBOX_TOKEN) {
+  throw new Error('Mapbox token is required. Please set NEXT_PUBLIC_MAPBOX_TOKEN in your environment variables.');
+}
+mapboxgl.accessToken = process.env.NEXT_PUBLIC_MAPBOX_TOKEN;
 
 export default function RoofersMap({ className = '', onRooferSelect }: MapProps) {
   const mapRef = useRef<HTMLDivElement>(null);
