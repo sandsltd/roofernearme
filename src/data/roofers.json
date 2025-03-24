@@ -86,7 +86,7 @@
     },
     {
       "businessName": "NLG Contractors",
-      "logo": "https://www.roofersworkington.co.uk/_next/image?url=%2Fimages%2Flogo%2Flogo.png&w=256&q=75",
+      "logo": "/logos/nlg-contractors-logo.png",
       "location": "Workington",
       "services": [
         "New Roofs",
