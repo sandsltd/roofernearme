@@ -49,7 +49,7 @@
     },
     {
       "businessName": "Supreme Roofing Ltd",
-      "logo": "https://www.rooferschichester.co.uk/_next/image?url=%2Fimages%2Flogo%2Flogo.png&w=256&q=75",
+      "logo": "/logos/supreme-roofing-logo.png",
       "location": "Chichester",
       "services": [
         "Roofing Repairs",
