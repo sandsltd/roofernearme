@@ -9,97 +9,36 @@ import Image from 'next/image';
 import Script from 'next/script';
 import RoofersMap from '@/components/RoofersMap';
 
-// Calculate distance between two points using Haversine formula
-function calculateDistance(lat1: number, lon1: number, lat2: number, lon2: number): number {
-  const R = 6371; // Earth's radius in km
-  const dLat = (lat2 - lat1) * Math.PI / 180;
-  const dLon = (lon2 - lon1) * Math.PI / 180;
-  const a = 
-    Math.sin(dLat/2) * Math.sin(dLat/2) +
-    Math.cos(lat1 * Math.PI / 180) * Math.cos(lat2 * Math.PI / 180) * 
-    Math.sin(dLon/2) * Math.sin(dLon/2);
-  const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
-  return R * c;
+// Define Google Maps types
+declare global {
+  interface Window {
+    google: {
+      maps: {
+        Geocoder: new () => GoogleMapsGeocoder;
+      };
+    };
+    gm_authFailure?: () => void;
+  }
 }
 
-// Define Google Maps types
+interface GoogleMapsLocation {
+  lat: () => number;
+  lng: () => number;
+  toJSON: () => { lat: number; lng: number };
+}
+
 interface GoogleMapsGeocoder {
-  geocode(request: { 
-    address: string;
-    region?: string;
-  }): Promise<{
+  geocode: (request: { address: string }) => Promise<{
     results: {
       formatted_address: string;
       geometry: {
-        location: {
-          toJSON(): { lat: number; lng: number }
-        }
-      }
-    }[]
+        location: GoogleMapsLocation;
+      };
+    }[];
+    status: string;
   }>;
 }
 
-interface GoogleMapsPlaces {
-  AutocompleteService: {
-    new(): {
-      getPlacePredictions(request: {
-        input: string;
-        componentRestrictions?: { country: string[] };
-        types?: string[];
-      }): Promise<{ predictions: AutocompletePrediction[] }>;
-    };
-  };
-}
-
-interface AutocompletePrediction {
-  description: string;
-  place_id: string;
-  structured_formatting: {
-    main_text: string;
-    secondary_text: string;
-  };
-}
-
-// Only declare the additional properties we need
-declare global {
-  interface Window {
-    gm_authFailure: () => void;
-    searchTimeout: ReturnType<typeof setTimeout>;
-  }
-}
-
-// Add a helper function for geocoding with retry
-const geocodeWithRetry = async (
-  geocoder: GoogleMapsGeocoder,
-  address: string,
-  maxRetries = 3,
-  delay = 1000
-): Promise<{
-  results: {
-    formatted_address: string;
-    geometry: {
-      location: { toJSON(): { lat: number; lng: number } }
-    }
-  }[] 
-} | null> => {
-  let retries = 0;
-  while (retries < maxRetries) {
-    try {
-      return await geocoder.geocode({ address });
-    } catch (error) {
-      retries++;
-      if (retries >= maxRetries) {
-        console.error(`Failed to geocode ${address} after ${maxRetries} attempts:`, error);
-        return null;
-      }
-      console.warn(`Retrying geocode for ${address}, attempt ${retries} of ${maxRetries}`);
-      await new Promise(resolve => setTimeout(resolve, delay));
-    }
-  }
-  return null;
-};
-
-// Add type definitions for Google Maps geocoding response
 interface AddressComponent {
   long_name: string;
   short_name: string;
@@ -110,9 +49,7 @@ interface GeocodeResult {
   address_components: AddressComponent[];
   formatted_address: string;
   geometry: {
-    location: {
-      toJSON(): { lat: number; lng: number; };
-    };
+    location: GoogleMapsLocation;
   };
 }
 
@@ -132,6 +69,51 @@ interface Roofer {
   distance?: number;
   postcode: string;
 }
+
+// Calculate distance between two points using Haversine formula
+function calculateDistance(lat1: number, lon1: number, lat2: number, lon2: number): number {
+  const R = 6371; // Earth's radius in km
+  const dLat = (lat2 - lat1) * Math.PI / 180;
+  const dLon = (lon2 - lon1) * Math.PI / 180;
+  const a = 
+    Math.sin(dLat/2) * Math.sin(dLat/2) +
+    Math.cos(lat1 * Math.PI / 180) * Math.cos(lat2 * Math.PI / 180) * 
+    Math.sin(dLon/2) * Math.sin(dLon/2);
+  const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
+  return R * c;
+}
+
+// Add a helper function for geocoding with retry
+const geocodeWithRetry = async (
+  geocoder: GoogleMapsGeocoder,
+  address: string,
+  maxRetries = 3,
+  delay = 1000
+): Promise<{
+  results: {
+    formatted_address: string;
+    geometry: {
+      location: GoogleMapsLocation;
+    };
+  }[];
+  status: string;
+} | null> => {
+  let retries = 0;
+  while (retries < maxRetries) {
+    try {
+      return await geocoder.geocode({ address });
+    } catch (error) {
+      retries++;
+      if (retries >= maxRetries) {
+        console.error(`Failed to geocode ${address} after ${maxRetries} attempts:`, error);
+        return null;
+      }
+      console.warn(`Retrying geocode for ${address}, attempt ${retries} of ${maxRetries}`);
+      await new Promise(resolve => setTimeout(resolve, delay));
+    }
+  }
+  return null;
+};
 
 export default function Home() {
   const [searchTerm, setSearchTerm] = useState('');
@@ -264,7 +246,10 @@ export default function Home() {
       }
 
       const searchResult = searchResponse.results[0];
-      const searchCoords = searchResult.geometry.location.toJSON();
+      const location = searchResult.geometry.location;
+      const coords = location.toJSON();
+      const lat = coords.lat;
+      const lng = coords.lng;
 
       // Get the postcode from the search result if available
       const searchPostcode = searchResult.address_components
@@ -284,8 +269,8 @@ export default function Home() {
           if (rooferResponse?.results?.[0]) {
             const rooferCoords = rooferResponse.results[0].geometry.location.toJSON();
             const distance = calculateDistance(
-              searchCoords.lat,
-              searchCoords.lng,
+              lat,
+              lng,
               rooferCoords.lat,
               rooferCoords.lng
             );
@@ -601,8 +586,8 @@ export default function Home() {
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
           <div className="text-center mb-12">
             <h1 className="text-4xl font-bold text-center mb-4">Our Network of Trusted Roofers</h1>
-            <p className="text-xl text-gray-600 text-center mb-8">
-              Discover our verified roofing professionals across the UK. Hover over any marker to see the roofer's name, and click to search in their area.
+            <p className="text-gray-600 mb-4">
+              Discover our verified roofing professionals across the UK. Hover over any marker to see the roofer&apos;s name, and click to search in their area.
             </p>
           </div>
           <div className="relative w-full max-w-3xl mx-auto h-[675px] rounded-xl overflow-hidden shadow-lg">
