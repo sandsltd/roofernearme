@@ -135,6 +135,42 @@
       ],
       "website": "https://www.roofersbridgwater.co.uk",
       "postcode": "BS24"
+    },
+    {
+      "businessName": "Roof Masters",
+      "logo": "/logos/roof-masters-logo.png",
+      "location": "Crewe",
+      "services": [
+        "Roof Repair",
+        "New Roofs",
+        "Emergency Roof Repair",
+        "Roof Inspection",
+        "Roof Maintenance",
+        "Guttering"
+      ],
+      "coverage": [
+        "Manchester",
+        "Bolton",
+        "Stockport",
+        "Salford",
+        "Oldham",
+        "Trafford",
+        "Tameside",
+        "Rochdale",
+        "Bury",
+        "Crewe",
+        "Macclesfield",
+        "Wilmslow",
+        "Congleton",
+        "Sandbach",
+        "Nantwich",
+        "Poynton",
+        "Middlewich",
+        "Alsager",
+        "Knutsford"
+      ],
+      "website": "https://www.creweroofers.co.uk",
+      "postcode": "CW3"
     }
   ]
 } 
