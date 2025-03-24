@@ -7,6 +7,7 @@ import rooferData from '@/data/roofers.json';
 import Link from 'next/link';
 import Image from 'next/image';
 import Script from 'next/script';
+import RoofersMap from '@/components/RoofersMap';
 
 // Calculate distance between two points using Haversine formula
 function calculateDistance(lat1: number, lon1: number, lat2: number, lon2: number): number {
@@ -59,15 +60,9 @@ interface AutocompletePrediction {
   };
 }
 
-// Update the Window interface
+// Only declare the additional properties we need
 declare global {
   interface Window {
-    google: {
-      maps: {
-        Geocoder: new () => GoogleMapsGeocoder;
-        places: GoogleMapsPlaces;
-      };
-    };
     gm_authFailure: () => void;
     searchTimeout: ReturnType<typeof setTimeout>;
   }
@@ -333,33 +328,50 @@ export default function Home() {
 
   // Update the search results section
   const SearchResults = () => (
-    <div id="search-results" className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-      {searchResults.length > 0 ? (
-        <>
-          <div className="text-center mb-8">
-            <div className="inline-block bg-white rounded-xl px-8 py-4 shadow-md border border-gray-200">
-              <div className="flex items-center justify-center gap-3">
+    <div id="search-results" className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 scroll-mt-24">
+      <div className="text-center mb-8">
+        <div className="inline-block bg-white rounded-xl px-8 py-4 shadow-md border border-gray-200">
+          <div className="flex items-center justify-center gap-3">
+            {isLoading ? (
+              <>
+                <div className="animate-spin rounded-full h-6 w-6 border-2 border-blue-600 border-t-transparent" />
+                <span className="text-gray-900">Searching your area...</span>
+              </>
+            ) : searchResults.length > 0 ? (
+              <>
                 <FaMapMarkerAlt className="h-6 w-6 text-blue-600" />
                 <h2 className="text-2xl font-bold text-gray-900">{searchMessage}</h2>
-              </div>
-            </div>
+              </>
+            ) : hasSearched ? (
+              <>
+                <FaMapMarkerAlt className="h-6 w-6 text-blue-600" />
+                <h2 className="text-2xl font-bold text-gray-900">No Results Found</h2>
+              </>
+            ) : null}
           </div>
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-            {searchResults.map((roofer, index) => (
-              <RooferCard
-                key={index}
-                name={roofer.businessName}
-                logo={roofer.logo}
-                address={roofer.location}
-                website={roofer.website}
-                services={roofer.services}
-                coverage={roofer.coverage}
-                distance={roofer.distance}
-              />
-            ))}
-          </div>
-        </>
-      ) : (
+        </div>
+      </div>
+
+      {/* Results Grid - Only show when we have results and not loading */}
+      {searchResults.length > 0 && !isLoading && (
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+          {searchResults.map((roofer, index) => (
+            <RooferCard
+              key={index}
+              name={roofer.businessName}
+              logo={roofer.logo}
+              address={roofer.location}
+              website={roofer.website}
+              services={roofer.services}
+              coverage={roofer.coverage}
+              distance={roofer.distance}
+            />
+          ))}
+        </div>
+      )}
+
+      {/* No Results Message - Only show when explicitly no results and not loading */}
+      {hasSearched && !isLoading && searchResults.length === 0 && (
         <div className="bg-white rounded-2xl shadow-lg p-10 max-w-3xl mx-auto text-center">
           <div className="inline-block bg-blue-50 p-6 rounded-full mb-6">
             <FaMapMarkerAlt className="h-12 w-12 text-blue-600" />
@@ -381,6 +393,18 @@ export default function Home() {
       )}
     </div>
   );
+
+  useEffect(() => {
+    if (hasSearched && !isLoading) {
+      const searchResults = document.getElementById('search-results');
+      if (searchResults) {
+        searchResults.scrollIntoView({ 
+          behavior: 'smooth', 
+          block: 'start'
+        });
+      }
+    }
+  }, [hasSearched, isLoading, searchResults.length]);
 
   return (
     <>
@@ -496,14 +520,29 @@ export default function Home() {
                               handleSearch();
                             }
                           }}
+                          disabled={isLoading}
                         />
                       </div>
                       <button 
                         onClick={() => handleSearch()}
-                        className="bg-yellow-400 text-black px-6 py-4 hover:bg-yellow-500 transition-colors duration-300 flex items-center gap-2"
+                        disabled={isLoading}
+                        className={`px-6 py-4 flex items-center gap-2 transition-colors duration-300 ${
+                          isLoading 
+                            ? 'bg-gray-200 text-gray-500 cursor-not-allowed' 
+                            : 'bg-yellow-400 text-black hover:bg-yellow-500'
+                        }`}
                       >
-                        <FaSearch className="h-5 w-5" />
-                        <span>Search</span>
+                        {isLoading ? (
+                          <>
+                            <div className="animate-spin rounded-full h-5 w-5 border-2 border-gray-600 border-t-transparent" />
+                            <span>Searching...</span>
+                          </>
+                        ) : (
+                          <>
+                            <FaSearch className="h-5 w-5" />
+                            <span>Search</span>
+                          </>
+                        )}
                       </button>
                     </div>
                     <div className="text-center mt-3">
@@ -555,10 +594,26 @@ export default function Home() {
           </div>
         </div>
 
-        {/* Rest of the content */}
-        {hasSearched && (
-          <SearchResults />
-        )}
+        {/* Search Results */}
+        {hasSearched && <SearchResults />}
+
+        {/* Map Section */}
+        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+          <div className="text-center mb-12">
+            <h1 className="text-4xl font-bold text-center mb-4">Our Network of Trusted Roofers</h1>
+            <p className="text-xl text-gray-600 text-center mb-8">
+              Discover our verified roofing professionals across the UK. Hover over any marker to see the roofer's name, and click to search in their area.
+            </p>
+          </div>
+          <div className="relative w-full max-w-3xl mx-auto h-[675px] rounded-xl overflow-hidden shadow-lg">
+            <RoofersMap 
+              className="w-full h-full" 
+              onRooferSelect={(roofer) => {
+                handleSearch(roofer.postcode);
+              }}
+            />
+          </div>
+        </div>
 
         {/* SEO Content Section */}
         <div className="py-16 bg-white">
