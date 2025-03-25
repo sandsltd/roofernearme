@@ -1,6 +1,28 @@
 {
   "roofers": [
     {
+      "businessName": "ITF & Sons Roofing & Home Improvements",
+      "logo": "/logos/itf-and-sons-roofing-logo.jpeg",
+      "location": "Chippenham",
+      "services": [
+        "Roofing Repairs",
+        "Roof Replacement",
+        "Home Improvements",
+        "Guttering Repairs",
+        "Emergency Repairs"
+      ],
+      "coverage": [
+        "Trowbridge",
+        "Chippenham",
+        "Melksham",
+        "Corsham",
+        "Bradford on Avon",
+        "Calne"
+      ],
+      "website": "https://www.rooferschippenham.co.uk",
+      "postcode": "BA14"
+    },
+    {
       "businessName": "AS Ridgeline Roofing",
       "logo": "/logos/as_ridgeline_roofing_logo_trans-2.webp",
       "location": "Dumbarton",
@@ -86,7 +108,7 @@
     },
     {
       "businessName": "NLG Contractors",
-      "logo": "/logos/nlg-contractors-logo.png",
+      "logo": "/logos/nlg-contractors-logo-new.png",
       "location": "Workington",
       "services": [
         "New Roofs",
@@ -174,7 +196,7 @@
     },
     {
       "businessName": "Alexander Construction",
-      "logo": "/logos/alexander-construction-logo.png",
+      "logo": "/logos/alexander-construction-logo-new.png",
       "location": "Waltham Cross",
       "services": [
         "Roofing Repairs",
