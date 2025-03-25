@@ -47,30 +47,6 @@ async function saveSearchStats(stats: SearchStats): Promise<void> {
   }
 }
 
-// Function to get current month's statistics
-function getCurrentMonthStats(searches: Search[]) {
-  const now = new Date();
-  const currentMonth = now.getMonth();
-  const currentYear = now.getFullYear();
-  
-  const monthlySearches = searches.filter(search => {
-    const searchDate = new Date(search.timestamp);
-    return searchDate.getMonth() === currentMonth && 
-           searchDate.getFullYear() === currentYear;
-  });
-
-  const totalSearches = monthlySearches.length;
-  const uniquePostcodes = new Set(monthlySearches.map(s => s.postcode)).size;
-  const searchesWithResults = monthlySearches.filter(s => s.resultsCount > 0).length;
-  
-  return {
-    totalSearches,
-    uniquePostcodes,
-    searchesWithResults,
-    noResultsCount: totalSearches - searchesWithResults
-  };
-}
-
 // Function to get postcode statistics
 function getPostcodeStats(searches: Search[]): PostcodeStat[] {
   const now = new Date();
