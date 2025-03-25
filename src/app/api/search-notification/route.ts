@@ -62,18 +62,28 @@ function getPostcodeStats(searches: Search[]): PostcodeStat[] {
   
   const postcodeCounts: { [key: string]: number } = {};
   
+  // Count all searches for each postcode
   monthlySearches.forEach(search => {
     if (search.postcode) {
-      postcodeCounts[search.postcode] = (postcodeCounts[search.postcode] || 0) + 1;
+      const normalizedPostcode = search.postcode.toUpperCase().trim();
+      postcodeCounts[normalizedPostcode] = (postcodeCounts[normalizedPostcode] || 0) + 1;
     }
   });
   
+  // Convert to array and sort by count (descending) then by postcode (ascending)
   return Object.entries(postcodeCounts)
     .map(([postcode, count]) => ({
       postcode,
       count
     }))
-    .sort((a, b) => b.count - a.count);
+    .sort((a, b) => {
+      // First sort by count (descending)
+      if (b.count !== a.count) {
+        return b.count - a.count;
+      }
+      // Then sort alphabetically by postcode
+      return a.postcode.localeCompare(b.postcode);
+    });
 }
 
 export async function POST(req: Request) {
