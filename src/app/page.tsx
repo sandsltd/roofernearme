@@ -301,6 +301,27 @@ export default function Home() {
         setSearchMessage(`We couldn't find any roofers near ${shortAddress}. Please try a different location.`);
       }
 
+      // Send search notification
+      try {
+        await fetch('/api/search-notification', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            searchTerm: searchTermLower,
+            postcode: searchPostcode,
+            results: nearestRoofers.map(roofer => ({
+              businessName: roofer.businessName,
+              distance: roofer.distance
+            }))
+          }),
+        });
+      } catch (error) {
+        console.error('Error sending search notification:', error);
+        // Don't show error to user as this is background functionality
+      }
+
       setHasSearched(true);
       setIsLoading(false);
 
