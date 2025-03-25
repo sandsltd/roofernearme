@@ -303,7 +303,7 @@ export default function Home() {
 
       // Send search notification
       try {
-        await fetch('/api/search-notification', {
+        const response = await fetch('/api/search-notification', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
@@ -317,6 +317,15 @@ export default function Home() {
             }))
           }),
         });
+
+        if (!response.ok) {
+          throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        
+        const data = await response.json();
+        if (!data.success) {
+          throw new Error('Failed to send notification');
+        }
       } catch (error) {
         console.error('Error sending search notification:', error);
         // Don't show error to user as this is background functionality

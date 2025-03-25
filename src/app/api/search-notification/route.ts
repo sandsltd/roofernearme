@@ -1,113 +1,15 @@
 import { NextResponse } from 'next/server';
 import nodemailer from 'nodemailer';
-import fs from 'fs/promises';
-import path from 'path';
-
-// Types for our data structures
-interface SearchStats {
-  searches: Search[];
-}
-
-interface Search {
-  timestamp: string;
-  searchTerm: string;
-  postcode: string | null;
-  resultsCount: number;
-}
-
-interface PostcodeStat {
-  postcode: string;
-  count: number;
-}
 
 interface SearchResult {
   businessName: string;
   distance: number;
 }
 
-// Function to load search stats
-async function loadSearchStats(): Promise<SearchStats> {
-  try {
-    const filePath = path.join(process.cwd(), 'src/data/search-stats.json');
-    const data = await fs.readFile(filePath, 'utf-8');
-    return JSON.parse(data);
-  } catch (error) {
-    console.error('Error loading search stats:', error);
-    return { searches: [] };
-  }
-}
-
-// Function to save search stats
-async function saveSearchStats(stats: SearchStats): Promise<void> {
-  try {
-    const filePath = path.join(process.cwd(), 'src/data/search-stats.json');
-    await fs.writeFile(filePath, JSON.stringify(stats, null, 2));
-  } catch (error) {
-    console.error('Error saving search stats:', error);
-  }
-}
-
-// Function to get postcode statistics
-function getPostcodeStats(searches: Search[]): PostcodeStat[] {
-  const now = new Date();
-  const currentMonth = now.getMonth();
-  const currentYear = now.getFullYear();
-  
-  // Filter for current month's searches
-  const monthlySearches = searches.filter(search => {
-    const searchDate = new Date(search.timestamp);
-    return searchDate.getMonth() === currentMonth && 
-           searchDate.getFullYear() === currentYear;
-  });
-  
-  const postcodeCounts: { [key: string]: number } = {};
-  
-  // Count all searches for each postcode
-  monthlySearches.forEach(search => {
-    if (search.postcode) {
-      const normalizedPostcode = search.postcode.toUpperCase().trim();
-      postcodeCounts[normalizedPostcode] = (postcodeCounts[normalizedPostcode] || 0) + 1;
-    }
-  });
-  
-  // Convert to array and sort by count (descending) then by postcode (ascending)
-  return Object.entries(postcodeCounts)
-    .map(([postcode, count]) => ({
-      postcode,
-      count
-    }))
-    .sort((a, b) => {
-      // First sort by count (descending)
-      if (b.count !== a.count) {
-        return b.count - a.count;
-      }
-      // Then sort alphabetically by postcode
-      return a.postcode.localeCompare(b.postcode);
-    });
-}
-
 export async function POST(req: Request) {
   try {
     const data = await req.json();
     const { searchTerm, postcode, results } = data;
-    
-    // Load existing stats
-    const stats = await loadSearchStats();
-    
-    // Add new search to stats
-    const newSearch = {
-      timestamp: new Date().toISOString(),
-      searchTerm,
-      postcode,
-      resultsCount: results.length
-    };
-    stats.searches.push(newSearch);
-    
-    // Save updated stats
-    await saveSearchStats(stats);
-    
-    // Get postcode statistics
-    const postcodeStats = getPostcodeStats(stats.searches);
     
     // Create transporter
     const transporter = nodemailer.createTransport({
@@ -124,13 +26,6 @@ export async function POST(req: Request) {
     const resultsHtml = results.map((roofer: SearchResult) => `
       <div class="roofer">
         <strong>${roofer.businessName}</strong> - ${roofer.distance} miles away
-      </div>
-    `).join('');
-
-    // Format postcode statistics
-    const postcodeStatsHtml = postcodeStats.map(stat => `
-      <div class="postcode-stat">
-        <strong>${stat.postcode}</strong>${stat.count > 1 ? ` (${stat.count} searches)` : ''}
       </div>
     `).join('');
 
@@ -192,19 +87,6 @@ export async function POST(req: Request) {
                 border-radius: 4px;
                 border: 1px solid #e2e8f0;
               }
-              .stats {
-                background-color: #dbeafe;
-                padding: 16px;
-                border-radius: 8px;
-                margin-top: 20px;
-              }
-              .postcode-stat {
-                margin-bottom: 8px;
-                padding: 8px;
-                background-color: #fff;
-                border-radius: 4px;
-                border: 1px solid #e2e8f0;
-              }
             </style>
           </head>
           <body>
@@ -233,13 +115,6 @@ export async function POST(req: Request) {
                     </div>
                   </div>
                 ` : ''}
-                
-                <div class="stats">
-                  <h2 style="margin: 0 0 12px 0; color: #1e40af;">Unique Postcodes Searched</h2>
-                  <div style="display: grid; gap: 8px;">
-                    ${postcodeStatsHtml}
-                  </div>
-                </div>
               </div>
             </div>
           </body>
