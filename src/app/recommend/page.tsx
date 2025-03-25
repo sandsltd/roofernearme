@@ -95,12 +95,12 @@ export default function RecommendPage() {
                   <Link href="/" className="flex items-center">
                     <Image
                       src="/Roofer Near Me-2.png"
-                      alt="Roofers Near Me Logo"
+                      alt="Local Roofer Near Me Logo"
                       width={40}
                       height={40}
                       className="h-10 w-auto"
                     />
-                    <span className="ml-3 text-2xl font-bold text-white">Roofers Near Me</span>
+                    <span className="ml-3 text-2xl font-bold text-white">Local Roofer Near Me</span>
                   </Link>
                 </div>
                 

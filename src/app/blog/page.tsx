@@ -40,12 +40,12 @@ export default function BlogPage() {
                   <Link href="/" className="flex items-center">
                     <Image
                       src="/Roofer Near Me-2.png"
-                      alt="Roofers Near Me Logo"
+                      alt="Local Roofer Near Me Logo"
                       width={40}
                       height={40}
                       className="h-8 w-auto sm:h-10"
                     />
-                    <span className="ml-3 text-lg sm:text-2xl font-bold text-white whitespace-nowrap">Roofers Near Me</span>
+                    <span className="ml-3 text-lg sm:text-2xl font-bold text-white whitespace-nowrap">Local Roofer Near Me</span>
                   </Link>
                 </div>
                 <div>
@@ -161,14 +161,14 @@ export default function BlogPage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <Image
             src="/Roofer Near Me-2.png"
-            alt="Roofers Near Me Logo"
+            alt="Local Roofer Near Me Logo"
             width={40}
             height={40}
             className="mx-auto mb-4"
           />
           <p className="text-gray-400 text-sm">
             Saunders Simmons Ltd | Registered in England and Wales<br />
-            © {new Date().getFullYear()} Roofers Near Me - A Saunders Simmons Ltd Service
+            © {new Date().getFullYear()} Local Roofer Near Me - A Saunders Simmons Ltd Service
           </p>
         </div>
       </footer>
