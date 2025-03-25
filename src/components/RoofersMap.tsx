@@ -130,13 +130,8 @@ export default function RoofersMap({ className = '', onRooferSelect }: MapProps)
                   });
                   
                   // Add click event to open roofer card
-                  markerEl.addEventListener('click', () => {
-                    // Scroll to search results first
-                    const searchResults = document.getElementById('search-results');
-                    if (searchResults) {
-                      searchResults.scrollIntoView({ behavior: 'instant', block: 'start' });
-                    }
-                    // Then trigger the search
+                  markerEl.addEventListener('click', (e) => {
+                    e.stopPropagation(); // Prevent event bubbling
                     if (onRooferSelect) {
                       onRooferSelect(roofer);
                     }

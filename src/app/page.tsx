@@ -301,14 +301,21 @@ export default function Home() {
         setSearchMessage(`We couldn't find any roofers near ${shortAddress}. Please try a different location.`);
       }
 
+      setHasSearched(true);
+      setIsLoading(false);
+
+      // Scroll to search results immediately
+      const searchResults = document.getElementById('search-results');
+      if (searchResults) {
+        searchResults.scrollIntoView({ behavior: 'instant', block: 'start' });
+      }
+
     } catch (error) {
       console.error('Error during search:', error);
       setSearchResults([]);
       setSearchMessage(`There was an error processing your search. Please try again.`);
+      setIsLoading(false);
     }
-
-    setHasSearched(true);
-    setIsLoading(false);
   };
 
   // Update the search results section
@@ -594,7 +601,12 @@ export default function Home() {
             <RoofersMap 
               className="w-full h-full" 
               onRooferSelect={(roofer) => {
-                handleSearch(roofer.postcode);
+                // Scroll to top first
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+                // Short delay before starting search to allow smooth scroll
+                setTimeout(() => {
+                  handleSearch(roofer.postcode);
+                }, 300);
               }}
             />
           </div>
