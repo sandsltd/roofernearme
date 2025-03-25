@@ -122,7 +122,7 @@ export default function RooferCard({
         {/* Distance Warning if over 50 miles */}
         {distance !== undefined && distance > 0 && distance > 50 && (
           <div className="p-3 bg-yellow-50 border border-yellow-100 text-yellow-800 rounded-lg text-sm">
-            Note: This roofer is {Math.round(distance)} miles away from your location.
+            Note: This roofer is {Math.round(distance)} miles away from your location. Therefore may not cover your postcode.
           </div>
         )}
 
