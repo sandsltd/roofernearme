@@ -3,8 +3,30 @@ import nodemailer from 'nodemailer';
 import fs from 'fs/promises';
 import path from 'path';
 
+// Types for our data structures
+interface SearchStats {
+  searches: Search[];
+}
+
+interface Search {
+  timestamp: string;
+  searchTerm: string;
+  postcode: string | null;
+  resultsCount: number;
+}
+
+interface PostcodeStat {
+  postcode: string;
+  count: number;
+}
+
+interface SearchResult {
+  businessName: string;
+  distance: number;
+}
+
 // Function to load search stats
-async function loadSearchStats() {
+async function loadSearchStats(): Promise<SearchStats> {
   try {
     const filePath = path.join(process.cwd(), 'src/data/search-stats.json');
     const data = await fs.readFile(filePath, 'utf-8');
@@ -16,7 +38,7 @@ async function loadSearchStats() {
 }
 
 // Function to save search stats
-async function saveSearchStats(stats: any) {
+async function saveSearchStats(stats: SearchStats): Promise<void> {
   try {
     const filePath = path.join(process.cwd(), 'src/data/search-stats.json');
     await fs.writeFile(filePath, JSON.stringify(stats, null, 2));
@@ -26,7 +48,7 @@ async function saveSearchStats(stats: any) {
 }
 
 // Function to get current month's statistics
-function getCurrentMonthStats(searches: any[]) {
+function getCurrentMonthStats(searches: Search[]) {
   const now = new Date();
   const currentMonth = now.getMonth();
   const currentYear = now.getFullYear();
@@ -50,7 +72,7 @@ function getCurrentMonthStats(searches: any[]) {
 }
 
 // Function to get postcode statistics
-function getPostcodeStats(searches: any[]) {
+function getPostcodeStats(searches: Search[]): PostcodeStat[] {
   const now = new Date();
   const currentMonth = now.getMonth();
   const currentYear = now.getFullYear();
@@ -113,7 +135,7 @@ export async function POST(req: Request) {
     });
 
     // Format results for email
-    const resultsHtml = results.map((roofer: any) => `
+    const resultsHtml = results.map((roofer: SearchResult) => `
       <div class="roofer">
         <strong>${roofer.businessName}</strong> - ${roofer.distance} miles away
       </div>
