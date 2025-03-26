@@ -85,11 +85,11 @@ const posts: BlogPost[] = [
   },
   {
     ...emergencyRoofRepairs,
-    image: '/blog/emergency-roof-repairs.png'
+    image: '/blog/flat-roof-maintenance.png'
   },
   {
     ...choosingRoofingMaterial,
-    image: '/blog/choosing-roofing-material.png'
+    image: '/blog/london-skyline-tower-bridge-roofing.png'
   },
   {
     ...winterRoofMaintenance,
