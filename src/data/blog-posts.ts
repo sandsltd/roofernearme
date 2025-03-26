@@ -6,6 +6,16 @@ import signsYouNeedNewRoof from './blog-posts/signs-you-need-a-new-roof';
 import costOfRoofReplacement from './blog-posts/cost-of-roof-replacement-uk';
 import roofersInGlasgow from './blog-posts/roofers-in-glasgow';
 import roofersInLondon from './blog-posts/roofers-in-london';
+import roofersInBirmingham from './blog-posts/roofers-in-birmingham';
+import roofersInManchester from './blog-posts/roofers-in-manchester';
+import roofersInLeeds from './blog-posts/roofers-in-leeds';
+import roofersInLiverpool from './blog-posts/roofers-in-liverpool';
+import roofersInNewcastle from './blog-posts/roofers-in-newcastle';
+import roofersInNottingham from './blog-posts/roofers-in-nottingham';
+import roofersInSheffield from './blog-posts/roofers-in-sheffield';
+import roofersInBristol from './blog-posts/roofers-in-bristol';
+import roofersInLeicester from './blog-posts/roofers-in-leicester';
+import roofersInEdinburgh from './blog-posts/roofers-in-edinburgh';
 import emergencyRoofRepairs from './blog-posts/emergency-roof-repairs';
 import choosingRoofingMaterial from './blog-posts/choosing-roofing-material';
 import winterRoofMaintenance from './blog-posts/winter-roof-maintenance';
@@ -27,19 +37,59 @@ const posts: BlogPost[] = [
   },
   {
     ...roofersInGlasgow,
-    image: '/blog/glasgow-clyde-river-roofing-services.png'
+    image: '/blog/roofers-in-glasgow.png'
   },
   {
     ...roofersInLondon,
-    image: '/blog/london-skyline-tower-bridge-roofing.png'
-  },
-  {
-    ...emergencyRoofRepairs,
     image: '/blog/roofers-in-london.png'
   },
   {
+    ...roofersInBirmingham,
+    image: '/blog/roofer-in-birmingham.png'
+  },
+  {
+    ...roofersInManchester,
+    image: '/blog/roofer-in-manchester.png'
+  },
+  {
+    ...roofersInLeeds,
+    image: '/blog/roofer-in-leeds.png'
+  },
+  {
+    ...roofersInLiverpool,
+    image: '/blog/roofer-in-liverpool.png'
+  },
+  {
+    ...roofersInNewcastle,
+    image: '/blog/roofer-in-newcastle.png'
+  },
+  {
+    ...roofersInNottingham,
+    image: '/blog/roofer-in-nottingham.png'
+  },
+  {
+    ...roofersInSheffield,
+    image: '/blog/roofer-in-sheffield.png'
+  },
+  {
+    ...roofersInBristol,
+    image: '/blog/roofer-in-bristol.png'
+  },
+  {
+    ...roofersInLeicester,
+    image: '/blog/roofer-in-leicester.png'
+  },
+  {
+    ...roofersInEdinburgh,
+    image: '/blog/roofer-in-edinburgh.png'
+  },
+  {
+    ...emergencyRoofRepairs,
+    image: '/blog/emergency-roof-repairs.png'
+  },
+  {
     ...choosingRoofingMaterial,
-    image: '/blog/roofers-in-glasgow.png'
+    image: '/blog/choosing-roofing-material.png'
   },
   {
     ...winterRoofMaintenance,
@@ -55,15 +105,15 @@ const posts: BlogPost[] = [
   },
   {
     ...roofWarranties,
-    image: '/blog/signs-you-need-new-roof.png'
-  },
-  {
-    ...comparingRoofingMaterials,
     image: '/blog/cost-of-roof-replacement.png'
   },
   {
+    ...comparingRoofingMaterials,
+    image: '/blog/chichester-cathedral-roofing-services.png'
+  },
+  {
     ...roofSafetyTips,
-    image: '/blog/roofers-in-glasgow.png'
+    image: '/blog/winter-roof-maintenance-snow.png'
   }
 ];
 
