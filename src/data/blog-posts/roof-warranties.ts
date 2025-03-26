@@ -69,7 +69,7 @@ const post: BlogPost = {
             <ul class="list-disc pl-4">
               <li>Storm damage</li>
               <li>Poor maintenance</li>
-              <li>Unauthorized repairs</li>
+              <li>Unauthorised repairs</li>
               <li>Natural wear and tear</li>
             </ul>
           </div>

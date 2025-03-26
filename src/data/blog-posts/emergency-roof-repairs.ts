@@ -15,7 +15,7 @@ const post: BlogPost = {
           <li>🪣 Place buckets to catch water</li>
           <li>📸 Document damage for insurance</li>
           <li>📞 Contact emergency roofers</li>
-          <li>🏠 Protect interior spaces</li>
+          <li>🏠 Minimise interior damage</li>
         </ul>
       </div>
 
