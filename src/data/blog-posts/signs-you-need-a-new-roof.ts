@@ -1,6 +1,6 @@
 import { BlogPost } from '../types';
 
-export const post: BlogPost = {
+const post: BlogPost = {
   slug: 'signs-you-need-a-new-roof',
   title: '10 Warning Signs You Need a New Roof',
   excerpt: 'Learn the key indicators that it might be time to replace your roof, from water damage to missing shingles.',
@@ -53,4 +53,6 @@ export const post: BlogPost = {
   seoTitle: '10 Warning Signs You Need a New Roof | Expert Guide 2024',
   seoDescription: 'Discover the top 10 warning signs that indicate you need a new roof. Learn about shingle damage, leaks, and when to call a professional roofer.',
   keywords: ['new roof signs', 'roof replacement indicators', 'when to replace roof', 'roof damage signs', 'roofing problems', 'roof inspection guide']
-}; 
+};
+
+export default post; 
