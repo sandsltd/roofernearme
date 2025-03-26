@@ -1,5 +1,7 @@
 import { BlogPost } from './types';
 
+export type { BlogPost } from './types';
+
 import signsYouNeedNewRoof from './blog-posts/signs-you-need-a-new-roof';
 import costOfRoofReplacement from './blog-posts/cost-of-roof-replacement-uk';
 import roofersInGlasgow from './blog-posts/roofers-in-glasgow';
