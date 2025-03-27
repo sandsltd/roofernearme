@@ -98,7 +98,7 @@ const posts: BlogPost[] = [
   },
   {
     ...roofersInPoole,
-    image: '/blog/roofer-in-poole.png'
+    image: '/blog/roofer-in-poole-2.png'
   },
   {
     ...roofersInCardiff,

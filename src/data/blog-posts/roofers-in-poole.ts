@@ -5,7 +5,7 @@ const post: BlogPost = {
   title: 'Find Trusted Roofers in Poole: A Complete Guide',
   date: '2024-03-26',
   category: 'Location Guides',
-  image: '/blog/roofer-in-poole.png',
+  image: '/blog/roofer-in-poole-2.png',
   excerpt: 'Looking for reliable roofing contractors in Poole? Our comprehensive guide helps you find qualified local roofers and understand the unique roofing requirements of properties in this historic harbour town.',
   readTime: '8 min read',
   seoTitle: 'Find Trusted Roofers in Poole | Local Roofing Experts',
