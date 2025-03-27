@@ -215,6 +215,31 @@
       ],
       "website": "https://www.stalbansroofer.co.uk",
       "postcode": "EN1"
+    },
+    {
+      "businessName": "Home Fix Roofing Ltd",
+      "logo": "/logos/home-fix-roofing-logo.png",
+      "location": "Barnet",
+      "services": [
+        "Roof Repairs",
+        "New Roofs",
+        "Emergency Repairs",
+        "Roof Maintenance",
+        "Guttering"
+      ],
+      "coverage": [
+        "Barnet",
+        "Finchley",
+        "Hendon",
+        "Mill Hill",
+        "Edgware",
+        "Whetstone",
+        "Totteridge",
+        "East Barnet",
+        "New Barnet"
+      ],
+      "website": "https://www.rooferbarnet.co.uk",
+      "postcode": "WC2A"
     }
   ]
 } 
