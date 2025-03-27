@@ -16,6 +16,11 @@ import roofersInSheffield from './blog-posts/roofers-in-sheffield';
 import roofersInBristol from './blog-posts/roofers-in-bristol';
 import roofersInLeicester from './blog-posts/roofers-in-leicester';
 import roofersInEdinburgh from './blog-posts/roofers-in-edinburgh';
+import roofersInBrighton from './blog-posts/roofers-in-brighton';
+import roofersInBournemouth from './blog-posts/roofers-in-bournemouth';
+import roofersInPoole from './blog-posts/roofers-in-poole';
+import roofersInCardiff from './blog-posts/roofers-in-cardiff';
+import roofersInStoke from './blog-posts/roofers-in-stoke';
 import emergencyRoofRepairs from './blog-posts/emergency-roof-repairs';
 import choosingRoofingMaterial from './blog-posts/choosing-roofing-material';
 import winterRoofMaintenance from './blog-posts/winter-roof-maintenance';
@@ -82,6 +87,26 @@ const posts: BlogPost[] = [
   {
     ...roofersInEdinburgh,
     image: '/blog/roofer-in-edinburgh.png'
+  },
+  {
+    ...roofersInBrighton,
+    image: '/blog/roofer-in-brighton.png'
+  },
+  {
+    ...roofersInBournemouth,
+    image: '/blog/roofer-in-bournemouth.png'
+  },
+  {
+    ...roofersInPoole,
+    image: '/blog/roofer-in-poole.png'
+  },
+  {
+    ...roofersInCardiff,
+    image: '/blog/roofer-in-cardiff.png'
+  },
+  {
+    ...roofersInStoke,
+    image: '/blog/roofer-in-stoke.png'
   },
   {
     ...emergencyRoofRepairs,
