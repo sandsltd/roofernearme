@@ -3,136 +3,154 @@ import { BlogPost } from '../types';
 const post: BlogPost = {
   slug: 'roofers-in-cardiff',
   title: 'Find Trusted Roofers in Cardiff: A Complete Guide',
+  excerpt: 'Discover how to find reliable roofing contractors in Cardiff, understand local building regulations, and get the best value for your roofing project.',
+  content: `
+    <div class="prose prose-lg max-w-none">
+      <h2 class="text-3xl font-bold mb-6">Find Trusted Roofers in Cardiff: Your Complete Guide</h2>
+      
+      <div class="intro bg-blue-50 p-6 rounded-lg my-8">
+        <h3 class="text-2xl font-semibold mb-4">Why Choose a Local Cardiff Roofer?</h3>
+        <ul class="space-y-3">
+          <li>🏠 Understanding of Welsh architectural styles</li>
+          <li>📋 Knowledge of Cardiff Council regulations</li>
+          <li>🌧️ Experience with Welsh weather conditions</li>
+          <li>⚡ Rapid response for emergencies</li>
+          <li>💬 Strong local reputation</li>
+        </ul>
+      </div>
+
+      <div class="architecture bg-yellow-50 p-6 rounded-lg my-8">
+        <h3 class="text-2xl font-semibold mb-4">Cardiff's Diverse Architecture</h3>
+        <div class="grid md:grid-cols-2 gap-6">
+          <div>
+            <h4 class="font-semibold mb-2">Historic Properties</h4>
+            <ul class="list-disc pl-4">
+              <li>Victorian terraces</li>
+              <li>Edwardian houses</li>
+              <li>Listed buildings</li>
+              <li>Traditional Welsh cottages</li>
+            </ul>
+          </div>
+          <div>
+            <h4 class="font-semibold mb-2">Modern Buildings</h4>
+            <ul class="list-disc pl-4">
+              <li>Bay developments</li>
+              <li>Contemporary homes</li>
+              <li>Commercial properties</li>
+              <li>New housing estates</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="services bg-green-50 p-6 rounded-lg my-8">
+        <h3 class="text-2xl font-semibold mb-4">Common Roofing Services in Cardiff</h3>
+        <div class="space-y-4">
+          <div>
+            <h4 class="font-semibold">Residential Services</h4>
+            <ul class="list-disc pl-4">
+              <li>Full roof replacements</li>
+              <li>Welsh slate repairs</li>
+              <li>Chimney maintenance</li>
+              <li>Gutter systems</li>
+              <li>Valley repairs</li>
+            </ul>
+          </div>
+          <div>
+            <h4 class="font-semibold">Commercial Services</h4>
+            <ul class="list-disc pl-4">
+              <li>Office building roofing</li>
+              <li>Retail property maintenance</li>
+              <li>Industrial unit repairs</li>
+              <li>Heritage building restoration</li>
+              <li>School and public buildings</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="areas-covered bg-purple-50 p-6 rounded-lg my-8">
+        <h3 class="text-2xl font-semibold mb-4">Areas We Cover in Cardiff</h3>
+        <div class="grid md:grid-cols-3 gap-4">
+          <ul class="space-y-2">
+            <li>Cardiff Bay</li>
+            <li>Cathays</li>
+            <li>Roath</li>
+            <li>Canton</li>
+          </ul>
+          <ul class="space-y-2">
+            <li>Heath</li>
+            <li>Llandaff</li>
+            <li>Whitchurch</li>
+            <li>Pontprennau</li>
+          </ul>
+          <ul class="space-y-2">
+            <li>Splott</li>
+            <li>Grangetown</li>
+            <li>Pentwyn</li>
+            <li>St Mellons</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="local-considerations bg-red-50 p-6 rounded-lg my-8">
+        <h3 class="text-2xl font-semibold mb-4">Cardiff-Specific Considerations</h3>
+        <ul class="space-y-3">
+          <li><strong>Weather Impact:</strong> Protection against Welsh rainfall</li>
+          <li><strong>Heritage Areas:</strong> Conservation area guidelines</li>
+          <li><strong>Local Materials:</strong> Welsh slate expertise</li>
+          <li><strong>Local Regulations:</strong> Cardiff Council requirements</li>
+        </ul>
+      </div>
+
+      <div class="choosing-roofer bg-gray-50 p-6 rounded-lg my-8">
+        <h3 class="text-2xl font-semibold mb-4">How to Choose a Cardiff Roofer</h3>
+        <ol class="space-y-3">
+          <li>1. Verify licenses and insurance</li>
+          <li>2. Check local reviews</li>
+          <li>3. Get detailed quotes</li>
+          <li>4. Ask about Welsh slate experience</li>
+          <li>5. Confirm warranties offered</li>
+          <li>6. View previous local work</li>
+        </ol>
+      </div>
+
+      <div class="pricing bg-blue-50 p-6 rounded-lg my-8">
+        <h3 class="text-2xl font-semibold mb-4">Understanding Roofing Costs in Cardiff</h3>
+        <ul class="space-y-3">
+          <li><strong>Factors Affecting Cost:</strong></li>
+          <li>- Property size and access</li>
+          <li>- Material choices</li>
+          <li>- Project complexity</li>
+          <li>- Heritage requirements</li>
+          <li>- Seasonal variations</li>
+        </ul>
+      </div>
+
+      <div class="cta-box bg-gray-50 p-8 rounded-lg my-8 text-center">
+        <h3 class="text-2xl font-semibold mb-4">Need a Reliable Roofer in Cardiff?</h3>
+        <p class="mb-6">Connect with trusted local roofing professionals for your project.</p>
+        <a href="/" class="inline-block bg-yellow-400 text-black px-8 py-3 rounded-lg font-semibold hover:bg-yellow-500 transition-all duration-300">Find Local Roofers</a>
+      </div>
+    </div>
+  `,
   date: '2024-03-26',
   category: 'Location Guides',
   image: '/blog/roofer-in-cardiff.png',
-  excerpt: 'Looking for reliable roofing contractors in Cardiff? Our comprehensive guide helps you find qualified local roofers and understand the unique roofing requirements of properties in the Welsh capital.',
   readTime: '8 min read',
   seoTitle: 'Find Trusted Roofers in Cardiff | Local Roofing Experts',
-  seoDescription: 'Connect with verified local roofers in Cardiff. Expert roofing services for residential and commercial properties. Free quotes from trusted contractors.',
+  seoDescription: 'Connect with verified local roofers in Cardiff. Expert roofing services for all property types, from Victorian terraces to modern bay developments.',
   keywords: [
     'Cardiff roofers',
-    'roofing contractors Cardiff',
     'local roofers Cardiff',
     'roofing services Cardiff',
     'roof repairs Cardiff',
     'Cardiff roofing company',
     'emergency roofer Cardiff',
     'commercial roofing Cardiff',
-    'residential roofers Cardiff'
-  ],
-  content: `
-    <h2>Why Choose Local Cardiff Roofers?</h2>
-    <p>When it comes to maintaining or repairing your roof in Cardiff, choosing a local roofing contractor offers several advantages:</p>
-    <ul>
-      <li>Deep understanding of Welsh architecture and building regulations</li>
-      <li>Experience with local weather conditions and challenges</li>
-      <li>Quick response times for emergency repairs</li>
-      <li>Knowledge of local suppliers and materials</li>
-      <li>Established reputation in the community</li>
-    </ul>
-
-    <h2>Cardiff's Diverse Architecture</h2>
-    <p>Cardiff features a rich variety of architectural styles that require specific roofing expertise:</p>
-    <ul>
-      <li>Victorian and Edwardian terraced houses</li>
-      <li>Modern Cardiff Bay developments</li>
-      <li>Historic buildings in Cardiff Castle area</li>
-      <li>Contemporary city centre apartments</li>
-      <li>Traditional Welsh cottages and period properties</li>
-    </ul>
-
-    <h2>Common Roofing Services in Cardiff</h2>
-    <h3>Residential Services</h3>
-    <ul>
-      <li>Complete roof replacements</li>
-      <li>Emergency storm damage repairs</li>
-      <li>Chimney repairs and repointing</li>
-      <li>Gutter maintenance and replacement</li>
-      <li>Roof insulation improvements</li>
-      <li>Welsh slate repairs and replacement</li>
-      <li>Flat roof installation and maintenance</li>
-    </ul>
-
-    <h3>Commercial Services</h3>
-    <ul>
-      <li>Commercial property roof maintenance</li>
-      <li>Office building roofing solutions</li>
-      <li>Industrial estate roofing</li>
-      <li>Retail unit maintenance</li>
-      <li>Heritage building restoration</li>
-    </ul>
-
-    <h2>Areas Covered by Roofing Services</h2>
-    <div class="grid grid-cols-2 md:grid-cols-3 gap-4">
-      <div>
-        <ul>
-          <li>Cardiff Bay</li>
-          <li>Cathays</li>
-          <li>Roath</li>
-          <li>Canton</li>
-        </ul>
-      </div>
-      <div>
-        <ul>
-          <li>Llandaff</li>
-          <li>Heath</li>
-          <li>Whitchurch</li>
-          <li>Pontprennau</li>
-        </ul>
-      </div>
-      <div>
-        <ul>
-          <li>Splott</li>
-          <li>Grangetown</li>
-          <li>Pentwyn</li>
-          <li>St Mellons</li>
-        </ul>
-      </div>
-    </div>
-
-    <h2>Cardiff-Specific Considerations</h2>
-    <h3>Weather Impact</h3>
-    <p>Cardiff's climate presents unique challenges for roofing:</p>
-    <ul>
-      <li>High annual rainfall protection</li>
-      <li>Strong Welsh valley winds resistance</li>
-      <li>Coastal influence considerations</li>
-      <li>Temperature fluctuation management</li>
-    </ul>
-
-    <h3>Local Regulations</h3>
-    <p>Important regulations to consider when undertaking roofing work in Cardiff:</p>
-    <ul>
-      <li>Cardiff Council building regulations</li>
-      <li>Conservation area restrictions</li>
-      <li>Listed building consent requirements</li>
-      <li>Welsh building standards compliance</li>
-    </ul>
-
-    <h2>How to Choose a Roofer in Cardiff</h2>
-    <ol>
-      <li>Check qualifications and certifications</li>
-      <li>Read customer reviews and testimonials</li>
-      <li>Ask for detailed written quotes</li>
-      <li>Verify insurance coverage</li>
-      <li>Request local work examples</li>
-      <li>Confirm warranty terms</li>
-    </ol>
-
-    <h2>Understanding Roofing Costs in Cardiff</h2>
-    <p>Several factors influence roofing costs in Cardiff:</p>
-    <ul>
-      <li>Property size and roof complexity</li>
-      <li>Material quality and type</li>
-      <li>Access requirements</li>
-      <li>Conservation area considerations</li>
-      <li>Seasonal demand</li>
-    </ul>
-
-    <h2>Get Started with Your Roofing Project</h2>
-    <p>Ready to connect with trusted local roofers in Cardiff? Our network of verified contractors can provide expert advice and free quotes for your roofing project. Whether you need urgent repairs or are planning a complete roof replacement, we'll help you find the right professional for the job.</p>
-  `
+    'residential roofers Cardiff',
+    'Welsh slate roofing Cardiff'
+  ]
 };
 
 export default post; 
