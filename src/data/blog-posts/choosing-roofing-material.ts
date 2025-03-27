@@ -215,13 +215,23 @@ const post: BlogPost = {
       </div>
     </div>
   `,
-  date: '2024-03-15',
-  category: 'Materials',
-  image: '/blog/roofing-materials.jpg',
-  readTime: '8 min read',
-  seoTitle: 'Choosing the Right Roofing Material | Complete Guide 2024',
-  seoDescription: 'Expert guide to choosing the perfect roofing material for your home. Compare costs, durability, and benefits of different materials.',
-  keywords: ['roofing materials', 'roof tiles', 'slate roofing', 'metal roofing', 'clay tiles', 'concrete tiles', 'roofing costs', 'material comparison']
+  date: '2024-03-23',
+  category: 'Guides',
+  image: '/blog/roof-materials.png',
+  readTime: '10 min read',
+  seoTitle: 'Guide to Choosing the Right Roofing Material | Expert Advice',
+  seoDescription: 'Learn about different roofing materials, their pros and cons, costs, and how to choose the best option for your property. Expert guidance from roofing professionals.',
+  keywords: [
+    'roofing materials',
+    'roof tiles',
+    'slate roofing',
+    'metal roofing',
+    'clay tiles',
+    'concrete tiles',
+    'roofing costs',
+    'roof durability',
+    'roof installation'
+  ]
 };
 
 export default post; 

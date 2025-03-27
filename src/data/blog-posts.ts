@@ -46,7 +46,7 @@ const posts: BlogPost[] = [
   },
   {
     ...roofersInLondon,
-    image: '/blog/roofers-in-london.png'
+    image: '/blog/roofer-in-london.png'
   },
   {
     ...roofersInBirmingham,
@@ -114,7 +114,7 @@ const posts: BlogPost[] = [
   },
   {
     ...choosingRoofingMaterial,
-    image: '/blog/london-skyline-tower-bridge-roofing.png'
+    image: '/blog/roof-materials.png'
   },
   {
     ...winterRoofMaintenance,
