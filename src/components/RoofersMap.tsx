@@ -94,6 +94,7 @@ export default function RoofersMap({ className = '', onRooferSelect }: MapProps)
                   markerEl.style.borderRadius = '50%';
                   markerEl.style.cursor = 'pointer';
                   markerEl.style.transition = 'all 0.2s';
+                  markerEl.style.boxShadow = '0 0 0 8px rgba(251, 191, 36, 0.2), 0 0 0 16px rgba(251, 191, 36, 0.1)';
 
                   // Create inner element for hover effect
                   const innerEl = document.createElement('div');
@@ -126,11 +127,13 @@ export default function RoofersMap({ className = '', onRooferSelect }: MapProps)
                   // Add hover events
                   markerEl.addEventListener('mouseenter', () => {
                     innerEl.style.transform = 'scale(1.1)';
+                    markerEl.style.boxShadow = '0 0 0 12px rgba(251, 191, 36, 0.2), 0 0 0 24px rgba(251, 191, 36, 0.1)';
                     marker.setPopup(popup);
                     popup.addTo(mapInstance);
                   });
                   markerEl.addEventListener('mouseleave', () => {
                     innerEl.style.transform = 'scale(1)';
+                    markerEl.style.boxShadow = '0 0 0 8px rgba(251, 191, 36, 0.2), 0 0 0 16px rgba(251, 191, 36, 0.1)';
                     popup.remove();
                   });
                   
