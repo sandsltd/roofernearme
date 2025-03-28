@@ -23,12 +23,13 @@ export default function RoofersMap({ className = '', onRooferSelect }: MapProps)
   const typedRooferData = rooferData as RooferData;
 
   useEffect(() => {
-    // Check if mapboxgl is supported
     if (!mapboxgl.supported()) {
       console.error('Your browser does not support Mapbox GL');
       setIsLoading(false);
       return;
     }
+
+    let handleResize: (() => void) | null = null;
 
     const initializeMap = async () => {
       try {
@@ -37,10 +38,10 @@ export default function RoofersMap({ className = '', onRooferSelect }: MapProps)
         const mapInstance = new mapboxgl.Map({
           container: mapRef.current,
           style: 'mapbox://styles/mapbox/light-v11',
-          center: [-3.5, 54.5],
-          zoom: 5,
-          maxZoom: 8,
-          minZoom: 4
+          center: [-3, 54.5],
+          zoom: window.innerWidth < 768 ? 4.2 : 5,
+          maxZoom: 7,
+          minZoom: window.innerWidth < 768 ? 4 : 4.5
         });
 
         // Disable map rotation and pitch
@@ -52,6 +53,16 @@ export default function RoofersMap({ className = '', onRooferSelect }: MapProps)
         mapInstance.addControl(new mapboxgl.NavigationControl({
           showCompass: false
         }), 'top-right');
+
+        // Add resize handler to adjust zoom on window resize
+        handleResize = () => {
+          if (mapInstance) {
+            const isMobile = window.innerWidth < 768;
+            mapInstance.setZoom(isMobile ? 4.2 : 5);
+            mapInstance.setMinZoom(isMobile ? 4 : 4.5);
+          }
+        };
+        window.addEventListener('resize', handleResize);
 
         // Wait for map to load
         mapInstance.on('load', async () => {
@@ -229,13 +240,11 @@ export default function RoofersMap({ className = '', onRooferSelect }: MapProps)
     initializeMap();
 
     return () => {
+      if (handleResize) {
+        window.removeEventListener('resize', handleResize);
+      }
       // Clean up markers
       markersRef.current.forEach(marker => marker.remove());
-      markersRef.current = [];
-      
-      if (map) {
-        map.remove();
-      }
     };
   }, [onRooferSelect]);
 
