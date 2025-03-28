@@ -1,4 +1,4 @@
-import { FaMapMarkerAlt, FaHome, FaTools } from 'react-icons/fa';
+import { FaMapMarkerAlt, FaTools } from 'react-icons/fa';
 import Link from 'next/link';
 import Image from 'next/image';
 
