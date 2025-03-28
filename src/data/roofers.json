@@ -277,6 +277,30 @@
       ],
       "website": "https://www.roofersindoncaster.co.uk",
       "postcode": "DN5"
+    },
+    {
+      "businessName": "Approved Roofing & Home Improvements Ltd",
+      "logo": "/logos/approved-roofing-logo.jpeg",
+      "location": "Ramsgate",
+      "services": [
+        "Roof Repairs",
+        "New Roofs",
+        "Home Improvements",
+        "Emergency Repairs",
+        "Roof Maintenance",
+        "Guttering"
+      ],
+      "coverage": [
+        "Ramsgate",
+        "Whitstable",
+        "Canterbury",
+        "Folkstone",
+        "Dover",
+        "Deal",
+        "Sandwich"
+      ],
+      "website": "https://www.roofersinmaidstone.co.uk",
+      "postcode": "CT11"
     }
   ]
 } 
