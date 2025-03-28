@@ -381,7 +381,6 @@ export default function Home() {
             <RooferCard
               key={index}
               businessName={roofer.businessName}
-              logo={roofer.logo}
               address={roofer.location}
               website={roofer.website}
               services={roofer.services}
