@@ -240,6 +240,43 @@
       ],
       "website": "https://www.rooferbarnet.co.uk",
       "postcode": "WC2A"
+    },
+    {
+      "businessName": "Roofing & Fascias",
+      "logo": "/logos/Roofing and Fascias.png",
+      "location": "Sheffield",
+      "services": [
+        "Roof Repairs",
+        "New Roofs",
+        "Emergency Repairs",
+        "Roof Maintenance",
+        "Guttering",
+        "Fascias"
+      ],
+      "coverage": [
+        "Sheffield",
+        "Leeds",
+        "Rotherham",
+        "Barnsley",
+        "Wakefield",
+        "Scunthorpe",
+        "Pontefract",
+        "Castleford",
+        "Worksop",
+        "Mexborough",
+        "Conisbrough",
+        "Bentley",
+        "Thorne",
+        "Tickhill",
+        "Bawtry",
+        "Sprotbrough",
+        "Carcroft",
+        "Auckley",
+        "Thurnscoe",
+        "Branton"
+      ],
+      "website": "https://www.roofersindoncaster.co.uk",
+      "postcode": "DN5"
     }
   ]
 } 
