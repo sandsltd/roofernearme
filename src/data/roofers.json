@@ -307,30 +307,6 @@
       ],
       "website": "https://www.roofersinramsgate.co.uk",
       "postcode": "CT11"
-    },
-    {
-      "businessName": "Bridgwater Roofing Services",
-      "logo": "/logos/bridgwater-roofing-services.png",
-      "location": "Bridgwater",
-      "services": [
-        "Roof Repair",
-        "New Roofs",
-        "Emergency Roof Repair",
-        "Roof Inspection",
-        "Roof Maintenance",
-        "Guttering"
-      ],
-      "coverage": [
-        "Portishead",
-        "Clevedon",
-        "Burnham-on-Sea",
-        "Newport",
-        "Weston-super-Mare",
-        "Bridgwater",
-        "Cardiff"
-      ],
-      "website": "https://www.roofersbridgwater.co.uk",
-      "postcode": "BS24"
     }
   ]
 } 
