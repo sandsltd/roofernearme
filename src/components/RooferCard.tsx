@@ -9,6 +9,7 @@ interface RooferCardProps {
   services?: string[];
   coverage?: string[];
   distance?: number;
+  logo?: string;
 }
 
 export default function RooferCard({ 
@@ -17,10 +18,13 @@ export default function RooferCard({
   website, 
   services = [], 
   coverage = [],
-  distance
+  distance,
+  logo
 }: RooferCardProps) {
-  // Generate logo path from business name
-  const logoPath = `/logos/${businessName.toLowerCase().replace(/[^a-z0-9]+/g, '-')}.png`;
+  // Generate logo path from business name as fallback
+  const generatedLogoPath = `/logos/${businessName.toLowerCase().replace(/[^a-z0-9]+/g, '-')}.png`;
+  // Use provided logo path or fall back to generated one
+  const logoPath = logo || generatedLogoPath;
 
   return (
     <div className="bg-white rounded-2xl shadow-xl overflow-hidden hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1 w-full min-h-[400px] flex flex-col">

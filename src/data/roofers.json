@@ -2,6 +2,7 @@
   "roofers": [
     {
       "businessName": "ITF & Sons Roofing & Home Improvements",
+      "logo": "/logos/itf-sons-roofing-home-improvements.png",
       "location": "Chippenham",
       "services": [
         "Roofing Repairs",
@@ -23,6 +24,7 @@
     },
     {
       "businessName": "AS Ridgeline Roofing",
+      "logo": "/logos/as-ridgeline-roofing.png",
       "location": "Dumbarton",
       "services": [
         "Slate Tile Roofing",
@@ -44,6 +46,7 @@
     },
     {
       "businessName": "Berkley Roofing Ltd",
+      "logo": "/logos/berkley-roofing-ltd.png",
       "location": "North West London",
       "services": [
         "Roofing Repairs",
@@ -68,28 +71,33 @@
     },
     {
       "businessName": "Supreme Roofing Ltd",
+      "logo": "/logos/supreme-roofing-ltd.png",
       "location": "Chichester",
       "services": [
-        "Roofing Repairs",
-        "Roof Replacement",
-        "Chimney Repair",
-        "Guttering Repairs"
+        "Roof Repairs",
+        "New Roofs",
+        "Emergency Repairs",
+        "Roof Maintenance",
+        "Guttering"
       ],
       "coverage": [
-        "Southampton",
-        "Eastleigh",
-        "Fareham",
-        "Portsmouth",
-        "Gosport",
-        "Havant",
-        "Waterlooville",
-        "Chichester"
+        "Chichester",
+        "Bognor Regis",
+        "Worthing",
+        "Littlehampton",
+        "Arundel",
+        "Midhurst",
+        "Petworth",
+        "Selsey",
+        "East Wittering",
+        "West Wittering"
       ],
-      "website": "https://www.rooferschichester.co.uk",
-      "postcode": "PO18"
+      "website": "https://www.chichesterroofers.co.uk",
+      "postcode": "PO19"
     },
     {
       "businessName": "Tradex Roofing",
+      "logo": "/logos/tradex-roofing.png",
       "location": "Basingstoke",
       "services": [
         "Roofing Repairs",
@@ -103,6 +111,7 @@
     },
     {
       "businessName": "NLG Contractors",
+      "logo": "/logos/nlg-contractors.png",
       "location": "Workington",
       "services": [
         "New Roofs",
@@ -130,6 +139,7 @@
     },
     {
       "businessName": "J&D Home Improvements",
+      "logo": "/logos/j-d-home-improvements.png",
       "location": "Weston-super-Mare",
       "services": [
         "Roof Repair",
@@ -153,6 +163,7 @@
     },
     {
       "businessName": "Roof Masters",
+      "logo": "/logos/roof-masters.png",
       "location": "Crewe",
       "services": [
         "Roof Repair",
@@ -188,6 +199,7 @@
     },
     {
       "businessName": "Alexander Construction",
+      "logo": "/logos/alexander-construction.png",
       "location": "Waltham Cross",
       "services": [
         "Roofing Repairs",
@@ -209,6 +221,7 @@
     },
     {
       "businessName": "Home Fix Roofing Ltd",
+      "logo": "/logos/home-fix-roofing-ltd.png",
       "location": "Barnet",
       "services": [
         "Roof Repairs",
@@ -225,14 +238,16 @@
         "Edgware",
         "Whetstone",
         "Totteridge",
+        "High Barnet",
         "East Barnet",
         "New Barnet"
       ],
-      "website": "https://www.rooferbarnet.co.uk",
-      "postcode": "WC2A"
+      "website": "https://www.barnetroofers.co.uk",
+      "postcode": "EN5"
     },
     {
       "businessName": "Roofing & Fascias",
+      "logo": "/logos/roofing-fascias.png",
       "location": "Doncaster",
       "services": [
         "Roof Repairs",
@@ -269,26 +284,53 @@
     },
     {
       "businessName": "Approved Roofing & Home Improvements Ltd",
+      "logo": "/logos/approved-roofing-home-improvements-ltd.png",
       "location": "Ramsgate",
       "services": [
-        "Roof Repairs",
+        "Roof Repair",
         "New Roofs",
-        "Home Improvements",
-        "Emergency Repairs",
+        "Emergency Roof Repair",
+        "Roof Inspection",
         "Roof Maintenance",
         "Guttering"
       ],
       "coverage": [
         "Ramsgate",
-        "Whitstable",
+        "Margate",
+        "Broadstairs",
         "Canterbury",
-        "Folkstone",
         "Dover",
         "Deal",
-        "Sandwich"
+        "Sandwich",
+        "Whitstable",
+        "Herne Bay"
       ],
-      "website": "https://www.roofersinmaidstone.co.uk",
+      "website": "https://www.roofersinramsgate.co.uk",
       "postcode": "CT11"
+    },
+    {
+      "businessName": "Bridgwater Roofing Services",
+      "logo": "/logos/bridgwater-roofing-services.png",
+      "location": "Bridgwater",
+      "services": [
+        "Roof Repair",
+        "New Roofs",
+        "Emergency Roof Repair",
+        "Roof Inspection",
+        "Roof Maintenance",
+        "Guttering"
+      ],
+      "coverage": [
+        "Portishead",
+        "Clevedon",
+        "Burnham-on-Sea",
+        "Newport",
+        "Weston-super-Mare",
+        "Bridgwater",
+        "Cardiff"
+      ],
+      "website": "https://www.roofersbridgwater.co.uk",
+      "postcode": "BS24"
     }
   ]
 } 
