@@ -2,10 +2,11 @@ import { useEffect, useRef, useState } from 'react';
 import mapboxgl from 'mapbox-gl';
 import 'mapbox-gl/dist/mapbox-gl.css';
 import rooferData from '@/data/roofers.json';
+import { Roofer, RooferData } from '@/types/roofers';
 
 interface MapProps {
   className?: string;
-  onRooferSelect?: (roofer: typeof rooferData.roofers[0]) => void;
+  onRooferSelect?: (roofer: Roofer) => void;
 }
 
 // Set your Mapbox token from environment variable
@@ -19,6 +20,7 @@ export default function RoofersMap({ className = '', onRooferSelect }: MapProps)
   const [map, setMap] = useState<mapboxgl.Map | null>(null);
   const [isLoading, setIsLoading] = useState(true);
   const markersRef = useRef<mapboxgl.Marker[]>([]);
+  const typedRooferData = rooferData as RooferData;
 
   useEffect(() => {
     // Check if mapboxgl is supported
@@ -55,7 +57,7 @@ export default function RoofersMap({ className = '', onRooferSelect }: MapProps)
         mapInstance.on('load', async () => {
           try {
             // Add markers for existing roofers
-            for (const roofer of rooferData.roofers) {
+            for (const roofer of typedRooferData.roofers) {
               try {
                 const response = await fetch(
                   `https://api.mapbox.com/geocoding/v5/mapbox.places/${encodeURIComponent(roofer.postcode)}.json?country=GB&types=postcode&access_token=${mapboxgl.accessToken}`
@@ -133,8 +135,8 @@ export default function RoofersMap({ className = '', onRooferSelect }: MapProps)
             }
 
             // Add markers for coming soon locations
-            if (rooferData.comingSoonLocations) {
-              for (const location of rooferData.comingSoonLocations) {
+            if (typedRooferData.comingSoonLocations) {
+              for (const location of typedRooferData.comingSoonLocations) {
                 try {
                   const response = await fetch(
                     `https://api.mapbox.com/geocoding/v5/mapbox.places/${encodeURIComponent(location.postcode)}.json?country=GB&types=postcode&access_token=${mapboxgl.accessToken}`
