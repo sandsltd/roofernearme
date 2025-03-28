@@ -2,7 +2,7 @@
   "roofers": [
     {
       "businessName": "ITF & Sons Roofing & Home Improvements",
-      "logo": "/logos/itf-sons-roofing-home-improvements.png",
+      "logo": "/logos/itf-and-sons-roofing-logo.jpeg",
       "location": "Chippenham",
       "services": [
         "Roofing Repairs",
@@ -24,7 +24,7 @@
     },
     {
       "businessName": "AS Ridgeline Roofing",
-      "logo": "/logos/as-ridgeline-roofing.png",
+      "logo": "/logos/as-ridgeline-roofing-logo-trans-2.webp",
       "location": "Dumbarton",
       "services": [
         "Slate Tile Roofing",
@@ -46,7 +46,7 @@
     },
     {
       "businessName": "Berkley Roofing Ltd",
-      "logo": "/logos/berkley-roofing-ltd.png",
+      "logo": "/logos/berkley-roofing.png",
       "location": "North West London",
       "services": [
         "Roofing Repairs",
@@ -71,7 +71,7 @@
     },
     {
       "businessName": "Supreme Roofing Ltd",
-      "logo": "/logos/supreme-roofing-ltd.png",
+      "logo": "/logos/supreme-roofing-logo.png",
       "location": "Chichester",
       "services": [
         "Roof Repairs",
@@ -111,7 +111,7 @@
     },
     {
       "businessName": "NLG Contractors",
-      "logo": "/logos/nlg-contractors.png",
+      "logo": "/logos/nlg-contractors-logo-new.png",
       "location": "Workington",
       "services": [
         "New Roofs",
@@ -163,7 +163,7 @@
     },
     {
       "businessName": "Roof Masters",
-      "logo": "/logos/roof-masters.png",
+      "logo": "/logos/roof-masters-logo.png",
       "location": "Crewe",
       "services": [
         "Roof Repair",
@@ -199,7 +199,7 @@
     },
     {
       "businessName": "Alexander Construction",
-      "logo": "/logos/alexander-construction.png",
+      "logo": "/logos/alexander-construction-logo-new.png",
       "location": "Waltham Cross",
       "services": [
         "Roofing Repairs",
@@ -221,7 +221,7 @@
     },
     {
       "businessName": "Home Fix Roofing Ltd",
-      "logo": "/logos/home-fix-roofing-ltd.png",
+      "logo": "/logos/home-fix-roofing-logo.jpg",
       "location": "Barnet",
       "services": [
         "Roof Repairs",
@@ -247,7 +247,7 @@
     },
     {
       "businessName": "Roofing & Fascias",
-      "logo": "/logos/roofing-fascias.png",
+      "logo": "/logos/roofing-and-fascias.png",
       "location": "Doncaster",
       "services": [
         "Roof Repairs",
@@ -284,7 +284,7 @@
     },
     {
       "businessName": "Approved Roofing & Home Improvements Ltd",
-      "logo": "/logos/approved-roofing-home-improvements-ltd.png",
+      "logo": "/logos/approved-roofing-logo.jpeg",
       "location": "Ramsgate",
       "services": [
         "Roof Repair",
