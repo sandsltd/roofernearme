@@ -29,39 +29,32 @@ export default function RoofersMap({ className = '', onRooferSelect }: MapProps)
     }
 
     const initializeMap = async () => {
-      if (!mapRef.current) return;
-
       try {
+        if (!mapRef.current) return;
+
         const mapInstance = new mapboxgl.Map({
           container: mapRef.current,
           style: 'mapbox://styles/mapbox/light-v11',
-          center: [-3.5, 55],
-          zoom: 5.5,
-          minZoom: 5.5,
-          maxZoom: 5.5,
-          bounds: [
-            [-8, 49.8], // Southwest coordinates (covering Cornwall)
-            [1, 61]    // Northeast coordinates (covering Shetland Islands)
-          ],
-          fitBoundsOptions: {
-            padding: { top: 20, bottom: 20, left: 20, right: 20 }
-          }
+          center: [-3.5, 54.5],
+          zoom: 5,
+          maxZoom: 8,
+          minZoom: 4
         });
 
-        // Disable zooming
-        mapInstance.scrollZoom.disable();
-        mapInstance.doubleClickZoom.disable();
-        mapInstance.touchZoomRotate.disable();
+        // Disable map rotation and pitch
+        mapInstance.dragRotate.disable();
+        mapInstance.touchZoomRotate.disableRotation();
+        mapInstance.setPitch(0);
 
-        // Remove navigation controls since zooming is disabled
-        // mapInstance.addControl(new mapboxgl.NavigationControl());
+        // Add navigation controls
+        mapInstance.addControl(new mapboxgl.NavigationControl({
+          showCompass: false
+        }), 'top-right');
 
-        // Wait for map to load before adding markers
+        // Wait for map to load
         mapInstance.on('load', async () => {
           try {
-            const bounds = new mapboxgl.LngLatBounds();
-
-            // Add markers for each roofer
+            // Add markers for existing roofers
             for (const roofer of rooferData.roofers) {
               try {
                 const response = await fetch(
@@ -77,7 +70,7 @@ export default function RoofersMap({ className = '', onRooferSelect }: MapProps)
                 if (data.features && data.features[0]) {
                   const [lng, lat] = data.features[0].center;
 
-                  // Create marker element
+                  // Create marker element for roofer
                   const markerEl = document.createElement('div');
                   markerEl.className = 'w-6 h-6 rounded-full bg-yellow-400 border-2 border-black cursor-pointer transition-all duration-200';
                   markerEl.style.width = '24px';
@@ -106,9 +99,6 @@ export default function RoofersMap({ className = '', onRooferSelect }: MapProps)
 
                   // Store marker reference
                   markersRef.current.push(marker);
-
-                  // Extend bounds
-                  bounds.extend([lng, lat]);
 
                   // Create popup
                   const popup = new mapboxgl.Popup({
@@ -142,12 +132,77 @@ export default function RoofersMap({ className = '', onRooferSelect }: MapProps)
               }
             }
 
-            // Fit map to bounds if we have any markers
-            if (!bounds.isEmpty()) {
-              mapInstance.fitBounds(bounds, { 
-                padding: { top: 50, bottom: 50, left: 50, right: 50 },
-                maxZoom: 5 // Lock the zoom level
-              });
+            // Add markers for coming soon locations
+            if (rooferData.comingSoonLocations) {
+              for (const location of rooferData.comingSoonLocations) {
+                try {
+                  const response = await fetch(
+                    `https://api.mapbox.com/geocoding/v5/mapbox.places/${encodeURIComponent(location.postcode)}.json?country=GB&types=postcode&access_token=${mapboxgl.accessToken}`
+                  );
+                  
+                  if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                  }
+                  
+                  const data = await response.json();
+
+                  if (data.features && data.features[0]) {
+                    const [lng, lat] = data.features[0].center;
+
+                    // Create marker element for coming soon location
+                    const markerEl = document.createElement('div');
+                    markerEl.className = 'w-6 h-6 rounded-full bg-red-500 border-2 border-white cursor-pointer transition-all duration-200';
+                    markerEl.style.width = '24px';
+                    markerEl.style.height = '24px';
+                    markerEl.style.backgroundColor = '#EF4444';
+                    markerEl.style.border = '2px solid white';
+                    markerEl.style.borderRadius = '50%';
+                    markerEl.style.cursor = 'pointer';
+                    markerEl.style.transition = 'all 0.2s';
+                    markerEl.style.boxShadow = '0 0 0 2px rgba(239, 68, 68, 0.3)';
+
+                    // Create inner element for hover effect
+                    const innerEl = document.createElement('div');
+                    innerEl.style.width = '100%';
+                    innerEl.style.height = '100%';
+                    innerEl.style.backgroundColor = '#EF4444';
+                    innerEl.style.borderRadius = '50%';
+                    markerEl.appendChild(innerEl);
+
+                    // Create and add marker
+                    const marker = new mapboxgl.Marker({
+                      element: markerEl,
+                      anchor: 'center'
+                    })
+                      .setLngLat([lng, lat])
+                      .addTo(mapInstance);
+
+                    // Store marker reference
+                    markersRef.current.push(marker);
+
+                    // Create popup
+                    const popup = new mapboxgl.Popup({
+                      closeButton: false,
+                      closeOnClick: false,
+                      offset: 15
+                    })
+                      .setHTML(`<div class="px-3 py-2 bg-red-500 rounded shadow text-sm font-medium text-white">Coming Soon: ${location.city}</div>`);
+
+                    // Add hover events
+                    markerEl.addEventListener('mouseenter', () => {
+                      innerEl.style.transform = 'scale(1.1)';
+                      marker.setPopup(popup);
+                      popup.addTo(mapInstance);
+                    });
+                    markerEl.addEventListener('mouseleave', () => {
+                      innerEl.style.transform = 'scale(1)';
+                      popup.remove();
+                    });
+                  }
+                } catch (error) {
+                  console.error(`Error adding coming soon marker for ${location.postcode}:`, error);
+                }
+              }
             }
 
             setIsLoading(false);
