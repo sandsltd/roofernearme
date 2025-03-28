@@ -4,7 +4,6 @@ import Image from 'next/image';
 
 interface RooferCardProps {
   businessName: string;
-  logo?: string;
   address: string;
   website?: string;
   services?: string[];
@@ -14,30 +13,39 @@ interface RooferCardProps {
 
 export default function RooferCard({ 
   businessName, 
-  logo, 
   address, 
   website, 
   services = [], 
   coverage = [],
   distance
 }: RooferCardProps) {
+  // Generate logo path from business name
+  const logoPath = `/logos/${businessName.toLowerCase().replace(/[^a-z0-9]+/g, '-')}.png`;
+
   return (
     <div className="bg-white rounded-2xl shadow-xl overflow-hidden hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1 w-full min-h-[400px] flex flex-col">
       {/* Card Header */}
       <div className="bg-gradient-to-r from-blue-600 to-blue-800 p-6 flex-shrink-0">
         <div className="flex items-start gap-4">
           <div className="bg-white p-2 rounded-full shadow-md w-16 h-16 flex items-center justify-center overflow-hidden flex-shrink-0">
-            {logo ? (
-              <Image
-                src={logo}
-                alt={`${businessName} logo`}
-                width={48}
-                height={48}
-                className="w-12 h-12 object-contain rounded-full"
-              />
-            ) : (
-              <FaHome className="w-8 h-8 text-blue-600" />
-            )}
+            <Image
+              src={logoPath}
+              alt={`${businessName} logo`}
+              width={48}
+              height={48}
+              className="w-12 h-12 object-contain rounded-full"
+              onError={(e) => {
+                // If logo fails to load, replace with default home icon
+                const target = e.target as HTMLImageElement;
+                target.style.display = 'none';
+                const parent = target.parentElement;
+                if (parent) {
+                  const icon = document.createElement('div');
+                  icon.innerHTML = '<svg class="w-8 h-8 text-blue-600" fill="currentColor" viewBox="0 0 20 20"><path d="M10.707 2.293a1 1 0 00-1.414 0l-7 7a1 1 0 001.414 1.414L4 10.414V17a1 1 0 001 1h2a1 1 0 001-1v-2a1 1 0 011-1h2a1 1 0 011 1v2a1 1 0 001 1h2a1 1 0 001-1v-6.586l.293.293a1 1 0 001.414-1.414l-7-7z"></path></svg>';
+                  parent.appendChild(icon.firstChild!);
+                }
+              }}
+            />
           </div>
           <div className="flex-grow">
             <h3 className="text-xl font-bold text-white leading-tight mb-1">{businessName}</h3>
