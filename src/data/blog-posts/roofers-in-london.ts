@@ -149,7 +149,7 @@ Ready to find a trusted roofer in London? Use our search tool to connect with ve
 `,
   date: '2024-03-23',
   category: 'Location Guides',
-  image: '/blog/london-roofers.jpg',
+  image: '/blog/roofer-in-london.png',
   readTime: '8 min read',
   seoTitle: 'Find Trusted Roofers in London | Local Roofing Experts',
   seoDescription: 'Connect with verified local roofers in London. Get expert roofing services for all property types, from Victorian terraces to modern buildings.',
