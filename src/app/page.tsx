@@ -8,6 +8,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import Script from 'next/script';
 import RoofersMap from '@/components/RoofersMap';
+import LondonMap from '@/components/LondonMap';
 
 // Define Google Maps types
 declare global {
@@ -620,25 +621,51 @@ export default function Home() {
         {hasSearched && <SearchResults />}
 
         {/* Map Section */}
-        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
           <div className="text-center mb-12">
             <h1 className="text-4xl md:text-5xl font-extrabold text-center mb-4 text-gray-900">Our Network of Trusted Roofers</h1>
             <p className="text-gray-600 mb-4">
               Discover our verified roofing professionals across the UK. Hover over any marker to see the roofer&apos;s name, and click to search in their area.
             </p>
           </div>
-          <div className="relative w-full max-w-3xl mx-auto h-[675px] rounded-xl overflow-hidden shadow-lg">
-            <RoofersMap 
-              className="w-full h-full" 
-              onRooferSelect={(roofer) => {
-                // Scroll to top first
-                window.scrollTo({ top: 0, behavior: 'smooth' });
-                // Short delay before starting search to allow smooth scroll
-                setTimeout(() => {
-                  handleSearch(roofer.postcode);
-                }, 300);
-              }}
-            />
+          <div className="grid grid-cols-1 lg:grid-cols-5 gap-8">
+            {/* UK Map */}
+            <div className="lg:col-span-3 flex flex-col">
+              <div className="relative w-full h-[675px] rounded-xl overflow-hidden shadow-lg border border-gray-100">
+                <div className="absolute top-0 left-0 bg-white/90 px-4 py-2 rounded-br text-sm font-medium z-10 border-b border-r border-gray-100">
+                  United Kingdom
+                </div>
+                <RoofersMap 
+                  className="w-full h-full" 
+                  onRooferSelect={(roofer) => {
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                    setTimeout(() => {
+                      handleSearch(roofer.postcode);
+                    }, 300);
+                  }}
+                />
+              </div>
+              <p className="mt-3 text-sm text-gray-600 text-center">View all our trusted roofers across the UK</p>
+            </div>
+            
+            {/* London Map */}
+            <div className="lg:col-span-2 flex flex-col">
+              <div className="relative w-full h-[500px] rounded-xl overflow-hidden shadow-lg border border-gray-100">
+                <div className="absolute top-0 left-0 bg-white/90 px-4 py-2 rounded-br text-sm font-medium z-10 border-b border-r border-gray-100">
+                  Greater London Area
+                </div>
+                <LondonMap 
+                  className="w-full h-full"
+                  onRooferSelect={(roofer) => {
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                    setTimeout(() => {
+                      handleSearch(roofer.postcode);
+                    }, 300);
+                  }}
+                />
+              </div>
+              <p className="mt-3 text-sm text-gray-600 text-center">Detailed view of our London coverage</p>
+            </div>
           </div>
         </div>
 
