@@ -17,7 +17,6 @@ mapboxgl.accessToken = process.env.NEXT_PUBLIC_MAPBOX_TOKEN;
 
 export default function RoofersMap({ className = '', onRooferSelect }: MapProps) {
   const mapRef = useRef<HTMLDivElement>(null);
-  const [map, setMap] = useState<mapboxgl.Map | null>(null);
   const [isLoading, setIsLoading] = useState(true);
   const markersRef = useRef<mapboxgl.Marker[]>([]);
   const typedRooferData = rooferData as RooferData;
@@ -30,6 +29,8 @@ export default function RoofersMap({ className = '', onRooferSelect }: MapProps)
     }
 
     let handleResize: (() => void) | null = null;
+    // Store markers in a variable that can be used in cleanup
+    const currentMarkers: mapboxgl.Marker[] = [];
 
     const initializeMap = async () => {
       try {
@@ -110,8 +111,9 @@ export default function RoofersMap({ className = '', onRooferSelect }: MapProps)
                     .setLngLat([lng, lat])
                     .addTo(mapInstance);
 
-                  // Store marker reference
+                  // Store marker reference in both refs and local array
                   markersRef.current.push(marker);
+                  currentMarkers.push(marker);
 
                   // Create popup
                   const popup = new mapboxgl.Popup({
@@ -190,8 +192,9 @@ export default function RoofersMap({ className = '', onRooferSelect }: MapProps)
                       .setLngLat([lng, lat])
                       .addTo(mapInstance);
 
-                    // Store marker reference
+                    // Store marker reference in both refs and local array
                     markersRef.current.push(marker);
+                    currentMarkers.push(marker);
 
                     // Create popup
                     const popup = new mapboxgl.Popup({
@@ -229,8 +232,6 @@ export default function RoofersMap({ className = '', onRooferSelect }: MapProps)
           console.error('Map error:', e);
           setIsLoading(false);
         });
-
-        setMap(mapInstance);
       } catch (error) {
         console.error('Error initializing map:', error);
         setIsLoading(false);
@@ -243,10 +244,10 @@ export default function RoofersMap({ className = '', onRooferSelect }: MapProps)
       if (handleResize) {
         window.removeEventListener('resize', handleResize);
       }
-      // Clean up markers
-      markersRef.current.forEach(marker => marker.remove());
+      // Clean up markers using the local array
+      currentMarkers.forEach(marker => marker.remove());
     };
-  }, [onRooferSelect]);
+  }, [onRooferSelect, typedRooferData.roofers, typedRooferData.comingSoonLocations]);
 
   return (
     <div className={`relative ${className}`} style={{ width: '100%', height: '100%' }}>
