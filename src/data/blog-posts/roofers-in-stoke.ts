@@ -19,6 +19,12 @@ const post: BlogPost = {
         </ul>
       </div>
 
+      <div class="text-center my-8">
+        <a href="/" class="inline-block bg-yellow-400 text-black px-8 py-3 rounded-lg font-semibold hover:bg-yellow-500 transition-all duration-300 shadow-md">
+          Find Local Roofers in Stoke-on-Trent
+        </a>
+      </div>
+
       <div class="architecture bg-yellow-50 p-6 rounded-lg my-8">
         <h3 class="text-2xl font-semibold mb-4">Stoke-on-Trent's Diverse Architecture</h3>
         <div class="grid md:grid-cols-2 gap-6">
@@ -91,6 +97,12 @@ const post: BlogPost = {
             <li>Sneyd Green</li>
           </ul>
         </div>
+      </div>
+
+      <div class="text-center my-8">
+        <a href="/" class="inline-block bg-yellow-400 text-black px-8 py-3 rounded-lg font-semibold hover:bg-yellow-500 transition-all duration-300 shadow-md">
+          Find a Roofer in Your Area
+        </a>
       </div>
 
       <div class="local-considerations bg-red-50 p-6 rounded-lg my-8">

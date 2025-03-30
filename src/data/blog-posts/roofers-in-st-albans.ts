@@ -19,6 +19,10 @@ const stAlbansPost: BlogPost = {
         </ul>
       </div>
 
+      <div class="flex justify-center my-8">
+        <a href="/" class="inline-block bg-yellow-400 text-black px-8 py-3 rounded-lg font-semibold hover:bg-yellow-500 transition-all duration-300 shadow-lg">Find Local Roofers in St Albans</a>
+      </div>
+
       <div class="architecture bg-yellow-50 p-6 rounded-lg my-8">
         <h3 class="text-2xl font-semibold mb-4">St Albans' Unique Architecture</h3>
         <div class="grid md:grid-cols-2 gap-6">
@@ -94,6 +98,10 @@ const stAlbansPost: BlogPost = {
             <li>Bricket Wood</li>
           </ul>
         </div>
+      </div>
+
+      <div class="flex justify-center my-8">
+        <a href="/" class="inline-block bg-yellow-400 text-black px-8 py-3 rounded-lg font-semibold hover:bg-yellow-500 transition-all duration-300 shadow-lg">Find a Roofer in Your Area</a>
       </div>
 
       <div class="local-considerations bg-red-50 p-6 rounded-lg my-8">

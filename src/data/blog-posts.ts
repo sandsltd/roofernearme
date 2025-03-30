@@ -24,7 +24,6 @@ import roofersInStoke from './blog-posts/roofers-in-stoke';
 import emergencyRoofRepairs from './blog-posts/emergency-roof-repairs';
 import choosingRoofingMaterial from './blog-posts/choosing-roofing-material';
 import winterRoofMaintenance from './blog-posts/winter-roof-maintenance';
-import roofingServicesChichester from './blog-posts/roofing-services-chichester';
 import flatRoofMaintenance from './blog-posts/flat-roof-maintenance';
 import roofWarranties from './blog-posts/roof-warranties';
 import comparingRoofingMaterials from './blog-posts/comparing-roofing-materials';
@@ -34,6 +33,10 @@ import roofersInStAlbans from './blog-posts/roofers-in-st-albans';
 import roofersInWorthing from './blog-posts/roofers-in-worthing';
 import roofersInWestonSuperMare from './blog-posts/roofers-in-weston-super-mare';
 import roofersInCarlisle from './blog-posts/roofers-in-carlisle';
+import roofersInChichester from './blog-posts/roofers-in-chichester';
+import roofersInPortsmouth from './blog-posts/roofers-in-portsmouth';
+import roofersInSouthampton from './blog-posts/roofers-in-southampton';
+import roofersInReading from './blog-posts/roofers-in-reading';
 
 // Update image paths for each post
 const posts: BlogPost[] = [
@@ -126,10 +129,6 @@ const posts: BlogPost[] = [
     image: '/blog/winter-roof-maintenance-snow.png'
   },
   {
-    ...roofingServicesChichester,
-    image: '/blog/chichester-cathedral-roofing-services.png'
-  },
-  {
     ...flatRoofMaintenance,
     image: '/blog/flat-roof-maintenance.png'
   },
@@ -164,6 +163,22 @@ const posts: BlogPost[] = [
   {
     ...roofersInCarlisle,
     image: '/blog/roofer-in-carlisle.png'
+  },
+  {
+    ...roofersInChichester,
+    image: '/blog/chichester-cathedral-roofing-services.png'
+  },
+  {
+    ...roofersInPortsmouth,
+    image: '/blog/roofer-in-portsmouth.png'
+  },
+  {
+    ...roofersInSouthampton,
+    image: '/blog/roofer-in-southampton.png'
+  },
+  {
+    ...roofersInReading,
+    image: '/blog/roofer-in-reading.png'
   }
 ];
 
