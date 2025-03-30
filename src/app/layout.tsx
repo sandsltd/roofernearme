@@ -16,6 +16,21 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   title: "Local Roofer Near Me - Find Trusted Roofing Contractors",
   description: "Find trusted local roofing contractors near you. Compare reviews, ratings, and services to choose the best roofer for your project.",
+  metadataBase: new URL('https://www.localroofernearme.co.uk'),
+  alternates: {
+    canonical: '/',
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      'max-image-preview': 'large',
+      'max-video-preview': -1,
+      'max-snippet': -1,
+    },
+  },
   icons: {
     icon: '/favicon.ico',
     apple: '/apple-touch-icon.png',

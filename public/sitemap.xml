@@ -5,18 +5,18 @@
         http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
   <url>
     <loc>https://www.localroofernearme.co.uk/</loc>
-    <lastmod>2024-03-28T09:01:19+00:00</lastmod>
-    <priority>1.00</priority>
+    <changefreq>daily</changefreq>
+    <priority>1.0</priority>
   </url>
   <url>
     <loc>https://www.localroofernearme.co.uk/recommend</loc>
-    <lastmod>2024-03-28T09:01:19+00:00</lastmod>
-    <priority>0.80</priority>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
   </url>
   <url>
     <loc>https://www.localroofernearme.co.uk/blog</loc>
-    <lastmod>2024-03-28T09:01:19+00:00</lastmod>
-    <priority>0.64</priority>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
   </url>
   <url>
     <loc>https://www.localroofernearme.co.uk/blog/roofers-in-brighton</loc>
@@ -151,6 +151,21 @@
   <url>
     <loc>https://www.localroofernearme.co.uk/blog/roof-safety-tips</loc>
     <lastmod>2024-03-28T09:01:19+00:00</lastmod>
+    <priority>0.51</priority>
+  </url>
+  <url>
+    <loc>https://www.localroofernearme.co.uk/blog/roofers-in-portsmouth</loc>
+    <lastmod>2024-03-29T00:00:00+00:00</lastmod>
+    <priority>0.51</priority>
+  </url>
+  <url>
+    <loc>https://www.localroofernearme.co.uk/blog/roofers-in-reading</loc>
+    <lastmod>2024-03-29T00:00:00+00:00</lastmod>
+    <priority>0.51</priority>
+  </url>
+  <url>
+    <loc>https://www.localroofernearme.co.uk/blog/roofers-in-southampton</loc>
+    <lastmod>2024-03-29T00:00:00+00:00</lastmod>
     <priority>0.51</priority>
   </url>
 </urlset>
