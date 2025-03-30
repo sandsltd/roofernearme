@@ -37,6 +37,12 @@ import roofersInChichester from './blog-posts/roofers-in-chichester';
 import roofersInPortsmouth from './blog-posts/roofers-in-portsmouth';
 import roofersInSouthampton from './blog-posts/roofers-in-southampton';
 import roofersInReading from './blog-posts/roofers-in-reading';
+import roofersInWales from './blog-posts/roofers-in-wales';
+import roofersInScotland from './blog-posts/roofers-in-scotland';
+import roofersInEngland from './blog-posts/roofers-in-england';
+import roofersInWiltshire from './blog-posts/roofers-in-wiltshire';
+import roofersInHampshire from './blog-posts/roofers-in-hampshire';
+import roofersInCumbria from './blog-posts/roofers-in-cumbria';
 
 // Update image paths for each post
 const posts: BlogPost[] = [
@@ -47,6 +53,30 @@ const posts: BlogPost[] = [
   {
     ...costOfRoofReplacement,
     image: '/blog/cost-of-roof-replacement.png'
+  },
+  {
+    ...roofersInWales,
+    image: '/blog/roofer-in-wales.png'
+  },
+  {
+    ...roofersInScotland,
+    image: '/blog/roofer-in-scotland.png'
+  },
+  {
+    ...roofersInEngland,
+    image: '/blog/roofer-in-england.png'
+  },
+  {
+    ...roofersInWiltshire,
+    image: '/blog/roofer-in-wiltshire.png'
+  },
+  {
+    ...roofersInHampshire,
+    image: '/blog/roofer-in-hampshire.png'
+  },
+  {
+    ...roofersInCumbria,
+    image: '/blog/roofer-in-cumbria.png'
   },
   {
     ...roofersInGlasgow,
