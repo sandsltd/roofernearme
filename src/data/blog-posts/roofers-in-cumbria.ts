@@ -39,7 +39,7 @@ const cumbriaPost: BlogPost = {
           "name": "How often should I have my roof inspected in Cumbria?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Annual inspections are recommended, with additional checks after severe weather events, which are common in Cumbria's varied climate."
+            "text": "Annual inspections are recommended, with additional checks after severe weather events, which are common in Cumbria&apos;s varied climate."
           }
         }]
       }
@@ -90,7 +90,7 @@ const cumbriaPost: BlogPost = {
 
       <div class="architecture bg-yellow-50 p-6 rounded-lg my-8">
         <h3 class="text-2xl font-semibold mb-4">Cumbrian Architectural Heritage</h3>
-        <p class="mb-4">Cumbria's diverse architectural heritage requires specialized roofing expertise:</p>
+        <p class="mb-4">Cumbria&apos;s diverse architectural heritage requires specialized roofing expertise:</p>
         <div class="grid md:grid-cols-2 gap-6">
           <div>
             <h4 class="font-semibold mb-2">Traditional Properties</h4>
@@ -181,7 +181,7 @@ const cumbriaPost: BlogPost = {
         <ul class="space-y-3">
           <li><strong>Lake District Requirements:</strong> Special considerations for National Park properties</li>
           <li><strong>Traditional Materials:</strong> Expertise in Cumbrian slate and local stone</li>
-          <li><strong>Weather Protection:</strong> Solutions for Cumbria's harsh climate</li>
+          <li><strong>Weather Protection:</strong> Solutions for Cumbria&apos;s harsh climate</li>
           <li><strong>Planning Rules:</strong> Understanding of local building regulations</li>
           <li><strong>Property Types:</strong> Experience with diverse architectural styles</li>
         </ul>
@@ -208,7 +208,7 @@ const cumbriaPost: BlogPost = {
           </div>
           <div>
             <h4 class="font-semibold">Do I need planning permission for roof work in Cumbria?</h4>
-            <p>Most repairs and maintenance don't require planning permission, but work in the Lake District National Park, conservation areas, or on listed buildings may need approval from local authorities.</p>
+            <p>Most repairs and maintenance don&apos;t require planning permission, but work in the Lake District National Park, conservation areas, or on listed buildings may need approval from local authorities.</p>
           </div>
           <div>
             <h4 class="font-semibold">What roofing materials are commonly used in Cumbria?</h4>
@@ -216,7 +216,7 @@ const cumbriaPost: BlogPost = {
           </div>
           <div>
             <h4 class="font-semibold">How often should I have my roof inspected in Cumbria?</h4>
-            <p>Annual inspections are recommended, with additional checks after severe weather events, which are common in Cumbria's varied climate.</p>
+            <p>Annual inspections are recommended, with additional checks after severe weather events, which are common in Cumbria&apos;s varied climate.</p>
           </div>
         </div>
       </div>
@@ -235,7 +235,7 @@ const cumbriaPost: BlogPost = {
 
       <div class="cta-box bg-gray-50 p-8 rounded-lg my-8 text-center">
         <h3 class="text-2xl font-semibold mb-4">Ready to Find Trusted Roofers in Cumbria?</h3>
-        <p class="mb-6">Connect with experienced local roofing professionals who understand Cumbria's unique requirements.</p>
+        <p class="mb-6">Connect with experienced local roofing professionals who understand Cumbria&apos;s unique requirements.</p>
         <a href="/" class="inline-block bg-yellow-400 text-black px-8 py-3 rounded-lg font-semibold hover:bg-yellow-500 transition-all duration-300">Find Local Roofers</a>
       </div>
     </div>

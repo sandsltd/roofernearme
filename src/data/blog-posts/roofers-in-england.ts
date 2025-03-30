@@ -75,7 +75,7 @@ const englandPost: BlogPost = {
         <ul class="space-y-3">
           <li>🏛️ Expert knowledge of regional architectural styles</li>
           <li>📋 Understanding of local building regulations</li>
-          <li>🌧️ Experience with England's varied weather conditions</li>
+          <li>🌧️ Experience with England&apos;s varied weather conditions</li>
           <li>🏰 Specialists in heritage and listed buildings</li>
           <li>🔧 Access to region-specific materials</li>
         </ul>
@@ -89,7 +89,7 @@ const englandPost: BlogPost = {
 
       <div class="architecture bg-yellow-50 p-6 rounded-lg my-8">
         <h3 class="text-2xl font-semibold mb-4">Regional Architectural Styles</h3>
-        <p class="mb-4">England's diverse architectural heritage requires specialized roofing expertise for different regions:</p>
+        <p class="mb-4">England&apos;s diverse architectural heritage requires specialized roofing expertise for different regions:</p>
         <div class="grid md:grid-cols-2 gap-6">
           <div>
             <h4 class="font-semibold mb-2">Northern England</h4>
@@ -207,7 +207,7 @@ const englandPost: BlogPost = {
           </div>
           <div>
             <h4 class="font-semibold">Do I need planning permission for roof work in England?</h4>
-            <p>Most repairs and maintenance don't require planning permission, but significant alterations or work on listed buildings may need approval from your local authority.</p>
+            <p>Most repairs and maintenance don&apos;t require planning permission, but significant alterations or work on listed buildings may need approval from your local authority.</p>
           </div>
           <div>
             <h4 class="font-semibold">How do I find a reliable roofer in England?</h4>

@@ -75,7 +75,7 @@ const walesPost: BlogPost = {
         <ul class="space-y-3">
           <li>🏛️ Expertise in traditional Welsh architecture</li>
           <li>📋 Understanding of Welsh building regulations</li>
-          <li>🌧️ Experience with Wales' challenging weather conditions</li>
+          <li>🌧️ Experience with Wales&apos; challenging weather conditions</li>
           <li>🏰 Specialists in heritage and listed buildings</li>
           <li>🔧 Knowledge of Welsh slate and local materials</li>
         </ul>
@@ -178,7 +178,7 @@ const walesPost: BlogPost = {
       <div class="local-considerations bg-red-50 p-6 rounded-lg my-8">
         <h3 class="text-2xl font-semibold mb-4">Local Roofing Considerations</h3>
         <ul class="space-y-3">
-          <li><strong>Climate Challenges:</strong> Solutions for Wales' high rainfall and coastal exposure</li>
+          <li><strong>Climate Challenges:</strong> Solutions for Wales&apos; high rainfall and coastal exposure</li>
           <li><strong>Traditional Materials:</strong> Expertise in Welsh slate and local stone</li>
           <li><strong>Conservation Areas:</strong> Understanding of Welsh heritage requirements</li>
           <li><strong>Building Regulations:</strong> Compliance with Welsh building standards</li>
@@ -207,7 +207,7 @@ const walesPost: BlogPost = {
           </div>
           <div>
             <h4 class="font-semibold">Do I need planning permission for roof work in Wales?</h4>
-            <p>Most repairs and maintenance don't require planning permission, but significant alterations or work on listed buildings may need approval from your local Welsh authority.</p>
+            <p>Most repairs and maintenance don&apos;t require planning permission, but significant alterations or work on listed buildings may need approval from your local Welsh authority.</p>
           </div>
           <div>
             <h4 class="font-semibold">What roofing materials are commonly used in Wales?</h4>
@@ -215,7 +215,7 @@ const walesPost: BlogPost = {
           </div>
           <div>
             <h4 class="font-semibold">How often should I have my roof inspected in Wales?</h4>
-            <p>Due to Wales' climate, annual inspections are recommended, with additional checks after severe weather events.</p>
+            <p>Due to Wales&apos; climate, annual inspections are recommended, with additional checks after severe weather events.</p>
           </div>
         </div>
       </div>
