@@ -29,6 +29,11 @@ import flatRoofMaintenance from './blog-posts/flat-roof-maintenance';
 import roofWarranties from './blog-posts/roof-warranties';
 import comparingRoofingMaterials from './blog-posts/comparing-roofing-materials';
 import roofSafetyTips from './blog-posts/roof-safety-tips';
+import roofersInBasingstoke from './blog-posts/roofers-in-basingstoke';
+import roofersInStAlbans from './blog-posts/roofers-in-st-albans';
+import roofersInWorthing from './blog-posts/roofers-in-worthing';
+import roofersInWestonSuperMare from './blog-posts/roofers-in-weston-super-mare';
+import roofersInCarlisle from './blog-posts/roofers-in-carlisle';
 
 // Update image paths for each post
 const posts: BlogPost[] = [
@@ -139,6 +144,26 @@ const posts: BlogPost[] = [
   {
     ...roofSafetyTips,
     image: '/blog/winter-roof-maintenance-snow.png'
+  },
+  {
+    ...roofersInBasingstoke,
+    image: '/blog/roofer-in-basingstoke.png'
+  },
+  {
+    ...roofersInStAlbans,
+    image: '/blog/roofer-in-stalbans.png'
+  },
+  {
+    ...roofersInWorthing,
+    image: '/blog/roofer-in-worthing.png'
+  },
+  {
+    ...roofersInWestonSuperMare,
+    image: '/blog/roofer-in-weston-super-mare.png'
+  },
+  {
+    ...roofersInCarlisle,
+    image: '/blog/roofer-in-carlisle.png'
   }
 ];
 
@@ -155,4 +180,6 @@ export const getPostBySlug = (slug: string): BlogPost | undefined => {
 // Helper function to get all posts
 export const getAllPosts = (): BlogPost[] => {
   return blogPosts;
-}; 
+};
+
+export default blogPosts; 
