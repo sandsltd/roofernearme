@@ -9,6 +9,7 @@ import Image from 'next/image';
 import Script from 'next/script';
 import RoofersMap from '@/components/RoofersMap';
 import LondonMap from '@/components/LondonMap';
+import { blogPosts } from '@/data/blog-posts';
 
 // Define Google Maps types
 declare global {
@@ -449,18 +450,59 @@ export default function Home() {
               "@type": "PostalAddress",
               "addressCountry": "GB"
             },
-            "aggregateRating": {
-              "@type": "AggregateRating",
-              "ratingValue": "4.8",
-              "reviewCount": "150"
-            },
             "serviceType": [
               "Roof Repair",
               "Roof Replacement",
               "Emergency Roof Repair",
               "Gutter Repair",
               "Gutter Replacement"
-            ]
+            ],
+            "mainEntity": [{
+              "@type": "FAQPage",
+              "mainEntity": [{
+                "@type": "Question",
+                "name": "How do I find a reliable local roofer?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Enter your postcode in our search bar to find verified local roofers in your area. All roofers in our network are vetted and reviewed to ensure quality service."
+                }
+              }, {
+                "@type": "Question",
+                "name": "How much does a new roof cost?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Roof costs vary depending on size, materials, and complexity. Get free quotes from local roofers to receive accurate pricing for your specific project."
+                }
+              }, {
+                "@type": "Question",
+                "name": "Do I need planning permission for roof work?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Most repairs don't require permission, but significant alterations might. Our local roofers can advise on planning requirements for your specific project."
+                }
+              }, {
+                "@type": "Question",
+                "name": "How quickly can I get a roofer?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "For emergency repairs, many of our roofers offer same-day service. For standard projects, you can typically get quotes within 24-48 hours."
+                }
+              }, {
+                "@type": "Question",
+                "name": "Are your roofers insured?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Our listed roofers indicate they are fully insured. For specific details about insurance coverage and certifications, please check directly with the roofing company."
+                }
+              }, {
+                "@type": "Question",
+                "name": "What roofing services are available?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Our roofers offer a full range of services including repairs, replacements, emergency work, guttering, chimney work, and maintenance."
+                }
+              }]
+            }]
           })
         }}
       />
@@ -508,111 +550,117 @@ export default function Home() {
 
           {/* Hero Content */}
           <div className="relative z-10 py-24 px-4 sm:px-6 lg:px-8">
-            <div className="text-center mb-12">
+            <div className="text-center">
               <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold text-white mb-6 tracking-tight">
-                Find Trusted Local Roofers
+                Find Trusted Local Roofers<br />
+                <span className="text-yellow-400">In Your Area Today</span>
               </h1>
-              <p className="text-lg md:text-xl text-white/90 max-w-2xl mx-auto mb-12">
-                Connect with verified roofing professionals in your area. Get quick responses and quality service for all your roofing needs.
+              <p className="text-lg md:text-xl text-white/90 max-w-2xl mx-auto mb-8">
+                Connect with verified roofing professionals for repairs, installations, and maintenance. Get free quotes and expert advice.
+              </p>
+              <div className="max-w-xl mx-auto">
+                <div className="relative bg-white rounded-lg shadow-xl">
+                  <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
+                    <FaMapMarkerAlt className="h-5 w-5 text-gray-500" />
+                  </div>
+                  <input
+                    type="text"
+                    value={searchTerm}
+                    onChange={(e) => setSearchTerm(e.target.value)}
+                    placeholder="Enter your postcode..."
+                    className="block w-full pl-12 pr-32 py-4 rounded-lg text-gray-900 placeholder-gray-500 text-lg bg-white focus:outline-none focus:ring-2 focus:ring-yellow-500"
+                    onKeyPress={(e) => {
+                      if (e.key === 'Enter') {
+                        handleSearch();
+                      }
+                    }}
+                  />
+                  <div className="absolute inset-y-0 right-0 flex py-2 pr-2">
+                    <button
+                      onClick={() => handleSearch()}
+                      className="inline-flex items-center px-6 py-2 border border-transparent text-base font-medium rounded-md text-black bg-yellow-400 hover:bg-yellow-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-yellow-500 transition-colors duration-300 shadow-sm"
+                    >
+                      <FaSearch className="mr-2" />
+                      Search
+                    </button>
+                  </div>
+                </div>
+                <p className="text-sm text-white mt-3 text-center">
+                  For best results, enter your full postcode (e.g., SO41 9GH)
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Trust Signals Section */}
+        <div className="bg-white py-12 shadow-inner">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
+              <div className="p-6">
+                <div className="bg-yellow-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
+                  <FaMapMarkerAlt className="h-8 w-8 text-yellow-600" />
+                </div>
+                <h3 className="text-2xl font-bold text-gray-900 mb-2">UK Coverage</h3>
+                <p className="text-gray-600">Connecting you with local roofers nationwide</p>
+              </div>
+              <div className="p-6">
+                <div className="bg-yellow-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
+                  <FaCheckCircle className="h-8 w-8 text-yellow-600" />
+                </div>
+                <h3 className="text-2xl font-bold text-gray-900 mb-2">Verified Pros</h3>
+                <p className="text-gray-600">All roofers are vetted and reviewed</p>
+              </div>
+              <div className="p-6">
+                <div className="bg-yellow-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
+                  <FaClock className="h-8 w-8 text-yellow-600" />
+                </div>
+                <h3 className="text-2xl font-bold text-gray-900 mb-2">Quick Response</h3>
+                <p className="text-gray-600">Fast quotes from local experts</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Featured Services Section */}
+        <div className="bg-gray-50 py-16">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="text-center mb-12">
+              <h2 className="text-3xl font-bold text-gray-900 mb-4">Our Roofing Services</h2>
+              <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+                From emergency repairs to complete roof replacements, find expert roofers for any job
               </p>
             </div>
-
-            {/* Search Section */}
-            <div className="max-w-xl mx-auto">
-              <div className="relative">
-                {isLoading ? (
-                  <div className="w-full py-4 flex justify-center items-center bg-white rounded-lg shadow-lg">
-                    <div className="animate-spin rounded-full h-6 w-6 border-2 border-blue-600 border-t-transparent" />
-                    <span className="ml-3 text-gray-900">Searching your area...</span>
-                  </div>
-                ) : (
-                  <div id="search-section" className="w-full">
-                    <div className="flex items-center bg-white rounded-lg shadow-lg overflow-hidden">
-                      <div className="flex-1 relative">
-                        <div className="absolute left-4 top-1/2 -translate-y-1/2">
-                          <FaMapMarkerAlt className="h-5 w-5 text-gray-400" />
-                        </div>
-                        <input
-                          type="text"
-                          placeholder="Enter postcode"
-                          className="w-full pl-12 pr-4 py-4 text-base focus:outline-none text-gray-900 placeholder-gray-500"
-                          value={searchTerm}
-                          onChange={(e) => setSearchTerm(e.target.value)}
-                          onKeyDown={(e) => {
-                            if (e.key === 'Enter') {
-                              handleSearch();
-                            }
-                          }}
-                          disabled={isLoading}
-                        />
-                      </div>
-                      <button 
-                        onClick={() => handleSearch()}
-                        disabled={isLoading}
-                        className={`px-6 py-4 flex items-center gap-2 transition-colors duration-300 ${
-                          isLoading 
-                            ? 'bg-gray-200 text-gray-500 cursor-not-allowed' 
-                            : 'bg-yellow-400 text-black hover:bg-yellow-500'
-                        }`}
-                      >
-                        {isLoading ? (
-                          <>
-                            <div className="animate-spin rounded-full h-5 w-5 border-2 border-gray-600 border-t-transparent" />
-                            <span>Searching...</span>
-                          </>
-                        ) : (
-                          <>
-                            <FaSearch className="h-5 w-5" />
-                            <span>Search</span>
-                          </>
-                        )}
-                      </button>
-                    </div>
-                    <div className="text-center mt-3">
-                      <p className="text-sm text-white/80">For best results, enter your full postcode (e.g., SO41 9GH)</p>
-                    </div>
-                  </div>
-                )}
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+              <div className="bg-white rounded-xl shadow-lg p-6 hover:shadow-xl transition-shadow duration-300">
+                <div className="bg-yellow-100 w-12 h-12 rounded-lg flex items-center justify-center mb-4">
+                  <FaTools className="h-6 w-6 text-yellow-600" />
+                </div>
+                <h3 className="text-xl font-bold text-gray-900 mb-2">Emergency Repairs</h3>
+                <p className="text-gray-600">24/7 emergency roof repair services for leaks, storm damage, and urgent issues.</p>
+              </div>
+              <div className="bg-white rounded-xl shadow-lg p-6 hover:shadow-xl transition-shadow duration-300">
+                <div className="bg-yellow-100 w-12 h-12 rounded-lg flex items-center justify-center mb-4">
+                  <FaHome className="h-6 w-6 text-yellow-600" />
+                </div>
+                <h3 className="text-xl font-bold text-gray-900 mb-2">Roof Replacement</h3>
+                <p className="text-gray-600">Complete roof replacement services with quality materials and expert installation.</p>
+              </div>
+              <div className="bg-white rounded-xl shadow-lg p-6 hover:shadow-xl transition-shadow duration-300">
+                <div className="bg-yellow-100 w-12 h-12 rounded-lg flex items-center justify-center mb-4">
+                  <FaPoundSign className="h-6 w-6 text-yellow-600" />
+                </div>
+                <h3 className="text-xl font-bold text-gray-900 mb-2">Free Quotes</h3>
+                <p className="text-gray-600">Get detailed quotes from multiple local roofers for your project.</p>
               </div>
             </div>
-
-            {/* Feature Cards */}
-            <div className="max-w-5xl mx-auto mt-20 grid grid-cols-1 md:grid-cols-3 gap-6 px-4">
-              <div className="bg-blue-800 rounded-lg p-6 shadow-lg">
-                <div className="flex items-center gap-4">
-                  <div className="bg-blue-700 rounded-lg p-3">
-                    <FaTools className="h-6 w-6 text-white" />
-                  </div>
-                  <div>
-                    <h3 className="text-lg font-semibold text-white">Expert Roofers</h3>
-                    <p className="text-white/80 text-sm">Verified professionals with years of experience</p>
-                  </div>
-                </div>
-              </div>
-
-              <div className="bg-blue-800 rounded-lg p-6 shadow-lg">
-                <div className="flex items-center gap-4">
-                  <div className="bg-blue-700 rounded-lg p-3">
-                    <FaClock className="h-6 w-6 text-white" />
-                  </div>
-                  <div>
-                    <h3 className="text-lg font-semibold text-white">Quick Response</h3>
-                    <p className="text-white/80 text-sm">Fast service for urgent roofing needs</p>
-                  </div>
-                </div>
-              </div>
-
-              <div className="bg-blue-800 rounded-lg p-6 shadow-lg">
-                <div className="flex items-center gap-4">
-                  <div className="bg-blue-700 rounded-lg p-3">
-                    <FaCheckCircle className="h-6 w-6 text-white" />
-                  </div>
-                  <div>
-                    <h3 className="text-lg font-semibold text-white">Quality Guaranteed</h3>
-                    <p className="text-white/80 text-sm">Satisfaction guaranteed on every job</p>
-                  </div>
-                </div>
-              </div>
+            <div className="text-center mt-12">
+              <button
+                onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+                className="inline-flex items-center justify-center bg-yellow-400 text-black px-8 py-3 rounded-lg font-semibold hover:bg-yellow-500 transition-all duration-300"
+              >
+                Find a Roofer Today
+              </button>
             </div>
           </div>
         </div>
@@ -884,6 +932,117 @@ export default function Home() {
                   <span>Grow Your Business</span>
                 </div>
               </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Recent Blog Posts */}
+        <div className="bg-white py-16">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="text-center mb-12">
+              <h2 className="text-3xl font-bold text-gray-900 mb-4">Expert Roofing Advice</h2>
+              <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+                Get professional tips and insights about roofing from our expert guides
+              </p>
+            </div>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+              {blogPosts
+                .filter(post => !post.slug.startsWith('roofers-in-'))
+                .slice(0, 3)
+                .map((post, index) => (
+                <Link
+                  key={index}
+                  href={`/blog/${post.slug}`}
+                  className="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1"
+                >
+                  <div className="relative h-48">
+                    <Image
+                      src={post.image}
+                      alt={post.title}
+                      fill
+                      className="object-cover"
+                    />
+                  </div>
+                  <div className="p-6">
+                    <h3 className="text-xl font-bold text-gray-900 mb-2">{post.title}</h3>
+                    <p className="text-gray-600 mb-4">{post.excerpt}</p>
+                    <span className="text-yellow-600 hover:text-yellow-700 transition-colors duration-300">
+                      Read More →
+                    </span>
+                  </div>
+                </Link>
+              ))}
+            </div>
+            <div className="text-center mt-12">
+              <Link
+                href="/blog"
+                className="inline-flex items-center justify-center bg-yellow-400 text-black px-8 py-3 rounded-lg font-semibold hover:bg-yellow-500 transition-all duration-300"
+              >
+                View All Articles
+              </Link>
+            </div>
+          </div>
+        </div>
+
+        {/* FAQ Section */}
+        <div className="bg-gray-50 py-16">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="text-center mb-12">
+              <h2 className="text-3xl font-bold text-gray-900 mb-4">Frequently Asked Questions</h2>
+              <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+                Common questions about finding and hiring local roofers
+              </p>
+            </div>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+              <div className="bg-white rounded-xl p-6 shadow-sm">
+                <h3 className="text-xl font-bold text-gray-900 mb-3">How do I find a reliable local roofer?</h3>
+                <p className="text-gray-600">
+                  Enter your postcode in our search bar above to find verified local roofers in your area. All roofers in our network are vetted and reviewed to ensure quality service.
+                </p>
+              </div>
+              
+              <div className="bg-white rounded-xl p-6 shadow-sm">
+                <h3 className="text-xl font-bold text-gray-900 mb-3">How much does a new roof cost?</h3>
+                <p className="text-gray-600">
+                  Roof costs vary depending on size, materials, and complexity. Get free quotes from local roofers to receive accurate pricing for your specific project.
+                </p>
+              </div>
+
+              <div className="bg-white rounded-xl p-6 shadow-sm">
+                <h3 className="text-xl font-bold text-gray-900 mb-3">Do I need planning permission for roof work?</h3>
+                <p className="text-gray-600">
+                  Most repairs don't require permission, but significant alterations might. Our local roofers can advise on planning requirements for your specific project.
+                </p>
+              </div>
+
+              <div className="bg-white rounded-xl p-6 shadow-sm">
+                <h3 className="text-xl font-bold text-gray-900 mb-3">How quickly can I get a roofer?</h3>
+                <p className="text-gray-600">
+                  For emergency repairs, many of our roofers offer same-day service. For standard projects, you can typically get quotes within 24-48 hours.
+                </p>
+              </div>
+
+              <div className="bg-white rounded-xl p-6 shadow-sm">
+                <h3 className="text-xl font-bold text-gray-900 mb-3">Are your roofers insured?</h3>
+                <p className="text-gray-600">
+                  Our listed roofers indicate they are fully insured. For specific details about insurance coverage and certifications, please check directly with the roofing company.
+                </p>
+              </div>
+
+              <div className="bg-white rounded-xl p-6 shadow-sm">
+                <h3 className="text-xl font-bold text-gray-900 mb-3">What roofing services are available?</h3>
+                <p className="text-gray-600">
+                  Our roofers offer a full range of services including repairs, replacements, emergency work, guttering, chimney work, and maintenance.
+                </p>
+              </div>
+            </div>
+            <div className="text-center mt-12">
+              <button
+                onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+                className="inline-flex items-center justify-center bg-yellow-400 text-black px-8 py-3 rounded-lg font-semibold hover:bg-yellow-500 transition-all duration-300"
+              >
+                Find Your Local Roofer
+              </button>
             </div>
           </div>
         </div>
