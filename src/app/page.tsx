@@ -478,7 +478,7 @@ export default function Home() {
                 "name": "Do I need planning permission for roof work?",
                 "acceptedAnswer": {
                   "@type": "Answer",
-                  "text": "Most repairs don't require permission, but significant alterations might. Our local roofers can advise on planning requirements for your specific project."
+                  "text": "Most repairs don&apos;t require permission, but significant alterations might. Our local roofers can advise on planning requirements for your specific project."
                 }
               }, {
                 "@type": "Question",
@@ -1011,7 +1011,7 @@ export default function Home() {
               <div className="bg-white rounded-xl p-6 shadow-sm">
                 <h3 className="text-xl font-bold text-gray-900 mb-3">Do I need planning permission for roof work?</h3>
                 <p className="text-gray-600">
-                  Most repairs don't require permission, but significant alterations might. Our local roofers can advise on planning requirements for your specific project.
+                  Most repairs don&apos;t require permission, but significant alterations might. Our local roofers can advise on planning requirements for your specific project.
                 </p>
               </div>
 
