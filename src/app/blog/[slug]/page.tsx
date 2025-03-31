@@ -5,7 +5,6 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { getPostBySlug, blogPosts } from '@/data/blog-posts';
 import type { BlogPost } from '@/data/blog-posts';
-export { generateMetadata } from './metadata';
 
 export default function BlogPost() {
   const params = useParams();
