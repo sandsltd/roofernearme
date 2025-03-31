@@ -1,6 +1,5 @@
 import { Metadata } from 'next';
 import { getPostBySlug } from '@/data/blog-posts';
-import BlogPost from './page';
 
 export async function generateMetadata({ params }: { params: { slug: string } }): Promise<Metadata> {
   const post = getPostBySlug(params.slug);
@@ -27,5 +26,5 @@ export default function BlogPostLayout({
 }: {
   children: React.ReactNode;
 }) {
-  return <BlogPost />;
+  return children;
 } 
