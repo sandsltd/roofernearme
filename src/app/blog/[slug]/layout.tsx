@@ -1,12 +1,11 @@
 import { Metadata } from 'next';
 import { getPostBySlug } from '@/data/blog-posts';
 
-type MetadataProps = {
+export async function generateMetadata({
+  params,
+}: {
   params: { slug: string };
-  searchParams: { [key: string]: string | string[] | undefined };
-};
-
-export async function generateMetadata({ params }: MetadataProps): Promise<Metadata> {
+}): Promise<Metadata> {
   const post = getPostBySlug(params.slug);
   
   if (!post) {
