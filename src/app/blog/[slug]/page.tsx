@@ -1,31 +1,11 @@
 'use client';
 
-import { Metadata } from 'next';
 import { useParams } from 'next/navigation';
 import Link from 'next/link';
 import Image from 'next/image';
 import { getPostBySlug, blogPosts } from '@/data/blog-posts';
 import type { BlogPost } from '@/data/blog-posts';
-
-export async function generateMetadata({ params }: { params: { slug: string } }): Promise<Metadata> {
-  const post = getPostBySlug(params.slug);
-  
-  if (!post) {
-    return {
-      title: 'Post Not Found',
-      description: 'The blog post you are looking for does not exist.',
-    };
-  }
-
-  return {
-    title: post.seoTitle,
-    description: post.seoDescription,
-    metadataBase: new URL('https://www.localroofernearme.co.uk'),
-    alternates: {
-      canonical: `/blog/${post.slug}`,
-    },
-  };
-}
+export { generateMetadata } from './metadata';
 
 export default function BlogPost() {
   const params = useParams();
