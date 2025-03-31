@@ -1,7 +1,13 @@
 import { Metadata } from 'next';
 import { getPostBySlug } from '@/data/blog-posts';
 
-export async function generateMetadata({ params }: { params: { slug: string } }): Promise<Metadata> {
+type Props = {
+  children: React.ReactNode;
+  params: { slug: string };
+  searchParams: { [key: string]: string | string[] | undefined };
+};
+
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const post = getPostBySlug(params.slug);
   
   if (!post) {
@@ -23,8 +29,6 @@ export async function generateMetadata({ params }: { params: { slug: string } })
 
 export default function BlogPostLayout({
   children,
-}: {
-  children: React.ReactNode;
-}) {
+}: Props) {
   return children;
 } 
