@@ -3,7 +3,6 @@ import { getPostBySlug } from '@/data/blog-posts';
 import BlogPost from './page';
 
 type Props = {
-  children: React.ReactNode;
   params: { slug: string };
 };
 
@@ -27,6 +26,6 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   };
 }
 
-export default function BlogPostLayout({ children }: Props) {
+export default function BlogPostLayout() {
   return <BlogPost />;
 } 
