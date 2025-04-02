@@ -307,6 +307,38 @@
       ],
       "website": "https://www.roofersinramsgate.co.uk",
       "postcode": "CT11"
+    },
+    {
+      "businessName": "StormGuard Roofing",
+      "logo": "/logos/stormguard-roofing-logo.png",
+      "location": "Walsall",
+      "services": [
+        "Roof Installation",
+        "Roof Repairs",
+        "Roof Inspections",
+        "Roof Maintenance",
+        "Gutter Services",
+        "Emergency Roofing",
+        "Commercial Roofing"
+      ],
+      "coverage": [
+        "Walsall",
+        "West Bromwich",
+        "Dudley",
+        "Halesowen",
+        "Stourbridge",
+        "Smethwick",
+        "Tamworth",
+        "Cannock",
+        "Lichfield",
+        "Burntwood",
+        "Great Wyrley",
+        "Cheslyn Hay",
+        "Telford",
+        "Stoke-on-Trent"
+      ],
+      "website": "https://www.roofercannock.co.uk",
+      "postcode": "WS6"
     }
   ],
   "comingSoonLocations": [
@@ -317,10 +349,6 @@
     {
       "postcode": "WR4",
       "city": "Worcester"
-    },
-    {
-      "postcode": "WS6",
-      "city": "Cannock"
     }
   ]
 } 
