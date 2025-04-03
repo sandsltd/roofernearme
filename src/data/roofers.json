@@ -368,16 +368,44 @@
       ],
       "website": "https://www.rooferinderby.co.uk",
       "postcode": "DE23"
+    },
+    {
+      "businessName": "Allen's Flat Roofing",
+      "logo": "/logos/allens-flat-roofing-logo.png",
+      "location": "Sevenoaks",
+      "services": [
+        "Flat Roof Installation",
+        "Emergency Roof Repairs",
+        "Professional Roof Inspections",
+        "Roof Maintenance",
+        "Gutter Services",
+        "Commercial Roofing"
+      ],
+      "coverage": [
+        "Sevenoaks",
+        "Bromley",
+        "Croydon",
+        "Dartford",
+        "Royal Tunbridge Wells",
+        "Maidstone",
+        "Gravesend",
+        "Tonbridge",
+        "Orpington",
+        "Swanley",
+        "Edenbridge",
+        "Kemsing",
+        "Westerham",
+        "Farningham",
+        "Crouch"
+      ],
+      "website": "https://www.rooferssevenoakskent.co.uk",
+      "postcode": "TN15"
     }
   ],
   "comingSoonLocations": [
     {
       "postcode": "WR4",
       "city": "Worcester"
-    },
-    {
-      "postcode": "TN13",
-      "city": "Sevenoaks"
     }
   ]
 } 
