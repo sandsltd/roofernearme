@@ -15,9 +15,9 @@ interface RooferCardProps {
 
 // Function to check if a color is dark
 const isColorDark = (r: number, g: number, b: number) => {
-  // Calculate relative luminance
+  // Calculate relative luminance using a stricter threshold
   const luminance = (0.299 * r + 0.587 * g + 0.114 * b) / 255;
-  return luminance < 0.5;
+  return luminance < 0.6; // Increased threshold to catch more logos as "dark"
 };
 
 export default function RooferCard({ 
@@ -87,7 +87,7 @@ export default function RooferCard({
       {/* Card Header */}
       <div className="bg-gradient-to-r from-blue-600 to-blue-800 p-6 flex-shrink-0">
         <div className="flex items-start gap-4">
-          <div className={`${isDarkLogo ? 'bg-gray-800' : 'bg-white'} p-2 rounded-full shadow-md w-16 h-16 flex items-center justify-center overflow-hidden flex-shrink-0 transition-colors duration-300`}>
+          <div className={`${isDarkLogo ? 'bg-gray-900' : 'bg-white'} p-2 rounded-full shadow-md w-16 h-16 flex items-center justify-center overflow-hidden flex-shrink-0 transition-colors duration-300`}>
             <Image
               src={logoPath}
               alt={`${businessName} logo`}
