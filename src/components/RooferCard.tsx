@@ -1,7 +1,6 @@
 import { FaMapMarkerAlt, FaTools } from 'react-icons/fa';
 import Link from 'next/link';
 import Image from 'next/image';
-import { useEffect, useState } from 'react';
 
 interface RooferCardProps {
   businessName: string;
@@ -13,13 +12,6 @@ interface RooferCardProps {
   logo?: string;
 }
 
-// Function to check if a color is dark
-const isColorDark = (r: number, g: number, b: number) => {
-  // Calculate relative luminance using a stricter threshold
-  const luminance = (0.299 * r + 0.587 * g + 0.114 * b) / 255;
-  return luminance < 0.6; // Increased threshold to catch more logos as "dark"
-};
-
 export default function RooferCard({ 
   businessName, 
   address, 
@@ -29,58 +21,10 @@ export default function RooferCard({
   distance,
   logo
 }: RooferCardProps) {
-  const [isDarkLogo, setIsDarkLogo] = useState(false);
-  
   // Generate logo path from business name as fallback
   const generatedLogoPath = `/logos/${businessName.toLowerCase().replace(/[^a-z0-9]+/g, '-')}.png`;
   // Use provided logo path or fall back to generated one
   const logoPath = logo || generatedLogoPath;
-
-  useEffect(() => {
-    const checkLogoColor = async () => {
-      try {
-        const img = document.createElement('img');
-        img.crossOrigin = "anonymous";
-        img.src = logoPath;
-        
-        img.onload = () => {
-          const canvas = document.createElement('canvas');
-          const ctx = canvas.getContext('2d');
-          if (!ctx) return;
-
-          canvas.width = img.width;
-          canvas.height = img.height;
-          ctx.drawImage(img, 0, 0);
-
-          // Sample pixels from the edges of the image
-          const sampleSize = 10;
-          const pixels = ctx.getImageData(0, 0, sampleSize, sampleSize).data;
-          
-          // Calculate average color of sampled pixels
-          let totalR = 0, totalG = 0, totalB = 0, count = 0;
-          for (let i = 0; i < pixels.length; i += 4) {
-            if (pixels[i + 3] > 0) { // Only count non-transparent pixels
-              totalR += pixels[i];
-              totalG += pixels[i + 1];
-              totalB += pixels[i + 2];
-              count++;
-            }
-          }
-
-          if (count > 0) {
-            const avgR = totalR / count;
-            const avgG = totalG / count;
-            const avgB = totalB / count;
-            setIsDarkLogo(isColorDark(avgR, avgG, avgB));
-          }
-        };
-      } catch (error) {
-        console.error('Error analyzing logo:', error);
-      }
-    };
-
-    checkLogoColor();
-  }, [logoPath]);
 
   return (
     <div className="bg-white rounded-2xl shadow-xl overflow-hidden hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1 w-full min-h-[400px] flex flex-col">
