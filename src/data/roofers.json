@@ -339,13 +339,38 @@
       ],
       "website": "https://www.roofercannock.co.uk",
       "postcode": "WS6"
+    },
+    {
+      "businessName": "Derby Roof King",
+      "logo": "/logos/derby-roof-king-logo.png",
+      "location": "Derby",
+      "services": [
+        "Roof Installation",
+        "Roof Repairs",
+        "Roof Inspections",
+        "Roof Maintenance",
+        "Gutter Services",
+        "Emergency Roofing"
+      ],
+      "coverage": [
+        "Derby",
+        "Ibstock",
+        "Ashby-de-la-Zouch",
+        "Markfield",
+        "Whitwick",
+        "Swannington",
+        "Ellistown",
+        "Ravenstone",
+        "Hugglescote",
+        "Thringstone",
+        "Measham",
+        "Donington le Heath"
+      ],
+      "website": "https://www.rooferinderby.co.uk",
+      "postcode": "DE23"
     }
   ],
   "comingSoonLocations": [
-    {
-      "postcode": "DE23",
-      "city": "Derby"
-    },
     {
       "postcode": "WR4",
       "city": "Worcester"
