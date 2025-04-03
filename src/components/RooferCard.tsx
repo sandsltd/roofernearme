@@ -87,13 +87,13 @@ export default function RooferCard({
       {/* Card Header */}
       <div className="bg-gradient-to-r from-blue-600 to-blue-800 p-6 flex-shrink-0">
         <div className="flex items-start gap-4">
-          <div className={`${isDarkLogo ? 'bg-gray-900' : 'bg-white'} p-2 rounded-full shadow-md w-16 h-16 flex items-center justify-center overflow-hidden flex-shrink-0 transition-colors duration-300`}>
+          <div className="w-16 h-16 flex items-center justify-center overflow-hidden flex-shrink-0">
             <Image
               src={logoPath}
               alt={`${businessName} logo`}
-              width={48}
-              height={48}
-              className="w-12 h-12 object-contain rounded-full"
+              width={64}
+              height={64}
+              className="w-16 h-16 object-contain rounded-lg"
               onError={(e) => {
                 // If logo fails to load, replace with default home icon
                 const target = e.target as HTMLImageElement;
