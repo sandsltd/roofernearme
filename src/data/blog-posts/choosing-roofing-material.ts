@@ -215,10 +215,10 @@ const post: BlogPost = {
       </div>
     </div>
   `,
-  date: '2024-03-23',
-  category: 'Guides',
-  image: '/blog/roof-materials.png',
-  readTime: '10 min read',
+  date: '2024-03-19',
+  category: 'Material Guides',
+  image: '/blog/Location Roofing-10.png',
+  readTime: '8 min read',
   seoTitle: 'Guide to Choosing the Right Roofing Material | Expert Advice',
   seoDescription: 'Learn about different roofing materials, their pros and cons, costs, and how to choose the best option for your property. Expert guidance from roofing professionals.',
   keywords: [

@@ -90,7 +90,7 @@ const wiltshirePost: BlogPost = {
 
       <div class="architecture bg-yellow-50 p-6 rounded-lg my-8">
         <h3 class="text-2xl font-semibold mb-4">Wiltshire Architectural Heritage</h3>
-        <p class="mb-4">Wiltshire&apos;s diverse architectural heritage requires specialized roofing expertise:</p>
+        <p class="mb-4">Wiltshire's diverse architectural heritage requires specialized roofing expertise:</p>
         <div class="grid md:grid-cols-2 gap-6">
           <div>
             <h4 class="font-semibold mb-2">Traditional Properties</h4>
@@ -181,7 +181,7 @@ const wiltshirePost: BlogPost = {
         <ul class="space-y-3">
           <li><strong>Heritage Areas:</strong> Special considerations for conservation zones</li>
           <li><strong>Traditional Materials:</strong> Expertise in Cotswold stone and local slate</li>
-          <li><strong>Weather Protection:</strong> Solutions for Wiltshire&apos;s varied climate</li>
+          <li><strong>Weather Protection:</strong> Solutions for Wiltshire's varied climate</li>
           <li><strong>Planning Rules:</strong> Understanding of local building regulations</li>
           <li><strong>Property Types:</strong> Experience with diverse architectural styles</li>
         </ul>
@@ -208,7 +208,7 @@ const wiltshirePost: BlogPost = {
           </div>
           <div>
             <h4 class="font-semibold">Do I need planning permission for roof work in Wiltshire?</h4>
-            <p>Most repairs and maintenance don&apos;t require planning permission, but work in conservation areas or on listed buildings may need approval from Wiltshire Council.</p>
+            <p>Most repairs and maintenance don't require planning permission, but work in conservation areas or on listed buildings may need approval from Wiltshire Council.</p>
           </div>
           <div>
             <h4 class="font-semibold">What roofing materials are commonly used in Wiltshire?</h4>
@@ -235,7 +235,7 @@ const wiltshirePost: BlogPost = {
 
       <div class="cta-box bg-gray-50 p-8 rounded-lg my-8 text-center">
         <h3 class="text-2xl font-semibold mb-4">Ready to Find Trusted Roofers in Wiltshire?</h3>
-        <p class="mb-6">Connect with experienced local roofing professionals who understand Wiltshire&apos;s unique requirements.</p>
+        <p class="mb-6">Connect with experienced local roofing professionals who understand Wiltshire's unique requirements.</p>
         <a href="/" class="inline-block bg-yellow-400 text-black px-8 py-3 rounded-lg font-semibold hover:bg-yellow-500 transition-all duration-300">Find Local Roofers</a>
       </div>
     </div>

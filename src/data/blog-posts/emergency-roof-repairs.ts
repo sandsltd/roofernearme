@@ -85,8 +85,8 @@ const post: BlogPost = {
   `,
   date: '2024-03-20',
   category: 'Emergency Repairs',
-  image: '/blog/emergency-repairs.jpg',
-  readTime: '6 min read',
+  image: '/blog/Location Roofing-7.png',
+  readTime: '7 min read',
   seoTitle: 'Emergency Roof Repairs Guide | What to Do When Your Roof Leaks',
   seoDescription: 'Learn what immediate actions to take during a roof emergency, how to prevent further damage, and find emergency roofing services near you.',
   keywords: ['emergency roof repairs', 'roof leaks', 'emergency roofer', 'roof damage', 'temporary roof repair', 'emergency roofing service']

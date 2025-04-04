@@ -43,6 +43,18 @@ import roofersInEngland from './blog-posts/roofers-in-england';
 import roofersInWiltshire from './blog-posts/roofers-in-wiltshire';
 import roofersInHampshire from './blog-posts/roofers-in-hampshire';
 import roofersInCumbria from './blog-posts/roofers-in-cumbria';
+import roofersInChippenham from './blog-posts/roofers-in-chippenham';
+import roofersInDumbarton from './blog-posts/roofers-in-dumbarton';
+import roofersInWorcester from './blog-posts/roofers-in-worcester';
+import roofersInCrewe from './blog-posts/roofers-in-crewe';
+import roofersInBarnet from './blog-posts/roofers-in-barnet';
+import roofersInDoncaster from './blog-posts/roofers-in-doncaster';
+import roofersInRamsgate from './blog-posts/roofers-in-ramsgate';
+import roofersInWalsall from './blog-posts/roofers-in-walsall';
+import roofersInDerby from './blog-posts/roofers-in-derby';
+import roofersInSevenoaks from './blog-posts/roofers-in-sevenoaks';
+import roofersInWalthamCross from './blog-posts/roofers-in-waltham-cross';
+import roofersInWorkington from './blog-posts/roofers-in-workington';
 
 // Update image paths for each post
 const posts: BlogPost[] = [
@@ -52,7 +64,7 @@ const posts: BlogPost[] = [
   },
   {
     ...costOfRoofReplacement,
-    image: '/blog/cost-of-roof-replacement.png'
+    image: '/blog/Location Roofing-9.png' // Installing roof tiles
   },
   {
     ...roofersInWales,
@@ -76,7 +88,7 @@ const posts: BlogPost[] = [
   },
   {
     ...roofersInCumbria,
-    image: '/blog/roofer-in-cumbria.png'
+    image: '/blog/Location Roofing-4.png' // Stone terraced houses
   },
   {
     ...roofersInGlasgow,
@@ -148,11 +160,11 @@ const posts: BlogPost[] = [
   },
   {
     ...emergencyRoofRepairs,
-    image: '/blog/flat-roof-maintenance.png'
+    image: '/blog/Location Roofing-7.png' // Damaged chimney/roof
   },
   {
     ...choosingRoofingMaterial,
-    image: '/blog/roof-materials.png'
+    image: '/blog/Location Roofing-10.png' // Close-up of slate tiles
   },
   {
     ...winterRoofMaintenance,
@@ -209,6 +221,54 @@ const posts: BlogPost[] = [
   {
     ...roofersInReading,
     image: '/blog/roofer-in-reading.png'
+  },
+  {
+    ...roofersInChippenham,
+    image: '/blog/Location Roofing-12.png' // Red clay tile roof
+  },
+  {
+    ...roofersInDumbarton,
+    image: '/blog/Location Roofing-11.png' // Traditional slate roof
+  },
+  {
+    ...roofersInWorcester,
+    image: '/blog/Location Roofing-6.png' // Elegant white Victorian terraces
+  },
+  {
+    ...roofersInCrewe,
+    image: '/blog/Location Roofing-8.png' // Red clay tile roof with chimney
+  },
+  {
+    ...roofersInBarnet,
+    image: '/blog/Location Roofing-3.png' // Semi-detached houses
+  },
+  {
+    ...roofersInDoncaster,
+    image: '/blog/Location Roofing-4.png' // Stone terraced houses
+  },
+  {
+    ...roofersInRamsgate,
+    image: '/blog/Location Roofing-5.png' // Aerial view
+  },
+  {
+    ...roofersInWalsall,
+    image: '/blog/Location Roofing-6.png' // White Victorian terraces
+  },
+  {
+    ...roofersInDerby,
+    image: '/blog/Location Roofing-7.png' // Semi-detached houses with front gardens
+  },
+  {
+    ...roofersInSevenoaks,
+    image: '/blog/Location Roofing-8.png' // Aerial view of suburban homes
+  },
+  {
+    ...roofersInWalthamCross,
+    image: '/blog/Location Roofing-9.png' // Victorian terraced houses with red brick
+  },
+  {
+    ...roofersInWorkington,
+    image: '/blog/Location Roofing-10.png' // Row of brick terraced houses
   }
 ];
 

@@ -226,6 +226,7 @@ const westonSuperMarePost: BlogPost = {
             <h4 class="font-semibold">Can local roofers work on listed buildings?</h4>
             <p>Many Weston Super Mare roofers specialise in heritage properties and understand conservation requirements.</p>
           </div>
+
         </div>
       </div>
 
