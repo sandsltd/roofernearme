@@ -15,7 +15,7 @@ interface PageParams {
 // Define correct Next.js page props
 type Props = {
   params: PageParams;
-  searchParams: { [key: string]: string | string[] | undefined };
+  searchParams?: { [key: string]: string | string[] | undefined };
 };
 
 export async function generateMetadata({ 
@@ -63,8 +63,7 @@ export async function generateMetadata({
 }
 
 export default function BlogPost({ 
-  params,
-  searchParams 
+  params
 }: Props) {
   const slug = params.slug;
   const post = getPostBySlug(slug);
