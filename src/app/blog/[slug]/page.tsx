@@ -7,12 +7,15 @@ import Script from 'next/script';
 import { BlogContent } from '../../../components/BlogContent';
 import { Breadcrumbs } from '../../../components/Breadcrumbs';
 
-// Simple type definition without complex constraints
-type PageParams = {
+type Params = {
   slug: string;
 }
 
-export async function generateMetadata({ params }: { params: PageParams }) {
+export async function generateMetadata({ 
+  params 
+}: { 
+  params: Params 
+}) {
   const post = getPostBySlug(params.slug);
   
   if (!post) {
@@ -22,51 +25,43 @@ export async function generateMetadata({ params }: { params: PageParams }) {
     };
   }
 
-  const title = post.seoTitle || post.title;
-  const description = post.seoDescription || post.excerpt;
-  const ogImageUrl = `https://www.localroofernearme.co.uk${post.image}`;
-
   return {
-    title: title,
-    description: description,
+    title: post.seoTitle || post.title,
+    description: post.seoDescription || post.excerpt,
     alternates: {
       canonical: `https://www.localroofernearme.co.uk/blog/${post.slug}`,
     },
-    // Open Graph metadata
     openGraph: {
-      title: title,
-      description: description,
+      title: post.seoTitle || post.title,
+      description: post.seoDescription || post.excerpt,
       url: `https://www.localroofernearme.co.uk/blog/${post.slug}`,
       siteName: 'Local Roofer Near Me',
+      locale: 'en_GB',
+      type: 'article',
+      publishedTime: post.date,
       images: [
         {
-          url: ogImageUrl,
+          url: `https://www.localroofernearme.co.uk${post.image}`,
           width: 1200,
           height: 630,
           alt: post.title,
         },
       ],
-      locale: 'en_GB',
-      type: 'article',
-      publishedTime: post.date,
-      authors: ['Local Roofer Near Me'],
-      tags: post.keywords || [],
     },
-    // Twitter card metadata
     twitter: {
       card: 'summary_large_image',
-      title: title,
-      description: description,
-      images: [ogImageUrl],
+      title: post.seoTitle || post.title,
+      description: post.seoDescription || post.excerpt,
+      images: [`https://www.localroofernearme.co.uk${post.image}`],
     },
-    // Additional keywords
-    keywords: post.keywords?.join(', ') || 'roofing, roofers, roof repair',
   };
 }
 
-// We'll use any type for the params to bypass TypeScript checks
-// The actual structure is controlled above
-export default async function BlogPost({ params }: any) {
+export default async function BlogPost({ 
+  params 
+}: { 
+  params: Params 
+}) {
   const slug = params.slug;
   const post = getPostBySlug(slug);
 
@@ -153,23 +148,25 @@ export default async function BlogPost({ params }: any) {
 
       {/* Navigation */}
       <nav className="bg-white shadow-sm">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex justify-between items-center">
-          <Link
-            href="/blog"
-            className="text-yellow-500 hover:text-yellow-600 font-medium flex items-center gap-2"
-          >
-            ← Back to Blog
-          </Link>
-          <Link href="/" className="flex items-center">
-            <Image
-              src="/Roofer Near Me-2.png"
-              alt="Local Roofer Near Me Logo"
-              width={40}
-              height={40}
-              className="h-8 w-auto"
-            />
-            <span className="ml-2 text-lg font-bold text-gray-900 hidden sm:inline">Local Roofer Near Me</span>
-          </Link>
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
+          <div className="flex items-center justify-between">
+            <Link href="/" className="flex items-center">
+              <Image
+                src="/Roofer Near Me-2.png"
+                alt="Local Roofer Near Me Logo"
+                width={40}
+                height={40}
+                className="h-8 w-auto"
+              />
+              <span className="ml-3 text-lg font-bold text-gray-900">Local Roofer Near Me</span>
+            </Link>
+            <Link
+              href="/blog"
+              className="text-yellow-500 hover:text-yellow-600 font-medium flex items-center gap-2"
+            >
+              ← Back to Blog
+            </Link>
+          </div>
         </div>
       </nav>
 
