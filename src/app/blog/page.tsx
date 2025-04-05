@@ -4,18 +4,73 @@ import { FaSearch } from 'react-icons/fa';
 import { blogPosts } from '@/data/blog-posts';
 import { CategoryFilter } from '../../components/CategoryFilter';
 import { BlogPostsList } from '../../components/BlogPostsList';
+import { Breadcrumbs } from '../../components/Breadcrumbs';
+import Script from 'next/script';
 
 export const metadata = {
   title: 'Roofing Tips & Guides | Local Roofer Near Me',
   description: 'Expert advice, local guides, and essential information about roofing services across the UK.',
+  openGraph: {
+    title: 'Roofing Tips & Guides | Local Roofer Near Me',
+    description: 'Expert advice, local guides, and essential information about roofing services across the UK.',
+    url: 'https://www.localroofernearme.co.uk/blog',
+    siteName: 'Local Roofer Near Me',
+    images: [
+      {
+        url: 'https://www.localroofernearme.co.uk/Untitled design-16.png',
+        width: 1200,
+        height: 630,
+        alt: 'Roofing Tips & Guides',
+      },
+    ],
+    locale: 'en_GB',
+    type: 'website',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Roofing Tips & Guides | Local Roofer Near Me',
+    description: 'Expert advice, local guides, and essential information about roofing services across the UK.',
+    images: ['https://www.localroofernearme.co.uk/Untitled design-16.png'],
+  },
+  keywords: 'roofing, roofers, roof repair, roof maintenance, roofing tips, roofing guides, UK roofers',
 };
 
 export default function BlogPage() {
   // Get unique categories from blog posts
   const categories = ['all', ...new Set(blogPosts.map(post => post.category))];
   
+  // Define breadcrumb items
+  const breadcrumbItems = [
+    { label: 'Blog' }
+  ];
+  
+  // Generate breadcrumbs structured data
+  const breadcrumbsStructuredData = {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    'itemListElement': [
+      {
+        '@type': 'ListItem',
+        'position': 1,
+        'name': 'Home',
+        'item': 'https://www.localroofernearme.co.uk'
+      },
+      {
+        '@type': 'ListItem',
+        'position': 2,
+        'name': 'Blog',
+        'item': 'https://www.localroofernearme.co.uk/blog'
+      }
+    ]
+  };
+  
   return (
     <div className="min-h-screen bg-gray-50">
+      {/* Breadcrumbs Structured Data */}
+      <Script id="breadcrumbs-structured-data" type="application/ld+json">
+        {JSON.stringify(breadcrumbsStructuredData)}
+      </Script>
+      
       {/* Hero Section with Map Background */}
       <div className="relative overflow-hidden">
         {/* Background Image */}
@@ -57,8 +112,15 @@ export default function BlogPage() {
           </nav>
         </div>
 
+        {/* Breadcrumbs in Hero Section - Moved below and restyled */}
+        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-4">
+          <div className="bg-white/20 backdrop-blur-sm rounded-lg px-2 inline-block">
+            <Breadcrumbs items={breadcrumbItems} />
+          </div>
+        </div>
+
         {/* Hero Content */}
-        <div className="relative z-10 py-24 px-4 sm:px-6 lg:px-8">
+        <div className="relative z-10 py-16 px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
             <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold text-white mb-6 tracking-tight">
               Roofing Tips & Guides

@@ -5,6 +5,7 @@ import type { BlogPost } from '@/data/blog-posts';
 import { notFound } from 'next/navigation';
 import Script from 'next/script';
 import { BlogContent } from '../../../components/BlogContent';
+import { Breadcrumbs } from '../../../components/Breadcrumbs';
 
 // Simple type definition without complex constraints
 type PageParams = {
@@ -21,12 +22,45 @@ export async function generateMetadata({ params }: { params: PageParams }) {
     };
   }
 
+  const title = post.seoTitle || post.title;
+  const description = post.seoDescription || post.excerpt;
+  const ogImageUrl = `https://www.localroofernearme.co.uk${post.image}`;
+
   return {
-    title: post.seoTitle || post.title,
-    description: post.seoDescription || post.excerpt,
+    title: title,
+    description: description,
     alternates: {
       canonical: `https://www.localroofernearme.co.uk/blog/${post.slug}`,
     },
+    // Open Graph metadata
+    openGraph: {
+      title: title,
+      description: description,
+      url: `https://www.localroofernearme.co.uk/blog/${post.slug}`,
+      siteName: 'Local Roofer Near Me',
+      images: [
+        {
+          url: ogImageUrl,
+          width: 1200,
+          height: 630,
+          alt: post.title,
+        },
+      ],
+      locale: 'en_GB',
+      type: 'article',
+      publishedTime: post.date,
+      authors: ['Local Roofer Near Me'],
+      tags: post.keywords || [],
+    },
+    // Twitter card metadata
+    twitter: {
+      card: 'summary_large_image',
+      title: title,
+      description: description,
+      images: [ogImageUrl],
+    },
+    // Additional keywords
+    keywords: post.keywords?.join(', ') || 'roofing, roofers, roof repair',
   };
 }
 
@@ -44,6 +78,12 @@ export default async function BlogPost({ params }: any) {
   const relatedPosts = blogPosts
     .filter(p => p.category === post.category && p.slug !== post.slug)
     .slice(0, 3);
+
+  // Define breadcrumb items
+  const breadcrumbItems = [
+    { label: 'Blog', url: '/blog' },
+    { label: post.title }
+  ];
 
   // Generate structured data for this blog post
   const structuredData = {
@@ -73,24 +113,72 @@ export default async function BlogPost({ params }: any) {
     },
   };
 
+  // Generate breadcrumbs structured data
+  const breadcrumbsStructuredData = {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    'itemListElement': [
+      {
+        '@type': 'ListItem',
+        'position': 1,
+        'name': 'Home',
+        'item': 'https://www.localroofernearme.co.uk'
+      },
+      {
+        '@type': 'ListItem',
+        'position': 2,
+        'name': 'Blog',
+        'item': 'https://www.localroofernearme.co.uk/blog'
+      },
+      {
+        '@type': 'ListItem',
+        'position': 3,
+        'name': post.title,
+        'item': `https://www.localroofernearme.co.uk/blog/${post.slug}`
+      }
+    ]
+  };
+
   return (
     <div className="min-h-screen bg-gray-50">
       {/* Structured Data */}
       <Script id="structured-data" type="application/ld+json">
         {JSON.stringify(structuredData)}
       </Script>
+      
+      {/* Breadcrumbs Structured Data */}
+      <Script id="breadcrumbs-structured-data" type="application/ld+json">
+        {JSON.stringify(breadcrumbsStructuredData)}
+      </Script>
 
       {/* Navigation */}
       <nav className="bg-white shadow-sm">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex justify-between items-center">
           <Link
             href="/blog"
             className="text-yellow-500 hover:text-yellow-600 font-medium flex items-center gap-2"
           >
             ← Back to Blog
           </Link>
+          <Link href="/" className="flex items-center">
+            <Image
+              src="/Roofer Near Me-2.png"
+              alt="Local Roofer Near Me Logo"
+              width={40}
+              height={40}
+              className="h-8 w-auto"
+            />
+            <span className="ml-2 text-lg font-bold text-gray-900 hidden sm:inline">Local Roofer Near Me</span>
+          </Link>
         </div>
       </nav>
+
+      {/* Breadcrumbs */}
+      <div className="bg-gradient-to-r from-gray-100 to-gray-200 border-b border-gray-200">
+        <div className="max-w-7xl mx-auto py-1">
+          <Breadcrumbs items={breadcrumbItems} theme="light" />
+        </div>
+      </div>
 
       {/* Hero Section */}
       <div className="relative h-96">
