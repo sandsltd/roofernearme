@@ -8,19 +8,15 @@ import { BlogContent } from '../../../components/BlogContent';
 import { Breadcrumbs } from '../../../components/Breadcrumbs';
 import { Metadata } from 'next';
 
-interface PageParams {
+type PageParams = {
   slug: string;
 }
 
-// Define correct Next.js page props
-type Props = {
-  params: PageParams;
-  searchParams?: { [key: string]: string | string[] | undefined };
-};
-
 export async function generateMetadata({ 
   params 
-}: Props): Promise<Metadata> {
+}: { 
+  params: PageParams 
+}): Promise<Metadata> {
   const post = getPostBySlug(params.slug);
   
   if (!post) {
@@ -64,7 +60,9 @@ export async function generateMetadata({
 
 export default function BlogPost({ 
   params
-}: Props) {
+}: { 
+  params: PageParams
+}) {
   const slug = params.slug;
   const post = getPostBySlug(slug);
 
