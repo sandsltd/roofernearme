@@ -6,7 +6,13 @@ import { notFound } from 'next/navigation';
 import Script from 'next/script';
 import { BlogContent } from '../../../components/BlogContent';
 
-export async function generateMetadata({ params }: { params: { slug: string } }) {
+type Params = {
+  params: {
+    slug: string;
+  };
+};
+
+export async function generateMetadata({ params }: Params) {
   const post = getPostBySlug(params.slug);
   
   if (!post) {
@@ -25,7 +31,7 @@ export async function generateMetadata({ params }: { params: { slug: string } })
   };
 }
 
-export default function BlogPost({ params }: { params: { slug: string } }) {
+export default function BlogPost({ params }: Params) {
   const slug = params.slug;
   const post = getPostBySlug(slug);
 
