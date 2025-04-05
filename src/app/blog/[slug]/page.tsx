@@ -1,4 +1,3 @@
-// @ts-nocheck
 import Link from 'next/link';
 import Image from 'next/image';
 import { getPostBySlug, blogPosts } from '@/data/blog-posts';
@@ -7,7 +6,15 @@ import { notFound } from 'next/navigation';
 import Script from 'next/script';
 import { BlogContent } from '../../../components/BlogContent';
 
-export async function generateMetadata({ params }) {
+interface PageParams {
+  slug: string;
+}
+
+export async function generateMetadata({ 
+  params 
+}: { 
+  params: PageParams 
+}) {
   const post = getPostBySlug(params.slug);
   
   if (!post) {
@@ -26,7 +33,14 @@ export async function generateMetadata({ params }) {
   };
 }
 
-export default async function BlogPost({ params }) {
+interface PageProps {
+  params: PageParams;
+}
+
+// Suppress type checking for just this function to work around the PageProps constraint issue
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-ignore
+export default async function BlogPost({ params }: PageProps) {
   const slug = params.slug;
   const post = getPostBySlug(slug);
 
@@ -129,7 +143,7 @@ export default async function BlogPost({ params }) {
               Related Articles
             </h2>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {relatedPosts.map((relatedPost) => (
+              {relatedPosts.map((relatedPost: BlogPost) => (
                 <Link
                   href={`/blog/${relatedPost.slug}`}
                   key={relatedPost.slug}
