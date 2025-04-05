@@ -13,11 +13,11 @@ export const metadata = {
   openGraph: {
     title: 'Roofing Tips & Guides | Local Roofer Near Me',
     description: 'Expert advice, local guides, and essential information about roofing services across the UK.',
-    url: 'https://www.localroofernearme.co.uk/blog',
+    url: 'https://localroofernearme.co.uk/blog',
     siteName: 'Local Roofer Near Me',
     images: [
       {
-        url: 'https://www.localroofernearme.co.uk/Untitled design-16.png',
+        url: 'https://localroofernearme.co.uk/Untitled design-16.png',
         width: 1200,
         height: 630,
         alt: 'Roofing Tips & Guides',
@@ -30,7 +30,7 @@ export const metadata = {
     card: 'summary_large_image',
     title: 'Roofing Tips & Guides | Local Roofer Near Me',
     description: 'Expert advice, local guides, and essential information about roofing services across the UK.',
-    images: ['https://www.localroofernearme.co.uk/Untitled design-16.png'],
+    images: ['https://localroofernearme.co.uk/Untitled design-16.png'],
   },
   keywords: 'roofing, roofers, roof repair, roof maintenance, roofing tips, roofing guides, UK roofers',
 };
@@ -53,13 +53,13 @@ export default function BlogPage() {
         '@type': 'ListItem',
         'position': 1,
         'name': 'Home',
-        'item': 'https://www.localroofernearme.co.uk'
+        'item': 'https://localroofernearme.co.uk'
       },
       {
         '@type': 'ListItem',
         'position': 2,
         'name': 'Blog',
-        'item': 'https://www.localroofernearme.co.uk/blog'
+        'item': 'https://localroofernearme.co.uk/blog'
       }
     ]
   };

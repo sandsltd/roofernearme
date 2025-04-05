@@ -16,6 +16,29 @@ const nextConfig = {
     // your project has ESLint errors.
     ignoreDuringBuilds: true,
   },
+  // Add permanent redirects for canonical URLs
+  async redirects() {
+    return [
+      // Redirect HTTP to HTTPS
+      {
+        source: 'http://localroofernearme.co.uk/:path*',
+        destination: 'https://localroofernearme.co.uk/:path*',
+        permanent: true,
+      },
+      // Redirect www to non-www
+      {
+        source: 'https://www.localroofernearme.co.uk/:path*',
+        destination: 'https://localroofernearme.co.uk/:path*',
+        permanent: true,
+      },
+      // Also handle HTTP www to HTTPS non-www
+      {
+        source: 'http://www.localroofernearme.co.uk/:path*',
+        destination: 'https://localroofernearme.co.uk/:path*',
+        permanent: true,
+      },
+    ];
+  },
 }
 
 module.exports = nextConfig 

@@ -7,6 +7,6 @@ export default function robots(): MetadataRoute.Robots {
       allow: '/',
       disallow: ['/admin/', '/api/'],
     },
-    sitemap: 'https://www.localroofernearme.co.uk/sitemap.xml',
+    sitemap: 'https://localroofernearme.co.uk/sitemap.xml',
   };
 } 

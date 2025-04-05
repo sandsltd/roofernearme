@@ -2,7 +2,7 @@ import { blogPosts } from '@/data/blog-posts';
 import { MetadataRoute } from 'next';
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = 'https://www.localroofernearme.co.uk';
+  const baseUrl = 'https://localroofernearme.co.uk';
   
   // Static routes with their update frequency
   const routes = [

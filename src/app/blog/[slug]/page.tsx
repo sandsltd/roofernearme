@@ -90,25 +90,25 @@ export default async function BlogPost({
     '@type': 'BlogPosting',
     headline: post.title,
     description: post.excerpt,
-    image: `https://www.localroofernearme.co.uk${post.image}`,
+    image: `https://localroofernearme.co.uk${post.image}`,
     datePublished: post.date,
     dateModified: post.date,
     author: {
       '@type': 'Organization',
       name: 'Local Roofer Near Me',
-      url: 'https://www.localroofernearme.co.uk',
+      url: 'https://localroofernearme.co.uk',
     },
     publisher: {
       '@type': 'Organization',
       name: 'Local Roofer Near Me',
       logo: {
         '@type': 'ImageObject',
-        url: 'https://www.localroofernearme.co.uk/Roofer Near Me-2.png',
+        url: 'https://localroofernearme.co.uk/Roofer Near Me-2.png',
       },
     },
     mainEntityOfPage: {
       '@type': 'WebPage',
-      '@id': `https://www.localroofernearme.co.uk/blog/${post.slug}`,
+      '@id': `https://localroofernearme.co.uk/blog/${post.slug}`,
     },
   };
 
@@ -121,19 +121,19 @@ export default async function BlogPost({
         '@type': 'ListItem',
         'position': 1,
         'name': 'Home',
-        'item': 'https://www.localroofernearme.co.uk'
+        'item': 'https://localroofernearme.co.uk'
       },
       {
         '@type': 'ListItem',
         'position': 2,
         'name': 'Blog',
-        'item': 'https://www.localroofernearme.co.uk/blog'
+        'item': 'https://localroofernearme.co.uk/blog'
       },
       {
         '@type': 'ListItem',
         'position': 3,
         'name': post.title,
-        'item': `https://www.localroofernearme.co.uk/blog/${post.slug}`
+        'item': `https://localroofernearme.co.uk/blog/${post.slug}`
       }
     ]
   };
