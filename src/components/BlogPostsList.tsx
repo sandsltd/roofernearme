@@ -11,15 +11,13 @@ interface BlogPostsListProps {
 }
 
 export function BlogPostsList({ allPosts }: BlogPostsListProps) {
-  const [selectedCategory, setSelectedCategory] = useState<string>('all');
   const [filteredPosts, setFilteredPosts] = useState<BlogPost[]>(allPosts);
 
   // Listen for category selection events (simple pub/sub pattern)
   useEffect(() => {
     // Create a handler for the custom event
-    const handleCategoryChange = (event: CustomEvent) => {
+    const handleCategoryChange = (event: CustomEvent<{category: string}>) => {
       const category = event.detail.category;
-      setSelectedCategory(category);
       
       // Filter posts based on selected category
       const filtered = category === 'all'
@@ -30,11 +28,11 @@ export function BlogPostsList({ allPosts }: BlogPostsListProps) {
     };
 
     // Add event listener for category changes
-    window.addEventListener('categoryChange' as any, handleCategoryChange as EventListener);
+    window.addEventListener('categoryChange', handleCategoryChange as EventListener);
 
     // Clean up the event listener
     return () => {
-      window.removeEventListener('categoryChange' as any, handleCategoryChange as EventListener);
+      window.removeEventListener('categoryChange', handleCategoryChange as EventListener);
     };
   }, [allPosts]);
 

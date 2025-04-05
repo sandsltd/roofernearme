@@ -1,8 +1,7 @@
 import Link from 'next/link';
 import Image from 'next/image';
-import { FaSearch, FaBook } from 'react-icons/fa';
+import { FaSearch } from 'react-icons/fa';
 import { blogPosts } from '@/data/blog-posts';
-import type { BlogPost } from '@/data/blog-posts';
 import { CategoryFilter } from '../../components/CategoryFilter';
 import { BlogPostsList } from '../../components/BlogPostsList';
 
