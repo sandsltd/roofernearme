@@ -8,8 +8,17 @@ import { BlogContent } from '../../../components/BlogContent';
 import { Breadcrumbs } from '../../../components/Breadcrumbs';
 import { Metadata } from 'next';
 
-// Using a simple params type definition
-export async function generateMetadata({ params }: any): Promise<Metadata> {
+// Define the params type
+interface SlugParams {
+  slug: string;
+}
+
+// Use the specific type for generateMetadata
+export async function generateMetadata({ 
+  params 
+}: { 
+  params: SlugParams;
+}): Promise<Metadata> {
   const post = getPostBySlug(params.slug);
   
   if (!post) {
@@ -51,7 +60,12 @@ export async function generateMetadata({ params }: any): Promise<Metadata> {
   };
 }
 
-export default async function BlogPost({ params }: any) {
+// Use the specific type for the BlogPost component
+export default async function BlogPost({ 
+  params 
+}: { 
+  params: SlugParams;
+}) {
   const slug = params.slug;
   const post = getPostBySlug(slug);
 
