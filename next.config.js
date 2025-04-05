@@ -27,10 +27,10 @@ const nextConfig = {
           has: [
             {
               type: 'host',
-              value: 'www.localroofernearme.co.uk',
+              value: 'localroofernearme.co.uk',
             },
           ],
-          destination: 'https://localroofernearme.co.uk/:path*',
+          destination: 'https://www.localroofernearme.co.uk/:path*',
         },
       ],
     };
