@@ -5,7 +5,7 @@ export default function robots(): MetadataRoute.Robots {
     rules: {
       userAgent: '*',
       allow: '/',
-      disallow: ['/search/', '/*?q=*'],
+      disallow: ['/admin/', '/api/'],
     },
     sitemap: 'https://www.localroofernearme.co.uk/sitemap.xml',
   };
