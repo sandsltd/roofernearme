@@ -8,15 +8,8 @@ import { BlogContent } from '../../../components/BlogContent';
 import { Breadcrumbs } from '../../../components/Breadcrumbs';
 import { Metadata } from 'next';
 
-type PageParams = {
-  slug: string;
-}
-
-export async function generateMetadata({ 
-  params 
-}: { 
-  params: PageParams 
-}): Promise<Metadata> {
+// Using a simple params type definition
+export async function generateMetadata({ params }: any): Promise<Metadata> {
   const post = getPostBySlug(params.slug);
   
   if (!post) {
@@ -58,11 +51,7 @@ export async function generateMetadata({
   };
 }
 
-export default function BlogPost({ 
-  params
-}: { 
-  params: PageParams
-}) {
+export default async function BlogPost({ params }: any) {
   const slug = params.slug;
   const post = getPostBySlug(slug);
 
