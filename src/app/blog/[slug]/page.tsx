@@ -32,19 +32,19 @@ export async function generateMetadata({
     title: post.seoTitle || post.title,
     description: post.seoDescription || post.excerpt,
     alternates: {
-      canonical: `https://www.localroofernearme.co.uk/blog/${post.slug}`,
+      canonical: `https://localroofernearme.co.uk/blog/${post.slug}`,
     },
     openGraph: {
       title: post.seoTitle || post.title,
       description: post.seoDescription || post.excerpt,
-      url: `https://www.localroofernearme.co.uk/blog/${post.slug}`,
+      url: `https://localroofernearme.co.uk/blog/${post.slug}`,
       siteName: 'Local Roofer Near Me',
       locale: 'en_GB',
       type: 'article',
       publishedTime: post.date,
       images: [
         {
-          url: `https://www.localroofernearme.co.uk${post.image}`,
+          url: `https://localroofernearme.co.uk${post.image}`,
           width: 1200,
           height: 630,
           alt: post.title,
@@ -55,7 +55,7 @@ export async function generateMetadata({
       card: 'summary_large_image',
       title: post.seoTitle || post.title,
       description: post.seoDescription || post.excerpt,
-      images: [`https://www.localroofernearme.co.uk${post.image}`],
+      images: [`https://localroofernearme.co.uk${post.image}`],
     },
   };
 }
