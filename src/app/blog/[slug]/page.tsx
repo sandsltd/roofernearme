@@ -6,16 +6,17 @@ import { notFound } from 'next/navigation';
 import Script from 'next/script';
 import { BlogContent } from '../../../components/BlogContent';
 import { Breadcrumbs } from '../../../components/Breadcrumbs';
+import { Metadata } from 'next';
 
-type Params = {
+interface PageParams {
   slug: string;
 }
 
 export async function generateMetadata({ 
   params 
 }: { 
-  params: Params 
-}) {
+  params: PageParams 
+}): Promise<Metadata> {
   const post = getPostBySlug(params.slug);
   
   if (!post) {
@@ -57,10 +58,10 @@ export async function generateMetadata({
   };
 }
 
-export default async function BlogPost({ 
+export default function BlogPost({ 
   params 
 }: { 
-  params: Params 
+  params: PageParams 
 }) {
   const slug = params.slug;
   const post = getPostBySlug(slug);
