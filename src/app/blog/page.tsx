@@ -4,7 +4,7 @@ import { FaSearch } from 'react-icons/fa';
 import { blogPosts } from '@/data/blog-posts';
 import { CategoryFilter } from '../../components/CategoryFilter';
 import { BlogPostsList } from '../../components/BlogPostsList';
-import { Breadcrumbs } from '../../components/Breadcrumbs';
+import Breadcrumbs from '../../components/Breadcrumbs';
 import Script from 'next/script';
 
 export const metadata = {

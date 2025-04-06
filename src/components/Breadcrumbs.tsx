@@ -1,55 +1,45 @@
 'use client';
 
+import React from 'react';
 import Link from 'next/link';
-import { FaHome, FaChevronRight } from 'react-icons/fa';
+import { FaChevronRight, FaHome } from 'react-icons/fa';
 
-interface BreadcrumbsProps {
-  items: {
-    label: string;
-    url?: string;
-  }[];
-  theme?: 'light' | 'dark';
+interface BreadcrumbItem {
+  label: string;
+  href?: string;
 }
 
-export function Breadcrumbs({ items, theme = 'dark' }: BreadcrumbsProps) {
-  const textColor = theme === 'dark' 
-    ? 'text-white' 
-    : 'text-gray-600';
-  
-  const activeColor = theme === 'dark'
-    ? 'text-yellow-400'
-    : 'text-blue-600';
-  
-  const hoverColor = theme === 'dark'
-    ? 'hover:text-yellow-400'
-    : 'hover:text-blue-600';
-  
-  const separatorColor = theme === 'dark'
-    ? 'text-white/70'
-    : 'text-gray-400';
+interface BreadcrumbsProps {
+  items: BreadcrumbItem[];
+  className?: string;
+}
 
+const Breadcrumbs: React.FC<BreadcrumbsProps> = ({ items, className = '' }) => {
   return (
-    <nav className="flex items-center space-x-1 text-sm font-medium py-2 px-2">
-      <Link href="/" className={`flex items-center ${textColor} ${hoverColor} transition-colors`}>
-        <FaHome className="mr-1" />
-        <span className="hidden sm:inline">Home</span>
-      </Link>
-
-      {items.map((item, index) => (
-        <div key={index} className="flex items-center">
-          <FaChevronRight className={`${separatorColor} mx-1 text-xs`} />
-          {item.url ? (
-            <Link 
-              href={item.url} 
-              className={`${textColor} ${hoverColor} transition-colors`}
-            >
-              {item.label}
-            </Link>
-          ) : (
-            <span className={activeColor}>{item.label}</span>
-          )}
-        </div>
-      ))}
+    <nav aria-label="Breadcrumb" className={`flex items-center text-sm ${className}`}>
+      <ol className="flex flex-wrap items-center space-x-2">
+        <li className="flex items-center">
+          <Link href="/" className="text-gray-600 hover:text-gray-900 flex items-center">
+            <FaHome className="mr-1" />
+            <span>Home</span>
+          </Link>
+        </li>
+        
+        {items.map((item, index) => (
+          <li key={index} className="flex items-center">
+            <FaChevronRight className="mx-2 text-gray-400" aria-hidden="true" />
+            {item.href ? (
+              <Link href={item.href} className="text-gray-600 hover:text-gray-900">
+                {item.label}
+              </Link>
+            ) : (
+              <span className="text-gray-900 font-medium">{item.label}</span>
+            )}
+          </li>
+        ))}
+      </ol>
     </nav>
   );
-} 
+};
+
+export default Breadcrumbs; 
