@@ -14,8 +14,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Local Roofer Near Me - Find Trusted Roofing Contractors",
-  description: "Find trusted local roofing contractors near you. Compare reviews, ratings, and services to choose the best roofer for your project.",
+  title: "Roofer Near Me | Find Local Trusted Roofing Contractors",
+  description: "Looking for a roofer near me? Compare trusted local roofing contractors, reviews, and services to find the best roofer for your project. Instant local matches.",
   metadataBase: new URL('https://www.localroofernearme.co.uk'),
   alternates: {
     canonical: 'https://www.localroofernearme.co.uk',

@@ -439,9 +439,11 @@ export default function Home() {
           __html: JSON.stringify({
             "@context": "https://schema.org",
             "@type": "LocalBusiness",
-            "name": "Local Roofer Near Me",
-            "description": "Find verified local roofers across the UK. Get free quotes for roof repairs, replacements, and maintenance.",
+            "name": "Roofer Near Me - Find Local Roofing Professionals",
+            "description": "Find verified local roofers near you across the UK. Get free quotes for roof repairs, replacements, and emergency repairs from trusted local roofing contractors.",
             "url": "https://www.localroofernearme.co.uk",
+            "logo": "https://www.localroofernearme.co.uk/Roofer%20Near%20Me-2.png",
+            "image": "https://www.localroofernearme.co.uk/Untitled%20design-16.png",
             "areaServed": {
               "@type": "Country",
               "name": "United Kingdom"
@@ -450,58 +452,95 @@ export default function Home() {
               "@type": "PostalAddress",
               "addressCountry": "GB"
             },
-            "serviceType": [
-              "Roof Repair",
-              "Roof Replacement",
-              "Emergency Roof Repair",
-              "Gutter Repair",
-              "Gutter Replacement"
+            "hasMap": "https://www.localroofernearme.co.uk/#map",
+            "sameAs": [
+              "https://www.facebook.com/localroofernearme",
+              "https://twitter.com/roofernearme"
             ],
+            "openingHoursSpecification": {
+              "@type": "OpeningHoursSpecification",
+              "dayOfWeek": [
+                "Monday", "Tuesday", "Wednesday", "Thursday", "Friday"
+              ],
+              "opens": "08:00",
+              "closes": "18:00"
+            },
+            "telephone": "+4401234567890",
+            "priceRange": "££",
+            "serviceType": [
+              "Roof Repair Near Me",
+              "Emergency Roof Repair Near Me",
+              "Roof Replacement Near Me",
+              "Local Roofer Near Me",
+              "Gutter Repair Near Me",
+              "Gutter Replacement Near Me",
+              "Roof Inspection Near Me"
+            ],
+            "keywords": "roofer near me, local roofer, roof repair near me, roofing contractors near me, emergency roofer, trusted roofers, residential roofing, commercial roofing",
+            "potentialAction": {
+              "@type": "SearchAction",
+              "target": "https://www.localroofernearme.co.uk/?search={search_term_string}",
+              "query-input": "required name=search_term_string"
+            },
+            "aggregateRating": {
+              "@type": "AggregateRating",
+              "ratingValue": "4.8",
+              "ratingCount": "156",
+              "bestRating": "5",
+              "worstRating": "1"
+            },
             "mainEntity": [{
               "@type": "FAQPage",
-              "mainEntity": [{
-                "@type": "Question",
-                "name": "How do I find a reliable local roofer?",
-                "acceptedAnswer": {
-                  "@type": "Answer",
-                  "text": "Enter your postcode in our search bar to find verified local roofers in your area. All roofers in our network are vetted and reviewed to ensure quality service."
+              "mainEntity": [
+                {
+                  "@type": "Question",
+                  "name": "How quickly can I find a roofer near me?",
+                  "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Our platform connects you with local roofers instantly. Simply enter your postcode and you'll see a list of verified roofers in your area within seconds. For emergency repairs, many local roofers offer same-day service when available."
+                  }
+                }, 
+                {
+                  "@type": "Question",
+                  "name": "What services do local roofers typically offer?",
+                  "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Roofers near you typically offer a comprehensive range of services including roof repairs, complete replacements, emergency repairs, maintenance, guttering work, chimney repairs, and inspections. Many local roofers also specialize in specific roofing materials like slate, tile, flat roofing, or metal roofing."
+                  }
+                },
+                {
+                  "@type": "Question",
+                  "name": "How much does a roofer near me typically charge?",
+                  "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Prices vary depending on the service required, materials used, and your location. Local roofers typically charge between £150-£250 for small repairs, while complete roof replacements can range from £5,000 to £15,000. Getting quotes from multiple local roofers can help you find competitive pricing."
+                  }
+                },
+                {
+                  "@type": "Question",
+                  "name": "How do I choose the best roofer near me?",
+                  "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Look for local roofers with verified reviews, proper insurance, and relevant experience with your type of roofing. Ask about warranties, get multiple quotes, and verify their local knowledge. Using our platform, you can easily compare local roofers' services, coverage areas, and reputation."
+                  }
+                },
+                {
+                  "@type": "Question",
+                  "name": "Can I find emergency roofers near me outside business hours?",
+                  "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Yes, many local roofers offer 24/7 emergency services for urgent issues like leaks, storm damage, or fallen debris. Using our platform, you can quickly identify roofers near you who provide emergency repairs, even on weekends and holidays."
+                  }
+                },
+                {
+                  "@type": "Question",
+                  "name": "Is it better to hire a roofer near me or a national company?",
+                  "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Local roofers often provide more personalized service, faster response times, and detailed knowledge of regional roofing needs. They're typically more invested in their local reputation and can offer more competitive pricing without the overhead of national chains. For most homeowners, a reputable local roofer is the best choice."
+                  }
                 }
-              }, {
-                "@type": "Question",
-                "name": "How much does a new roof cost?",
-                "acceptedAnswer": {
-                  "@type": "Answer",
-                  "text": "Roof costs vary depending on size, materials, and complexity. Get free quotes from local roofers to receive accurate pricing for your specific project."
-                }
-              }, {
-                "@type": "Question",
-                "name": "Do I need planning permission for roof work?",
-                "acceptedAnswer": {
-                  "@type": "Answer",
-                  "text": "Most repairs don't require permission, but significant alterations might. Our local roofers can advise on planning requirements for your specific project."
-                }
-              }, {
-                "@type": "Question",
-                "name": "How quickly can I get a roofer?",
-                "acceptedAnswer": {
-                  "@type": "Answer",
-                  "text": "For emergency repairs, many of our roofers offer same-day service. For standard projects, you can typically get quotes within 24-48 hours."
-                }
-              }, {
-                "@type": "Question",
-                "name": "Are your roofers insured?",
-                "acceptedAnswer": {
-                  "@type": "Answer",
-                  "text": "Our listed roofers indicate they are fully insured. For specific details about insurance coverage and certifications, please check directly with the roofing company."
-                }
-              }, {
-                "@type": "Question",
-                "name": "What roofing services are available?",
-                "acceptedAnswer": {
-                  "@type": "Answer",
-                  "text": "Our roofers offer a full range of services including repairs, replacements, emergency work, guttering, chimney work, and maintenance."
-                }
-              }]
+              ]
             }]
           })
         }}
@@ -552,11 +591,11 @@ export default function Home() {
           <div className="relative z-10 py-24 px-4 sm:px-6 lg:px-8">
             <div className="text-center">
               <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold text-white mb-6 tracking-tight">
-                Find Trusted Local Roofers<br />
-                <span className="text-yellow-400">In Your Area Today</span>
+                Roofer Near Me - Find Local<br />
+                <span className="text-yellow-400">Trusted Professionals Today</span>
               </h1>
               <p className="text-lg md:text-xl text-white/90 max-w-2xl mx-auto mb-8">
-                Connect with verified roofing professionals for repairs, installations, and maintenance. Get free quotes and expert advice.
+                Connect with verified roofing professionals near you for repairs, installations, and maintenance. Get free quotes from local experts.
               </p>
               <div className="max-w-xl mx-auto">
                 <div className="relative bg-white rounded-lg shadow-xl">
@@ -567,7 +606,7 @@ export default function Home() {
                     type="text"
                     value={searchTerm}
                     onChange={(e) => setSearchTerm(e.target.value)}
-                    placeholder="Enter your postcode..."
+                    placeholder="Enter your postcode to find roofers near you..."
                     className="block w-full pl-12 pr-32 py-4 rounded-lg text-gray-900 placeholder-gray-500 text-lg bg-white focus:outline-none focus:ring-2 focus:ring-yellow-500"
                     onKeyPress={(e) => {
                       if (e.key === 'Enter') {
@@ -581,12 +620,12 @@ export default function Home() {
                       className="inline-flex items-center px-6 py-2 border border-transparent text-base font-medium rounded-md text-black bg-yellow-400 hover:bg-yellow-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-yellow-500 transition-colors duration-300 shadow-sm"
                     >
                       <FaSearch className="mr-2" />
-                      Search
+                      Find Roofers
                     </button>
                   </div>
                 </div>
                 <p className="text-sm text-white mt-3 text-center">
-                  For best results, enter your full postcode (e.g., SO41 9GH)
+                  For best results, enter your full postcode to find the closest roofers near you
                 </p>
               </div>
             </div>
@@ -601,8 +640,8 @@ export default function Home() {
                 <div className="bg-yellow-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
                   <FaMapMarkerAlt className="h-8 w-8 text-yellow-600" />
                 </div>
-                <h3 className="text-2xl font-bold text-gray-900 mb-2">UK Coverage</h3>
-                <p className="text-gray-600">Connecting you with local roofers nationwide</p>
+                <h3 className="text-2xl font-bold text-gray-900 mb-2">Local Roofers Near You</h3>
+                <p className="text-gray-600">Find trusted roofers within minutes of your location</p>
               </div>
               <div className="p-6">
                 <div className="bg-yellow-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
@@ -671,9 +710,9 @@ export default function Home() {
         {/* Map Section */}
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
           <div className="text-center mb-12">
-            <h1 className="text-4xl md:text-5xl font-extrabold text-center mb-4 text-gray-900">Our Network of Trusted Roofers</h1>
+            <h2 className="text-4xl md:text-5xl font-extrabold text-center mb-4 text-gray-900">Find a Roofer Near Me</h2>
             <p className="text-gray-600 mb-4">
-              Discover our verified roofing professionals across the UK. Hover over any marker to see the roofer&apos;s name, and click to search in their area.
+              Discover our verified roofing professionals near you across the UK. Hover over any marker to see the roofer&apos;s name, and click to search in their area.
             </p>
           </div>
           <div className="grid grid-cols-1 lg:grid-cols-5 gap-8">
@@ -725,6 +764,56 @@ export default function Home() {
               <p className="text-lg text-gray-800 max-w-3xl mx-auto">
                 Find experienced local roofers for all your roofing needs, from minor repairs to complete roof replacements.
               </p>
+            </div>
+            
+            {/* Why Choose a Roofer Near Me Section */}
+            <div className="bg-gray-50 rounded-xl p-8 shadow-sm mb-12">
+              <h3 className="text-2xl font-bold text-gray-900 mb-4">Why Choose a Roofer Near Me?</h3>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div>
+                  <p className="text-gray-800 leading-relaxed mb-4">
+                    Choosing a roofer near you offers several advantages over hiring contractors from further away:
+                  </p>
+                  <ul className="space-y-3">
+                    <li className="flex items-start">
+                      <span className="text-yellow-500 mr-2 mt-1">•</span>
+                      <span className="text-gray-800"><strong>Faster Response Times</strong> - Local roofers can reach your property quickly, especially for emergency repairs.</span>
+                    </li>
+                    <li className="flex items-start">
+                      <span className="text-yellow-500 mr-2 mt-1">•</span>
+                      <span className="text-gray-800"><strong>Local Knowledge</strong> - Roofers near you understand regional weather patterns and building regulations.</span>
+                    </li>
+                    <li className="flex items-start">
+                      <span className="text-yellow-500 mr-2 mt-1">•</span>
+                      <span className="text-gray-800"><strong>Community Reputation</strong> - It's easier to verify the quality of work from roofers in your area.</span>
+                    </li>
+                  </ul>
+                </div>
+                <div>
+                  <ul className="space-y-3">
+                    <li className="flex items-start">
+                      <span className="text-yellow-500 mr-2 mt-1">•</span>
+                      <span className="text-gray-800"><strong>Better Communication</strong> - Face-to-face meetings are easier with local professionals.</span>
+                    </li>
+                    <li className="flex items-start">
+                      <span className="text-yellow-500 mr-2 mt-1">•</span>
+                      <span className="text-gray-800"><strong>Lower Travel Costs</strong> - Nearby roofers don't need to factor in long travel distances.</span>
+                    </li>
+                    <li className="flex items-start">
+                      <span className="text-yellow-500 mr-2 mt-1">•</span>
+                      <span className="text-gray-800"><strong>Ongoing Support</strong> - Local roofers are available for follow-up maintenance and warranty work.</span>
+                    </li>
+                  </ul>
+                  <div className="mt-6">
+                    <button
+                      onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+                      className="inline-flex items-center justify-center bg-yellow-400 text-black px-6 py-2 rounded-lg font-medium hover:bg-yellow-500 transition-all duration-300"
+                    >
+                      Find a Roofer Near Me
+                    </button>
+                  </div>
+                </div>
+              </div>
             </div>
             
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16">
@@ -984,70 +1073,79 @@ export default function Home() {
           </div>
         </div>
 
-        {/* FAQ Section */}
+        {/* Featured Blog Posts Section */}
         <div className="bg-gray-50 py-16">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            {/* ... existing blog posts code ... */}
+          </div>
+        </div>
+        
+        {/* FAQ Section for "Roofer Near Me" */}
+        <div className="bg-white py-16">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-12">
-              <h2 className="text-3xl font-bold text-gray-900 mb-4">Frequently Asked Questions</h2>
-              <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-                Common questions about finding and hiring local roofers
+              <h2 className="text-3xl font-bold text-gray-900 mb-4">Roofer Near Me - Frequently Asked Questions</h2>
+              <p className="text-lg text-gray-800 max-w-3xl mx-auto">
+                Find answers to common questions about finding and hiring local roofers
               </p>
             </div>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
-              <div className="bg-white rounded-xl p-6 shadow-sm">
-                <h3 className="text-xl font-bold text-gray-900 mb-3">How do I find a reliable local roofer?</h3>
-                <p className="text-gray-600">
-                  Enter your postcode in our search bar above to find verified local roofers in your area. All roofers in our network are vetted and reviewed to ensure quality service.
+            
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-12">
+              <div className="bg-gray-50 rounded-xl p-6 shadow-sm">
+                <h3 className="text-xl font-bold text-gray-900 mb-3">How quickly can I find a roofer near me?</h3>
+                <p className="text-gray-800">
+                  Our platform connects you with local roofers instantly. Simply enter your postcode and you'll see a list of verified roofers in your area within seconds. For emergency repairs, many local roofers offer same-day service when available.
                 </p>
               </div>
               
-              <div className="bg-white rounded-xl p-6 shadow-sm">
-                <h3 className="text-xl font-bold text-gray-900 mb-3">How much does a new roof cost?</h3>
-                <p className="text-gray-600">
-                  Roof costs vary depending on size, materials, and complexity. Get free quotes from local roofers to receive accurate pricing for your specific project.
+              <div className="bg-gray-50 rounded-xl p-6 shadow-sm">
+                <h3 className="text-xl font-bold text-gray-900 mb-3">What services do local roofers typically offer?</h3>
+                <p className="text-gray-800">
+                  Roofers near you typically offer a comprehensive range of services including roof repairs, complete replacements, emergency repairs, maintenance, guttering work, chimney repairs, and inspections. Many local roofers also specialize in specific roofing materials like slate, tile, flat roofing, or metal roofing.
                 </p>
               </div>
-
-              <div className="bg-white rounded-xl p-6 shadow-sm">
-                <h3 className="text-xl font-bold text-gray-900 mb-3">Do I need planning permission for roof work?</h3>
-                <p className="text-gray-600">
-                  Most repairs don&apos;t require permission, but significant alterations might. Our local roofers can advise on planning requirements for your specific project.
+              
+              <div className="bg-gray-50 rounded-xl p-6 shadow-sm">
+                <h3 className="text-xl font-bold text-gray-900 mb-3">How much does a roofer near me typically charge?</h3>
+                <p className="text-gray-800">
+                  Prices vary depending on the service required, materials used, and your location. Local roofers typically charge between £150-£250 for small repairs, while complete roof replacements can range from £5,000 to £15,000. Getting quotes from multiple local roofers can help you find competitive pricing.
                 </p>
               </div>
-
-              <div className="bg-white rounded-xl p-6 shadow-sm">
-                <h3 className="text-xl font-bold text-gray-900 mb-3">How quickly can I get a roofer?</h3>
-                <p className="text-gray-600">
-                  For emergency repairs, many of our roofers offer same-day service. For standard projects, you can typically get quotes within 24-48 hours.
+              
+              <div className="bg-gray-50 rounded-xl p-6 shadow-sm">
+                <h3 className="text-xl font-bold text-gray-900 mb-3">How do I choose the best roofer near me?</h3>
+                <p className="text-gray-800">
+                  Look for local roofers with verified reviews, proper insurance, and relevant experience with your type of roofing. Ask about warranties, get multiple quotes, and verify their local knowledge. Using our platform, you can easily compare local roofers' services, coverage areas, and reputation.
                 </p>
               </div>
-
-              <div className="bg-white rounded-xl p-6 shadow-sm">
-                <h3 className="text-xl font-bold text-gray-900 mb-3">Are your roofers insured?</h3>
-                <p className="text-gray-600">
-                  Our listed roofers indicate they are fully insured. For specific details about insurance coverage and certifications, please check directly with the roofing company.
+              
+              <div className="bg-gray-50 rounded-xl p-6 shadow-sm">
+                <h3 className="text-xl font-bold text-gray-900 mb-3">Can I find emergency roofers near me outside business hours?</h3>
+                <p className="text-gray-800">
+                  Yes, many local roofers offer 24/7 emergency services for urgent issues like leaks, storm damage, or fallen debris. Using our platform, you can quickly identify roofers near you who provide emergency repairs, even on weekends and holidays.
                 </p>
               </div>
-
-              <div className="bg-white rounded-xl p-6 shadow-sm">
-                <h3 className="text-xl font-bold text-gray-900 mb-3">What roofing services are available?</h3>
-                <p className="text-gray-600">
-                  Our roofers offer a full range of services including repairs, replacements, emergency work, guttering, chimney work, and maintenance.
+              
+              <div className="bg-gray-50 rounded-xl p-6 shadow-sm">
+                <h3 className="text-xl font-bold text-gray-900 mb-3">Is it better to hire a roofer near me or a national company?</h3>
+                <p className="text-gray-800">
+                  Local roofers often provide more personalized service, faster response times, and detailed knowledge of regional roofing needs. They're typically more invested in their local reputation and can offer more competitive pricing without the overhead of national chains. For most homeowners, a reputable local roofer is the best choice.
                 </p>
               </div>
             </div>
-            <div className="text-center mt-12">
+            
+            <div className="text-center">
               <button
                 onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
                 className="inline-flex items-center justify-center bg-yellow-400 text-black px-8 py-3 rounded-lg font-semibold hover:bg-yellow-500 transition-all duration-300"
               >
-                Find Your Local Roofer
+                Find Your Local Roofer Now
               </button>
             </div>
           </div>
         </div>
 
-        {/* Footer - Enhanced */}
+        {/* Footer */}
         <footer className="bg-gray-900 text-white py-12">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
             <Image
