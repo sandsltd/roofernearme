@@ -4,6 +4,9 @@ import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { FaBuilding, FaUser, FaPhone, FaEnvelope, FaMapMarkerAlt, FaCheck, FaHome, FaBars, FaTimes } from 'react-icons/fa';
 import Image from 'next/image';
+import Header from '../../components/Header';
+import Footer from '../../components/Footer';
+import Breadcrumbs from '../../components/Breadcrumbs';
 
 interface FormData {
   businessName: string;
@@ -73,8 +76,23 @@ export default function RecommendPage() {
     }
   };
   
+  // Define breadcrumb items
+  const breadcrumbItems = [
+    { label: 'Recommend a Roofer' }
+  ];
+  
   return (
     <div className="min-h-screen bg-gray-50">
+      {/* Header */}
+      <Header />
+      
+      {/* Breadcrumbs - now below the header */}
+      <div className="bg-gray-100 py-2">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <Breadcrumbs items={breadcrumbItems} />
+        </div>
+      </div>
+      
       {/* Hero Section with Map Background */}
       <div className="relative overflow-hidden">
         {/* Background Image */}
@@ -84,80 +102,6 @@ export default function RecommendPage() {
             style={{ backgroundImage: "url('/Untitled design-16.png')" }}
           />
           <div className="absolute inset-0 bg-gradient-to-b from-blue-900/20 via-blue-900/10 to-blue-900/30" />
-        </div>
-
-        {/* Navigation Bar */}
-        <div className="relative z-10">
-          <nav className="bg-white/5 backdrop-blur-sm">
-            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-              <div className="flex items-center justify-between h-20">
-                <div className="flex items-center">
-                  <Link href="/" className="flex items-center">
-                    <Image
-                      src="/Roofer Near Me-2.png"
-                      alt="Local Roofer Near Me Logo"
-                      width={40}
-                      height={40}
-                      className="h-10 w-auto"
-                    />
-                    <span className="ml-3 text-2xl font-bold text-white">Local Roofer Near Me</span>
-                  </Link>
-                </div>
-                
-                {/* Desktop Navigation */}
-                <div className="hidden md:flex items-center gap-4">
-                  <Link
-                    href="/blog"
-                    className="text-white hover:text-yellow-400 font-medium transition-colors duration-300"
-                  >
-                    Blog
-                  </Link>
-                  <Link 
-                    href="/"
-                    className="text-white hover:text-yellow-400 font-medium transition-colors duration-300"
-                  >
-                    Back to Home
-                  </Link>
-                </div>
-
-                {/* Mobile Menu Button */}
-                <div className="md:hidden">
-                  <button
-                    onClick={() => setIsMenuOpen(!isMenuOpen)}
-                    className="text-white hover:text-yellow-400 focus:outline-none"
-                  >
-                    {isMenuOpen ? (
-                      <FaTimes className="h-6 w-6" />
-                    ) : (
-                      <FaBars className="h-6 w-6" />
-                    )}
-                  </button>
-                </div>
-              </div>
-
-              {/* Mobile Navigation */}
-              {isMenuOpen && (
-                <div className="md:hidden">
-                  <div className="px-2 pt-2 pb-3 space-y-1 bg-white/90 backdrop-blur-sm rounded-lg mt-2">
-                    <Link
-                      href="/blog"
-                      className="block px-3 py-2 text-gray-900 hover:text-blue-600 font-medium transition-colors duration-300"
-                      onClick={() => setIsMenuOpen(false)}
-                    >
-                      Blog
-                    </Link>
-                    <Link 
-                      href="/"
-                      className="block px-3 py-2 text-gray-900 hover:text-blue-600 font-medium transition-colors duration-300"
-                      onClick={() => setIsMenuOpen(false)}
-                    >
-                      Back to Home
-                    </Link>
-                  </div>
-                </div>
-              )}
-            </div>
-          </nav>
         </div>
 
         {/* Hero Content */}
@@ -347,21 +291,7 @@ export default function RecommendPage() {
       </div>
 
       {/* Footer */}
-      <footer className="bg-gray-900 text-white py-12">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <Image
-            src="/Roofer Near Me-2.png"
-            alt="Roofers Near Me Logo"
-            width={40}
-            height={40}
-            className="mx-auto mb-4"
-          />
-          <p className="text-gray-400 text-sm">
-            Saunders Simmons Ltd | Registered in England and Wales<br />
-            © {currentYear} Roofers Near Me - A Saunders Simmons Ltd Service
-          </p>
-        </div>
-      </footer>
+      <Footer />
     </div>
   );
 } 

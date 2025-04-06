@@ -5,7 +5,9 @@ import type { BlogPost } from '@/data/blog-posts';
 import { notFound } from 'next/navigation';
 import Script from 'next/script';
 import { BlogContent } from '../../../components/BlogContent';
-import { Breadcrumbs } from '../../../components/Breadcrumbs';
+import Breadcrumbs from '../../../components/Breadcrumbs';
+import Header from '../../../components/Header';
+import Footer from '../../../components/Footer';
 import { Metadata } from 'next';
 
 // Define the params type
@@ -80,7 +82,7 @@ export default async function BlogPost({
 
   // Define breadcrumb items
   const breadcrumbItems = [
-    { label: 'Blog', url: '/blog' },
+    { label: 'Blog', href: '/blog' },
     { label: post.title }
   ];
 
@@ -150,34 +152,13 @@ export default async function BlogPost({
         {JSON.stringify(breadcrumbsStructuredData)}
       </Script>
 
-      {/* Navigation */}
-      <nav className="bg-white shadow-sm">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
-          <div className="flex items-center justify-between">
-            <Link href="/" className="flex items-center">
-              <Image
-                src="/Roofer Near Me-2.png"
-                alt="Local Roofer Near Me Logo"
-                width={40}
-                height={40}
-                className="h-8 w-auto"
-              />
-              <span className="ml-3 text-lg font-bold text-gray-900">Local Roofer Near Me</span>
-            </Link>
-            <Link
-              href="/blog"
-              className="text-yellow-500 hover:text-yellow-600 font-medium flex items-center gap-2"
-            >
-              ← Back to Blog
-            </Link>
-          </div>
-        </div>
-      </nav>
-
+      {/* Header */}
+      <Header />
+      
       {/* Breadcrumbs */}
       <div className="bg-gradient-to-r from-gray-100 to-gray-200 border-b border-gray-200">
-        <div className="max-w-7xl mx-auto py-1">
-          <Breadcrumbs items={breadcrumbItems} theme="light" />
+        <div className="max-w-7xl mx-auto py-1 px-4 sm:px-6 lg:px-8">
+          <Breadcrumbs items={breadcrumbItems} />
         </div>
       </div>
 
@@ -255,7 +236,7 @@ export default async function BlogPost({
           </div>
         </div>
       )}
-
+      
       {/* CTA Section */}
       <div className="bg-gray-900 py-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
@@ -273,6 +254,9 @@ export default async function BlogPost({
           </Link>
         </div>
       </div>
+
+      {/* Footer */}
+      <Footer />
     </div>
   );
 } 

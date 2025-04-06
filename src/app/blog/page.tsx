@@ -5,6 +5,8 @@ import { blogPosts } from '@/data/blog-posts';
 import { CategoryFilter } from '../../components/CategoryFilter';
 import { BlogPostsList } from '../../components/BlogPostsList';
 import Breadcrumbs from '../../components/Breadcrumbs';
+import Header from '../../components/Header';
+import Footer from '../../components/Footer';
 import Script from 'next/script';
 
 export const metadata = {
@@ -71,6 +73,16 @@ export default function BlogPage() {
         {JSON.stringify(breadcrumbsStructuredData)}
       </Script>
       
+      {/* Header */}
+      <Header />
+      
+      {/* Breadcrumbs - now below the header */}
+      <div className="bg-gray-100 py-2">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <Breadcrumbs items={breadcrumbItems} />
+        </div>
+      </div>
+      
       {/* Hero Section with Map Background */}
       <div className="relative overflow-hidden">
         {/* Background Image */}
@@ -80,43 +92,6 @@ export default function BlogPage() {
             style={{ backgroundImage: "url('/Untitled design-16.png')" }}
           />
           <div className="absolute inset-0 bg-gradient-to-b from-blue-900/20 via-blue-900/10 to-blue-900/30" />
-        </div>
-
-        {/* Navigation Bar */}
-        <div className="relative z-10">
-          <nav className="bg-white/5 backdrop-blur-sm">
-            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-              <div className="flex items-center justify-between h-20">
-                <div className="flex items-center">
-                  <Link href="/" className="flex items-center">
-                    <Image
-                      src="/Roofer Near Me-2.png"
-                      alt="Local Roofer Near Me Logo"
-                      width={40}
-                      height={40}
-                      className="h-8 w-auto sm:h-10"
-                    />
-                    <span className="ml-3 text-lg sm:text-2xl font-bold text-white whitespace-nowrap">Local Roofer Near Me</span>
-                  </Link>
-                </div>
-                <div>
-                  <Link
-                    href="/"
-                    className="inline-flex items-center justify-center gap-2 bg-yellow-400 text-black px-4 sm:px-8 py-3 sm:py-4 rounded-xl font-semibold hover:bg-yellow-500 transition-all duration-300 shadow-lg text-sm sm:text-base whitespace-nowrap"
-                  >
-                    Find a Roofer
-                  </Link>
-                </div>
-              </div>
-            </div>
-          </nav>
-        </div>
-
-        {/* Breadcrumbs in Hero Section - Moved below and restyled */}
-        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-4">
-          <div className="bg-white/20 backdrop-blur-sm rounded-lg px-2 inline-block">
-            <Breadcrumbs items={breadcrumbItems} />
-          </div>
         </div>
 
         {/* Hero Content */}
@@ -170,21 +145,7 @@ export default function BlogPage() {
       </div>
 
       {/* Footer */}
-      <footer className="bg-gray-900 text-white py-12">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <Image
-            src="/Roofer Near Me-2.png"
-            alt="Local Roofer Near Me Logo"
-            width={40}
-            height={40}
-            className="mx-auto mb-4"
-          />
-          <p className="text-gray-400 text-sm">
-            Saunders Simmons Ltd | Registered in England and Wales<br />
-            © {new Date().getFullYear()} Local Roofer Near Me - A Saunders Simmons Ltd Service
-          </p>
-        </div>
-      </footer>
+      <Footer />
     </div>
   );
 } 
