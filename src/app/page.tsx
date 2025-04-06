@@ -10,6 +10,7 @@ import Script from 'next/script';
 import RoofersMap from '@/components/RoofersMap';
 import LondonMap from '@/components/LondonMap';
 import { blogPosts } from '@/data/blog-posts';
+import Breadcrumbs from '@/components/Breadcrumbs';
 
 // Define Google Maps types
 declare global {
@@ -124,6 +125,7 @@ export default function Home() {
   const [searchMessage, setSearchMessage] = useState('');
   const [isLoading, setIsLoading] = useState(false);
   const [geocoder, setGeocoder] = useState<GoogleMapsGeocoder | null>(null);
+  const [showScrollCTA, setShowScrollCTA] = useState(false);
 
   // Add useEffect for scrolling
   useEffect(() => {
@@ -217,6 +219,19 @@ export default function Home() {
       }
     };
   }, [geocoder]);
+
+  // Add scroll detection for sticky CTA
+  useEffect(() => {
+    const handleScroll = () => {
+      const scrollPosition = window.scrollY;
+      setShowScrollCTA(scrollPosition > 500);
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
 
   const handleSearch = async (location?: string) => {
     setIsLoading(true);
@@ -547,7 +562,7 @@ export default function Home() {
       />
       <div className="min-h-screen bg-gray-50">
         {/* Hero Section with Map Background */}
-        <div className="relative overflow-hidden">
+        <div className="relative h-screen max-h-[800px] min-h-[600px] bg-gray-900 overflow-hidden">
           {/* Background Image */}
           <div className="absolute inset-0">
             <div 
@@ -597,27 +612,33 @@ export default function Home() {
               <p className="text-lg md:text-xl text-white/90 max-w-2xl mx-auto mb-8">
                 Connect with verified roofing professionals near you for repairs, installations, and maintenance. Get free quotes from local experts.
               </p>
-              <div className="max-w-xl mx-auto">
+              
+              {/* Enhanced Search Area with Prominent Label */}
+              <div className="max-w-xl mx-auto mb-2">
+                <div className="text-white text-lg font-medium mb-3 flex items-center justify-center">
+                  <FaMapMarkerAlt className="mr-2 text-yellow-400" />
+                  <span>Find Roofers Near Me Now</span>
+                </div>
                 <div className="relative bg-white rounded-lg shadow-xl">
-                  <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
+                  <div className="absolute inset-y-0 left-0 pl-5 flex items-center pointer-events-none">
                     <FaMapMarkerAlt className="h-5 w-5 text-gray-500" />
                   </div>
                   <input
                     type="text"
                     value={searchTerm}
                     onChange={(e) => setSearchTerm(e.target.value)}
-                    placeholder="Enter your postcode to find roofers near you..."
-                    className="block w-full pl-12 pr-32 py-4 rounded-lg text-gray-900 placeholder-gray-500 text-lg bg-white focus:outline-none focus:ring-2 focus:ring-yellow-500"
+                    placeholder="Enter your postcode..."
+                    className="block w-full pl-14 pr-36 py-5 rounded-lg text-gray-900 placeholder-gray-500 text-base leading-relaxed bg-white focus:outline-none focus:ring-2 focus:ring-yellow-500"
                     onKeyPress={(e) => {
                       if (e.key === 'Enter') {
                         handleSearch();
                       }
                     }}
                   />
-                  <div className="absolute inset-y-0 right-0 flex py-2 pr-2">
+                  <div className="absolute inset-y-0 right-0 flex py-3 pr-3">
                     <button
                       onClick={() => handleSearch()}
-                      className="inline-flex items-center px-6 py-2 border border-transparent text-base font-medium rounded-md text-black bg-yellow-400 hover:bg-yellow-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-yellow-500 transition-colors duration-300 shadow-sm"
+                      className="inline-flex items-center px-6 py-2.5 border border-transparent text-base font-medium rounded-md text-black bg-yellow-400 hover:bg-yellow-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-yellow-500 transition-colors duration-300 shadow-sm"
                     >
                       <FaSearch className="mr-2" />
                       Find Roofers
@@ -628,29 +649,60 @@ export default function Home() {
                   For best results, enter your full postcode to find the closest roofers near you
                 </p>
               </div>
+              
+              {/* Popular Locations Quick Links */}
+              <div className="mt-6">
+                <p className="text-sm text-white mb-2">Popular locations:</p>
+                <div className="flex flex-wrap justify-center gap-2">
+                  {['London', 'Manchester', 'Birmingham', 'Glasgow', 'Leeds'].map((city) => (
+                    <button
+                      key={city}
+                      onClick={() => handleSearch(city)}
+                      className="text-sm bg-white/20 hover:bg-white/30 text-white px-3 py-1 rounded-full transition-colors duration-200"
+                    >
+                      {city}
+                    </button>
+                  ))}
+                </div>
+              </div>
             </div>
           </div>
         </div>
 
-        {/* Trust Signals Section */}
+        {/* Breadcrumb Navigation */}
+        <div className="bg-gray-100 border-b border-gray-200">
+          <div className="max-w-7xl mx-auto px-4 py-3 sm:px-6 lg:px-8">
+            <Breadcrumbs 
+              items={[
+                { label: "Find a Roofer Near Me" }
+              ]}
+            />
+          </div>
+        </div>
+
+        {/* Trust Signals Section - Enhanced */}
         <div className="bg-white py-12 shadow-inner">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="text-center mb-8">
+              <div className="inline-block px-4 py-1 rounded-full bg-yellow-100 text-yellow-800 text-sm font-medium mb-3">Why Users Trust Us</div>
+              <h2 className="text-3xl font-bold text-gray-900">What Makes Us Different</h2>
+            </div>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
-              <div className="p-6">
+              <div className="p-6 bg-gray-50 rounded-xl shadow-sm transform transition-transform duration-300 hover:-translate-y-1">
                 <div className="bg-yellow-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
                   <FaMapMarkerAlt className="h-8 w-8 text-yellow-600" />
                 </div>
                 <h3 className="text-2xl font-bold text-gray-900 mb-2">Local Roofers Near You</h3>
                 <p className="text-gray-600">Find trusted roofers within minutes of your location</p>
               </div>
-              <div className="p-6">
+              <div className="p-6 bg-gray-50 rounded-xl shadow-sm transform transition-transform duration-300 hover:-translate-y-1">
                 <div className="bg-yellow-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
                   <FaCheckCircle className="h-8 w-8 text-yellow-600" />
                 </div>
                 <h3 className="text-2xl font-bold text-gray-900 mb-2">Verified Pros</h3>
                 <p className="text-gray-600">All roofers are vetted and reviewed</p>
               </div>
-              <div className="p-6">
+              <div className="p-6 bg-gray-50 rounded-xl shadow-sm transform transition-transform duration-300 hover:-translate-y-1">
                 <div className="bg-yellow-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
                   <FaClock className="h-8 w-8 text-yellow-600" />
                 </div>
@@ -699,6 +751,108 @@ export default function Home() {
                 className="inline-flex items-center justify-center bg-yellow-400 text-black px-8 py-3 rounded-lg font-semibold hover:bg-yellow-500 transition-all duration-300"
               >
                 Find a Roofer Today
+              </button>
+            </div>
+          </div>
+        </div>
+
+        {/* Customer Testimonials Section */}
+        <div className="py-16 bg-white">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="text-center mb-12">
+              <div className="inline-block px-4 py-1 rounded-full bg-yellow-100 text-yellow-800 text-sm font-medium mb-3">Customer Stories</div>
+              <h2 className="text-3xl font-bold text-gray-900 mb-4">What Clients Say About Our Local Roofers</h2>
+              <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+                Real experiences from homeowners who found trusted roofers near them
+              </p>
+            </div>
+            
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+              {/* Testimonial 1 */}
+              <div className="bg-gray-50 p-6 rounded-xl shadow-sm">
+                <div className="flex items-center mb-4">
+                  <div className="h-12 w-12 rounded-full bg-yellow-300 flex items-center justify-center text-yellow-800 text-xl font-bold mr-4">
+                    SM
+                  </div>
+                  <div>
+                    <h3 className="font-bold text-gray-900">Sarah M.</h3>
+                    <p className="text-gray-500 text-sm">London</p>
+                  </div>
+                </div>
+                <div className="flex text-yellow-500 mb-2">
+                  {[1, 2, 3, 4, 5].map((star) => (
+                    <svg key={star} className="h-5 w-5" fill="currentColor" viewBox="0 0 20 20">
+                      <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                    </svg>
+                  ))}
+                </div>
+                <p className="text-gray-800">
+                  "After storm damage to our roof, I needed a roofer near me urgently. Found a local professional through this site who came the same day. Excellent service and reasonable pricing."
+                </p>
+                <div className="mt-4 text-sm text-yellow-700 font-medium">
+                  Emergency Roof Repair
+                </div>
+              </div>
+              
+              {/* Testimonial 2 */}
+              <div className="bg-gray-50 p-6 rounded-xl shadow-sm">
+                <div className="flex items-center mb-4">
+                  <div className="h-12 w-12 rounded-full bg-yellow-300 flex items-center justify-center text-yellow-800 text-xl font-bold mr-4">
+                    JT
+                  </div>
+                  <div>
+                    <h3 className="font-bold text-gray-900">James T.</h3>
+                    <p className="text-gray-500 text-sm">Manchester</p>
+                  </div>
+                </div>
+                <div className="flex text-yellow-500 mb-2">
+                  {[1, 2, 3, 4, 5].map((star) => (
+                    <svg key={star} className="h-5 w-5" fill="currentColor" viewBox="0 0 20 20">
+                      <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                    </svg>
+                  ))}
+                </div>
+                <p className="text-gray-800">
+                  "Needed a complete roof replacement and got quotes from 3 local roofers through this site. The one I chose was professional, thorough and kept to the budget. Highly recommend!"
+                </p>
+                <div className="mt-4 text-sm text-yellow-700 font-medium">
+                  Roof Replacement
+                </div>
+              </div>
+              
+              {/* Testimonial 3 */}
+              <div className="bg-gray-50 p-6 rounded-xl shadow-sm">
+                <div className="flex items-center mb-4">
+                  <div className="h-12 w-12 rounded-full bg-yellow-300 flex items-center justify-center text-yellow-800 text-xl font-bold mr-4">
+                    LK
+                  </div>
+                  <div>
+                    <h3 className="font-bold text-gray-900">Lisa K.</h3>
+                    <p className="text-gray-500 text-sm">Birmingham</p>
+                  </div>
+                </div>
+                <div className="flex text-yellow-500 mb-2">
+                  {[1, 2, 3, 4, 5].map((star) => (
+                    <svg key={star} className="h-5 w-5" fill="currentColor" viewBox="0 0 20 20">
+                      <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                    </svg>
+                  ))}
+                </div>
+                <p className="text-gray-800">
+                  "I found a roofer near me who specialized in slate roofing. They understood the local architecture and regulations perfectly. The result looks amazing and has improved our home's value."
+                </p>
+                <div className="mt-4 text-sm text-yellow-700 font-medium">
+                  Slate Roofing Installation
+                </div>
+              </div>
+            </div>
+            
+            <div className="text-center mt-10">
+              <button
+                onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+                className="inline-flex items-center justify-center bg-yellow-400 text-black px-8 py-3 rounded-lg font-semibold hover:bg-yellow-500 transition-all duration-300"
+              >
+                Find Trusted Roofers Near You Now
               </button>
             </div>
           </div>
@@ -1143,6 +1297,22 @@ export default function Home() {
               </button>
             </div>
           </div>
+        </div>
+
+        {/* Sticky CTA Button */}
+        <div 
+          className={`fixed bottom-5 right-5 z-40 transition-transform duration-300 ${
+            showScrollCTA ? 'translate-y-0' : 'translate-y-24'
+          }`}
+        >
+          <button
+            onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+            className="flex items-center justify-center bg-yellow-500 hover:bg-yellow-600 text-black font-bold py-3 px-6 rounded-full shadow-lg transform hover:scale-105 transition-all duration-300"
+            aria-label="Find a roofer near me"
+          >
+            <FaMapMarkerAlt className="mr-2" />
+            <span>Find a Roofer Near Me</span>
+          </button>
         </div>
 
         {/* Footer */}
